@@ -1,30 +1,21 @@
-{ config, pkgs, lib, ... }:
-{
+{ config, pkgs, lib, ... }: {
   programs.neovim = {
     enable = true;
     defaultEditor = true;
 
     withNodeJs = true;
 
-    extraPackages = with pkgs; [
-      ripgrep
-      fd
-      tree-sitter
-      gcc
-      wl-clipboard
-    ];
+    extraPackages = with pkgs; [ ripgrep fd tree-sitter gcc wl-clipboard ];
 
-    extraLuaConfig = lib.concatStrings (map
-      (path: (builtins.readFile path) + "\n")
-      [
+    extraLuaConfig = lib.concatStrings
+      (map (path: (builtins.readFile path) + "\n") [
         ./init.lua
         ./keys.lua
         ./lsp.lua
         ./csharp.lua
         ./rust.lua
         ./svelte.lua
-      ]
-    );
+      ]);
 
     plugins = with pkgs.vimPlugins; [
       # Required by loads of plugins

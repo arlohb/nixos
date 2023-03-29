@@ -33,7 +33,8 @@ in {
       theme = "Dracula";
 
       settings = {
-        font_features = "FiraCodeNerdFontComplete-Regular +cv01 +ss03 +ss04 +ss08 +cv02";
+        font_features =
+          "FiraCodeNerdFontComplete-Regular +cv01 +ss03 +ss04 +ss08 +cv02";
         disable_ligatures = "never";
         enable_audio_bell = false;
         background_opacity = "0.5";
@@ -42,7 +43,5 @@ in {
     };
   };
 
-  imports = [
-    ./neovim/neovim.nix
-  ];
+  imports = [ ./neovim/neovim.nix ];
 }

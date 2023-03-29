@@ -9,7 +9,7 @@
   environment.systemPackages = with pkgs; [
     # Absolutely vital
     git
-    wget                      # Also nvim requirement
+    wget # Also nvim requirement
     curl
     zip
     unzip
@@ -23,16 +23,16 @@
 
     # Window manager stuff
     # FM - Hyprland
-    libnotify                 # For testing configs
-    nur.repos.aleksana.swww   # For setting backgrounds
-    eww-wayland               # The top bar and more
-    grim                      # Screen capture for sc
-    slurp                     # Region selection for sc
+    libnotify # For testing configs
+    nur.repos.aleksana.swww # For setting backgrounds
+    eww-wayland # The top bar and more
+    grim # Screen capture for sc
+    slurp # Region selection for sc
 
     # Basic programs
-    neofetch                  # Pretty
-    feh                       # Image viewer
-    rofi                      # App launcher
+    neofetch # Pretty
+    feh # Image viewer
+    rofi # App launcher
 
     # Editor
     # HM - neovim
@@ -46,12 +46,11 @@
   users.defaultUserShell = pkgs.fish;
 
   environment.shellAliases = {
-    neonix = ''nix develop --command bash -c "WINIT_UNIX_BACKEND=x11 neovide --nofork --multigrid ."'';
+    neonix = ''
+      nix develop --command bash -c "WINIT_UNIX_BACKEND=x11 neovide --nofork --multigrid ."'';
   };
 
-  fonts.fonts = with pkgs; [
-    (nerdfonts.override { fonts = [ "FiraCode" ]; })
-  ];
+  fonts.fonts = with pkgs; [ (nerdfonts.override { fonts = [ "FiraCode" ]; }) ];
 
   security.rtkit.enable = true;
   services.pipewire = {
