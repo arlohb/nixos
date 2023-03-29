@@ -1,0 +1,170 @@
+(defpoll
+  LIGHT
+  :interval "1s"
+  :initial 0
+  "brightnessctl get")
+
+(defpoll
+  LIGHT_MAX
+  :interval "10s"
+  :initial 255
+  "brightnessctl max")
+
+(defpoll
+  VOLUME
+  :interval "1s"
+  :initial 0
+  "pamixer --get-volume")
+
+(defpoll
+  TIME
+  :interval "5s"
+  :initial "date +'%H:%M'"
+   "date +'%H:%M'")
+
+
+(defwindow quick-launcher
+  ; wayland
+  :exclusive false
+  :focusable false
+  :stacking "overlay"
+
+  :monitor 0
+
+  :geometry (geometry
+    :x "10px"
+    :y "10px"
+    ; :width "300px"
+    :height "100px"
+    :anchor "top left")
+
+  (box
+   :orientation "v"
+   :space-evenly false
+   (box
+    :orientation "h"
+    :space-evenly true
+    :vexpand true
+    (app
+     :cmd "vivaldi --new-window https://www.google.com"
+     :icon "/usr/share/pixmaps/vivaldi.png")
+    (app
+     :cmd "obsidian"
+     :icon "/usr/share/pixmaps/obsidian.png")
+    (app
+     :cmd "steam"
+     :icon "/usr/share/icons/hicolor/256x256/apps/steam.png")
+    (app
+     :cmd "gnome-clocks"
+     :icon "/usr/share/icons/hicolor/scalable/apps/org.gnome.clocks.svg")
+    (app
+     :cmd "blueberry"
+     :icon "/usr/share/icons/hicolor/scalable/apps/bluetooth.svg"))))
+
+(defwidget app [cmd icon]
+  (button
+   :onclick "eww close quick-launcher && ${cmd} &"
+   (image
+    :path icon
+    :width 90
+    :image-width 64
+    :image-height 64)))
+
+
+(defwindow bar
+  ; wayland
+  :exclusive true
+  :focusable false
+  :stacking "fg"
+
+  :monitor 0
+
+  :geometry (geometry
+    :width "100%"
+    :height "40px"
+    :anchor "top center")
+
+  (centerbox :orientation "h" :class "bar"
+    (box
+     :halign "start"
+     :orientation "h"
+     :space-evenly true
+     :spacing 8
+     :class "btns"
+     (button :class "cell btn1" :onclick "rofi -show drun &" "")
+     (button :class "cell btn2" :onclick "eww open quick-launcher" "")
+     (button :class "cell btn3" :onclick "~/.config/hypr/rotate.sh 1 &" "󰴓")
+     (button :class "cell btn4" :onclick "~/.config/hypr/rotate.sh 0 &" "󰌌")
+     (button :class "cell btn5" :onclick "hyprctl dispatch togglesplit" "󰑦"))
+    (box
+     :halign "end"
+     :orientation "h"
+     :space-evenly false
+     :spacing 18
+     (box
+      :halign "start"
+      :orientation "h"
+      :space-evenly true
+      :spacing 8
+      (for i in "[1, 2, 3, 4]"
+        (workspace :name i)))
+     (button
+      :class "cell close"
+      :onclick "hyprctl dispatch killactive"
+      (label :text "X")))
+    (box
+     :halign "end"
+     :orientation "h"
+     :space-evenly false
+     :spacing 8
+     (brightness)
+     (volume)
+     (box
+      :class "cell"
+      :orientation "h"
+      :space-evenly false
+      :class "cell battery"
+      (label
+       :class "battery-icon"
+       :text {EWW_BATTERY.BAT1.status == "Charging"
+         ? ""
+         : ["", "", "", "", ""][
+           round(EWW_BATTERY.BAT1.capacity / 20, 0) - 1
+         ]})
+      (label
+       :text "${EWW_BATTERY.BAT1.capacity}%"))
+     (label
+      :class "cell clock"
+      :text "${TIME}"))))
+
+(defwidget workspace [name]
+  (button
+   :class "cell workspace"
+   :onclick "hyprctl dispatch workspace ${name}"
+   "${name}"))
+
+(defwidget brightness []
+  (box
+   :orientation "h"
+   :space-evenly false
+   :class "slider brightness"
+   :spacing 0
+   (label :text "")
+   (scale
+    :onchange "brightnessctl set {}"
+    :value LIGHT
+    :min 0
+    :max 255)))
+
+(defwidget volume []
+  (box
+   :orientation "h"
+   :space-evenly false
+   :class "slider volume"
+   :spacing 0
+   (label :text "")
+   (scale
+    :onchange "pamixer --set-volume {}"
+    :value VOLUME
+    :min 0
+    :max LIGHT_MAX)))

@@ -1,0 +1,150 @@
+@use "sass:color";
+
+$black: #282a36;
+$dark-grey: #44475a;
+$light-grey: #6272a4;
+$white: #f8f8f2;
+$cyan: #8be9fd;
+$green: #50fa7b;
+$orange: #ffb86c;
+$pink: #ff79c6;
+$purple: #bd93f9;
+$red: #ff5555;
+$yellow: #f1fa8c;
+
+* {
+    // Remove the gtk theming
+    all: unset;
+    // Round all the things
+    border-radius: 10px;
+    // Just a little thicker than default
+    font-weight: 500;
+}
+
+.bar {
+    padding-left: 10px;
+    padding-right: 10px;
+}
+
+.cell {
+    margin-top: 3px;
+    padding-left: 16px;
+    padding-right: 16px;
+}
+
+label {
+    // All labels are black by default
+    color: $black;
+}
+
+// --------------- QUICK LAUNCHER ---------------
+
+.quick-launcher {
+    background-color: $black;
+    opacity: 0.9;
+}
+
+// --------------- SLIDERS ---------------
+
+.slider {
+    padding-left: 10px;
+    padding-right: 10px;
+    margin-top: 3px;
+}
+
+.slider scale trough highlight {
+    background-color: $black;
+}
+
+.slider scale trough {
+    min-width: 100px;
+    min-height: 15px;
+}
+
+.slider label {
+    font-size: 18px;
+    margin-right: 15px;
+}
+
+// --------------- LEFT ---------------
+
+.btns button {
+    font-size: 30px;
+}
+
+.btn1 {
+    background-color: $red;
+}
+
+.btn2 {
+    background-color: $red;
+}
+
+.btn3 {
+    background-color: $pink;
+}
+
+.btn4 {
+    background-color: $purple;
+}
+
+.btn5 {
+    background-color: $cyan;
+}
+
+// --------------- CENTER ---------------
+
+.workspace {
+    background-color: $cyan;
+    font-size: 20px;
+}
+
+.close {
+    background-color: $red;
+    font-size: 20px;
+}
+
+.close label {
+    font-weight: 700;
+}
+
+// --------------- RIGHT ---------------
+
+// ------ Brightness ------
+
+.brightness {
+    background-color: $cyan;
+}
+
+.brightness scale trough {
+    background-color: color.scale($cyan, $lightness: -20%, $saturation: -40%);
+}
+
+// ------ Volume ------
+
+.volume {
+    background-color: $purple;
+}
+
+.volume scale trough {
+    background-color: color.scale($purple, $lightness: -20%, $saturation: -40%);
+}
+
+.volume label {
+    font-size: 24px;
+}
+
+// ------ Other ------
+
+.battery {
+    background-color: $pink;
+}
+
+.battery-icon {
+    padding-right: 10px;
+    font-size: 30px;
+}
+
+.clock {
+    background-color: $red;
+}
