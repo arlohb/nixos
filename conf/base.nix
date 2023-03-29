@@ -9,6 +9,7 @@
   environment.systemPackages = with pkgs; [
     # Absolutely vital
     git
+    gh
     wget # Also nvim requirement
     curl
     zip
