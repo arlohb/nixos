@@ -10,6 +10,13 @@
   boot.extraModulePackages = [ ];
 
   fileSystems."/" = {
+    device = "tmpfs";
+    fsType = "tmpfs";
+    options = [ "noatime mode=755" ];
+    neededForBoot = true;
+  };
+
+  fileSystems."/nix" = {
     device = "/dev/disk/by-uuid/f1de2770-bac0-44d4-8562-3bca5b15640a";
     fsType = "ext4";
   };

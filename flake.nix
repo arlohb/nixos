@@ -10,9 +10,11 @@ rec {
     };
 
     hyprland.url = "github:hyprwm/Hyprland";
+
+    impermanence.url = "github:nix-community/impermanence";
   };
 
-  outputs = { self, nixpkgs, nur, home-manager, hyprland }: rec {
+  outputs = { self, nixpkgs, nur, home-manager, hyprland, impermanence }: rec {
     system = "x86_64-linux";
 
     nixosConfigurations.arlo-laptop2 = nixpkgs.lib.nixosSystem {
@@ -36,6 +38,8 @@ rec {
             xwayland.hidpi = false;
           };
         }
+
+        impermanence.nixosModules.impermanence
 
         ./configuration.nix
 

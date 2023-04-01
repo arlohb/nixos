@@ -4,6 +4,7 @@
   imports = [
     ./hardware-configuration.nix
     ./conf/core.nix
+    ./conf/persistence.nix
     ./conf/base.nix
     ./conf/gaming.nix
   ];
@@ -29,9 +30,14 @@
   # sound.enable = true;
   # hardware.pulseaudio.enable = true;
 
-  users.users.arlo = {
-    isNormalUser = true;
-    extraGroups = [ "wheel" "video" ];
+  users = {
+    mutableUsers = false;
+
+    users.arlo = {
+      isNormalUser = true;
+      extraGroups = [ "wheel" "video" ];
+      initialHashedPassword = (import ./secrets.nix).initialHashedPassword;
+    };
   };
 }
 
