@@ -12,7 +12,7 @@
   fileSystems."/" = {
     device = "tmpfs";
     fsType = "tmpfs";
-    options = [ "noatime mode=755" ];
+    options = [ "noatime" "mode=755" ];
     neededForBoot = true;
   };
 
