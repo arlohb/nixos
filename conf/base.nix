@@ -33,8 +33,6 @@
     xorg.xhost # Used to disable xorg / xwayland access control
 
     # Secret management
-    # OC - gnupg
-    pinentry # Used by gnupg
     git-crypt # Encrypts files in git repos with gpg keys
 
     # Basic programs
@@ -84,12 +82,5 @@
       RestartSec = 1;
       TimeoutStopSec = 10;
     };
-  };
-
-  services.pcscd.enable = true;
-  programs.gnupg.agent = {
-    enable = true;
-    enableSSHSupport = true;
-    pinentryFlavor = "gtk2";
   };
 }
