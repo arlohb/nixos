@@ -33,7 +33,11 @@
     xorg.xhost # Used to disable xorg / xwayland access control
 
     # Secret management
-    git-crypt # Encrypts files in git repos with gpg keys
+    git-crypt # Automatically encrypts secret files in git repos
+              # I use this in nixos config for secrets.nix
+    scrypt # Encrypts files with passwords
+           # I use this so I can store the git-crypt key file
+           # in a secure-ish place, that's not acc. that secure
 
     # Basic programs
     neofetch # Pretty
