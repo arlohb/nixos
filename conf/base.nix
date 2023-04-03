@@ -31,6 +31,7 @@
     slurp # Region selection for sc
     polkit_gnome # Polkit agent used by gparted, etcher, etc
     xorg.xhost # Used to disable xorg / xwayland access control
+    dt-shell-color-scripts # Ran on shell start
 
     # Secret management
     git-crypt # Automatically encrypts secret files in git repos
@@ -56,7 +57,14 @@
     obsidian
   ];
 
-  programs.fish.enable = true;
+  programs.fish = {
+    enable = true;
+    interactiveShellInit = ''
+      set -U fish_greeting
+      colorscript -r
+    '';
+  };
+
   users.defaultUserShell = pkgs.fish;
 
   environment.shellAliases = {
