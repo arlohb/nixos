@@ -32,6 +32,11 @@
     polkit_gnome # Polkit agent used by gparted, etcher, etc
     xorg.xhost # Used to disable xorg / xwayland access control
 
+    # Secret management
+    # OC - gnupg
+    pinentry # Used by gnupg
+    git-crypt # Encrypts files in git repos with gpg keys
+
     # Basic programs
     neofetch # Pretty
     feh # Image viewer
@@ -42,7 +47,10 @@
     # HM - neovim
     neovide
 
-    vivaldi
+    (vivaldi.override {
+      proprietaryCodecs = true;
+      enableWidevine = true;
+    })
     obsidian
   ];
 
@@ -76,5 +84,12 @@
       RestartSec = 1;
       TimeoutStopSec = 10;
     };
+  };
+
+  services.pcscd.enable = true;
+  programs.gnupg.agent = {
+    enable = true;
+    enableSSHSupport = true;
+    pinentryFlavor = "gtk2";
   };
 }
