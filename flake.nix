@@ -48,6 +48,7 @@ rec {
           home-manager.useGlobalPkgs = true;
           home-manager.extraSpecialArgs = { inherit inputs; };
           home-manager.users.arlo.imports = [ ./conf/home.nix ];
+          home-manager.users.root.imports = [ ./conf/root-home.nix ];
         }
       ];
     };

@@ -1,5 +1,6 @@
 { config, pkgs, ... }:
 let
+  secrets = import ../secrets.nix;
   cursor = {
     package = pkgs.nordzy-cursor-theme;
     name = "Nordzy-cursors";
@@ -22,6 +23,8 @@ in {
   gtk.cursorTheme = cursor;
 
   programs = {
+    git = secrets.git // { enable = true; };
+
     kitty = {
       enable = true;
 

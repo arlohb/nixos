@@ -8,7 +8,7 @@
   #  OC = Other Config
   environment.systemPackages = with pkgs; [
     # Absolutely vital
-    git
+    # HM - git
     gh
     wget # Also nvim requirement
     curl
