@@ -7,10 +7,10 @@
     directories = [
       "/etc/nixos"
       "/etc/NetworkManager/system-connections"
-      "/home"
       "/var/log"
       "/var/lib/bluetooth"
       "/var/lib/nixos"
+      "/root/.config/gh"
     ];
 
     files = [
@@ -23,12 +23,18 @@
         "code"
         "Vault"
         ".cache"
-        ".local"
         ".gnupg"
-      ];
+        ".local/share/nvim"
+        ".local/state/nvim"
+      ] ++ (map (path: ".config/${path}") [
+        "gh"
+        "obsidian"
+        "vivaldi"
+      ]);
 
       files = [
         ".gitconfig"
+        ".local/share/fish/fish_history"
       ];
     };
   };
