@@ -1,12 +1,12 @@
 -- My hostnames,
 -- used to switch between some config values
-local pc = "arlo-arch"
+local pc = "arlo-nix"
 local laptop = "arlo-laptop2"
 
 local f = io.open("/etc/hostname", "r")
 local hostname
 if f == nil then
-    hostname = "arlo-arch"
+    hostname = pc
 else
     hostname = f:read("*l")
     f:close()
