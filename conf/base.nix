@@ -50,6 +50,11 @@
     # HM - neovim
     neovide
 
+    # Gaming
+    # OC - steam
+    # OC - gamemode
+    gamescope
+
     (vivaldi.override {
       proprietaryCodecs = true;
       enableWidevine = true;

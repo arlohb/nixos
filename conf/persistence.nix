@@ -23,8 +23,8 @@
         "code"
         "Vault"
         ".cache"
-        ".gnupg"
         ".local/share/nvim"
+        ".local/share/Steam"
         ".local/state/nvim"
       ] ++ (map (path: ".config/${path}") [
         "gh"

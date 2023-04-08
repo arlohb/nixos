@@ -22,4 +22,6 @@
       custom.end = "notify-send 'GameMode ended!'";
     };
   };
+
+  programs.steam.enable = true;
 }
