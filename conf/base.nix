@@ -1,6 +1,21 @@
 { config, pkgs, ... }:
 
 {
+  networking.networkmanager.enable = true;
+
+  time.timeZone = "Europe/London";
+  i18n.defaultLocale = "en_GB.UTF-8";
+
+  users = {
+    mutableUsers = false;
+
+    users.arlo = {
+      isNormalUser = true;
+      extraGroups = [ "wheel" "video" ];
+      initialHashedPassword = (import ../secrets.nix).initialHashedPassword;
+    };
+  };
+
   # See home.nix for more installed packages
   # I've used codes for packages that are elsewhere
   #  FM = Flake Module

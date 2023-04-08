@@ -14,14 +14,27 @@ rec {
     impermanence.url = "github:nix-community/impermanence";
   };
 
-  outputs = { self, nixpkgs, nur, home-manager, hyprland, impermanence }: rec {
+  outputs = { self, nixpkgs, nur, home-manager, hyprland, impermanence }: let
     system = "x86_64-linux";
 
+    nurModule = {
+      nixpkgs.config.packageOverrides = pkgs: {
+        nur = import nur {
+          inherit pkgs;
+          nurpkgs = import nixpkgs { inherit system; };
+        };
+      };
+    };
+  in {
+    # Build this with:
+    # nix build .#nixosConfigurations.live.config.system.build.isoImage
     nixosConfigurations.live = nixpkgs.lib.nixosSystem {
       inherit system;
 
       modules = [
-        ./iso.nix
+        "${nixpkgs}/nixos/modules/installer/cd-dvd/installation-cd-graphical-gnome.nix"
+        ./conf/core.nix
+        nurModule
       ];
     };
 
@@ -29,14 +42,7 @@ rec {
       inherit system;
 
       modules = [
-        {
-          nixpkgs.config.packageOverrides = pkgs: {
-            nur = import nur {
-              inherit pkgs;
-              nurpkgs = import nixpkgs { inherit system; };
-            };
-          };
-        }
+        nurModule
 
         hyprland.nixosModules.default
         {
@@ -49,7 +55,11 @@ rec {
 
         impermanence.nixosModules.impermanence
 
-        ./configuration.nix
+        ./hardware-configuration.nix
+        ./conf/core.nix
+        ./conf/persistence.nix
+        ./conf/base.nix
+        ./conf/gaming.nix
 
         home-manager.nixosModules.home-manager
         {
