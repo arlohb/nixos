@@ -17,6 +17,14 @@ rec {
   outputs = { self, nixpkgs, nur, home-manager, hyprland, impermanence }: rec {
     system = "x86_64-linux";
 
+    nixosConfigurations.live = nixpkgs.lib.nixosSystem {
+      inherit system;
+
+      modules = [
+        ./iso.nix
+      ];
+    };
+
     nixosConfigurations.arlo-laptop2 = nixpkgs.lib.nixosSystem {
       inherit system;
 
