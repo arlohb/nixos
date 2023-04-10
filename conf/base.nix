@@ -47,6 +47,7 @@
     polkit_gnome # Polkit agent used by gparted, etcher, etc
     xorg.xhost # Used to disable xorg / xwayland access control
     dt-shell-color-scripts # Ran on shell start
+    playerctl # Control media with media keys
 
     # Secret management
     git-crypt # Automatically encrypts secret files in git repos
