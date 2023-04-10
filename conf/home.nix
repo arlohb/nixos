@@ -29,6 +29,10 @@ in {
       recursive = true;
     };
 
+    file."${config.xdg.configHome}/git/credentials" = {
+      text = (import ../secrets.nix).git-credentials;
+    };
+
     pointerCursor = cursor;
   };
 
@@ -39,7 +43,7 @@ in {
       enable = true;
 
       extraConfig = {
-        credential.helper = "store";
+        credential.helper = "store --file ~/.config/git/credentials";
         safe.directory = "/etc/nixos";
       };
     };
