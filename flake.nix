@@ -25,6 +25,36 @@ rec {
         };
       };
     };
+
+    fullModules = hostname: [
+      nurModule
+
+      hyprland.nixosModules.default
+      {
+        programs.hyprland = {
+          enable = true;
+          nvidiaPatches = false;
+          xwayland.hidpi = false;
+        };
+      }
+
+      impermanence.nixosModules.impermanence
+
+      (import ./hardware-configuration.nix hostname)
+      (import ./conf/disks.nix hostname)
+      (import ./conf/core.nix hostname)
+      (import ./conf/persistence.nix hostname)
+      (import ./conf/base.nix hostname)
+      (import ./conf/gaming.nix hostname)
+
+      home-manager.nixosModules.home-manager
+      {
+        home-manager.useGlobalPkgs = true;
+        home-manager.extraSpecialArgs = { inherit inputs; };
+        home-manager.users.arlo.imports = [ ./conf/home.nix ];
+        home-manager.users.root.imports = [ ./conf/root-home.nix ];
+      }
+    ];
   in {
     # Build this with:
     # nix build .#nixosConfigurations.live.config.system.build.isoImage
@@ -41,34 +71,13 @@ rec {
     nixosConfigurations.arlo-laptop2 = nixpkgs.lib.nixosSystem {
       inherit system;
 
-      modules = [
-        nurModule
+      modules = fullModules "arlo-laptop2";
+    };
 
-        hyprland.nixosModules.default
-        {
-          programs.hyprland = {
-            enable = true;
-            nvidiaPatches = false;
-            xwayland.hidpi = false;
-          };
-        }
+    nixosConfigurations.arlo-nix = nixpkgs.lib.nixosSystem {
+      inherit system;
 
-        impermanence.nixosModules.impermanence
-
-        ./hardware-configuration.nix
-        ./conf/core.nix
-        ./conf/persistence.nix
-        ./conf/base.nix
-        ./conf/gaming.nix
-
-        home-manager.nixosModules.home-manager
-        {
-          home-manager.useGlobalPkgs = true;
-          home-manager.extraSpecialArgs = { inherit inputs; };
-          home-manager.users.arlo.imports = [ ./conf/home.nix ];
-          home-manager.users.root.imports = [ ./conf/root-home.nix ];
-        }
-      ];
+      modules = fullModules "arlo-nix";
     };
   };
 }

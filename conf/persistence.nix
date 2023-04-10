@@ -1,4 +1,4 @@
-{ ... }:
+hostname: { ... }:
 
 {
   environment.persistence."/nix/persistent" = {
@@ -10,19 +10,28 @@
       "/var/log"
       "/var/lib/bluetooth"
       "/var/lib/nixos"
-      "/root/.config/gh"
     ];
 
     files = [
-      "/root/.gitconfig"
       "/etc/machine-id"
     ];
+
+    users.root = {
+      home = "/root";
+
+      directories = [
+        ".config/gh"
+      ];
+      files = [];
+    };
 
     users.arlo = {
       directories = [
         "code"
         "Vault"
         ".cache"
+        ".ssh"
+        ".local/share/fish"
         ".local/share/nvim"
         ".local/share/Steam"
         ".local/state/nvim"
@@ -32,10 +41,7 @@
         "vivaldi"
       ]);
 
-      files = [
-        ".gitconfig"
-        ".local/share/fish/fish_history"
-      ];
+      files = [];
     };
   };
 }

@@ -1,4 +1,4 @@
-{ config, pkgs, ... }:
+{ config, pkgs, lib, ... }:
 let
   secrets = import ../secrets.nix;
   cursor = {
@@ -12,6 +12,18 @@ in {
     username = "arlo";
     homeDirectory = "/home/arlo";
 
+    /* file = builtins.listToAttrs (map */
+    /*   (file: if lib.strings.hasPrefix "[" (builtins.baseNameOf file) */
+    /*     then {} */
+    /*     else { */
+    /*       /1* name = "${config.xdg.configHome}/${lib.strings.removePrefix "/etc/nixos/config/" (builtins.toString file)}"; *1/ */
+    /*       name = "${config.xdg.configHome}/${builtins.toString file}"; */
+    /*       /1* name = "${config.xdg.configHome}/${builtins.baseNameOf file}"; *1/ */
+    /*       value.source = file; */
+    /*     } */
+    /*   ) */
+    /*   (lib.filesystem.listFilesRecursive ../config)); */
+
     file."${config.xdg.configHome}" = {
       source = ../config;
       recursive = true;
@@ -23,7 +35,14 @@ in {
   gtk.cursorTheme = cursor;
 
   programs = {
-    git = secrets.git // { enable = true; };
+    git = secrets.git // {
+      enable = true;
+
+      extraConfig = {
+        credential.helper = "store";
+        safe.directory = "/etc/nixos";
+      };
+    };
 
     kitty = {
       enable = true;

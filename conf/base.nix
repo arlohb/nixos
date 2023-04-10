@@ -1,4 +1,4 @@
-{ config, pkgs, ... }:
+hostname: { config, pkgs, ... }:
 
 {
   networking.networkmanager.enable = true;
@@ -9,9 +9,20 @@
   users = {
     mutableUsers = false;
 
+    groups = {
+      # A user that can modify /etc/nixos
+      # The git repo can be changed to this with these commands:
+      # cd /etc/nixos
+      # sudo chgrp -R nixconfig .
+      # sudo chmod  -R g+rw .
+      # sudo chmod g+s `find . -type d` # (change `` to () for fish)
+      # git init --bare --shared=all .
+      nixconfig = {};
+    };
+
     users.arlo = {
       isNormalUser = true;
-      extraGroups = [ "wheel" "video" ];
+      extraGroups = [ "wheel" "video" "nixconfig" ];
       initialHashedPassword = (import ../secrets.nix).initialHashedPassword;
     };
   };
@@ -29,9 +40,6 @@
     curl
     zip
     unzip
-
-    # Laptop
-    brightnessctl
 
     # Audio
     # OC - wireplumber
@@ -76,7 +84,10 @@
       enableWidevine = true;
     })
     obsidian
-  ];
+  ] ++ (if hostname == "arlo-laptop2" then [
+    # Laptop
+    brightnessctl
+  ] else []);
 
   programs.fish = {
     enable = true;
