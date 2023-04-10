@@ -1,5 +1,6 @@
 { config, pkgs, lib, ... }:
 let
+  # Not in nixpkgs (yet)
   nvim-spider = pkgs.vimUtils.buildVimPluginFrom2Nix {
     pname = "nvim-spider";
     version = "2023-03-29";
@@ -13,12 +14,17 @@ let
 in {
   programs.neovim = {
     enable = true;
+
+    # Make it the default with $EDITOR
     defaultEditor = true;
 
+    # Give it nodejs
     withNodeJs = true;
 
+    # Give nvim access to these packages
     extraPackages = with pkgs; [ ripgrep fd tree-sitter gcc wl-clipboard ];
 
+    # Load the lua config
     extraLuaConfig = lib.concatStrings
       (map (path: (builtins.readFile path) + "\n") [
         ./init.lua

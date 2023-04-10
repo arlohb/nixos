@@ -1,14 +1,12 @@
 hostname: { config, pkgs, ... }:
 
 {
-  networking.networkmanager.enable = true;
-
-  time.timeZone = "Europe/London";
-  i18n.defaultLocale = "en_GB.UTF-8";
-
+  # Normal users
   users = {
+    # Useradd etc won't work
     mutableUsers = false;
 
+    # Custom groups
     groups = {
       # A user that can modify /etc/nixos
       # The git repo can be changed to this with these commands:
@@ -20,9 +18,14 @@ hostname: { config, pkgs, ... }:
       nixconfig = {};
     };
 
+    # The normal user
     users.arlo = {
       isNormalUser = true;
+      # wheel - can use sudo
+      # video - various video things
+      # nixconfig - rw for /etc/nixos
       extraGroups = [ "wheel" "video" "nixconfig" ];
+      # Give the user a password from secrets
       initialHashedPassword = (import ../secrets.nix).initialHashedPassword;
     };
   };
@@ -33,29 +36,6 @@ hostname: { config, pkgs, ... }:
   #  HM = Home Manager
   #  OC = Other Config
   environment.systemPackages = with pkgs; [
-    # Absolutely vital
-    # HM - git
-    wget # Also nvim requirement
-    curl
-    zip
-    unzip
-
-    # Audio
-    # OC - wireplumber
-    pamixer
-
-    # Window manager stuff
-    # FM - Hyprland
-    libnotify # For testing configs
-    nur.repos.aleksana.swww # For setting backgrounds
-    eww-wayland # The top bar and more
-    grim # Screen capture for sc
-    slurp # Region selection for sc
-    polkit_gnome # Polkit agent used by gparted, etcher, etc
-    xorg.xhost # Used to disable xorg / xwayland access control
-    dwt1-shell-color-scripts # Ran on shell start
-    playerctl # Control media with media keys
-
     # Secret management
     git-crypt # Automatically encrypts secret files in git repos
               # I use this in nixos config for secrets.nix
@@ -72,11 +52,6 @@ hostname: { config, pkgs, ... }:
     # Editor
     # HM - neovim
     neovide
-
-    # Gaming
-    # OC - steam
-    # OC - gamemode
-    gamescope
 
     (vivaldi.override {
       proprietaryCodecs = true;
@@ -100,30 +75,9 @@ hostname: { config, pkgs, ... }:
 
   environment.shellAliases = {
     neonix = ''
-      nix develop --command bash -c "WINIT_UNIX_BACKEND=x11 neovide --nofork --multigrid ."'';
+      nix develop --command bash -c "WINIT_UNIX_BACKEND=x11 neovide --nofork --multigrid ."
+    '';
   };
 
   fonts.fonts = with pkgs; [ (nerdfonts.override { fonts = [ "FiraCode" ]; }) ];
-
-  security.rtkit.enable = true;
-  services.pipewire = {
-    enable = true;
-    alsa.enable = true;
-    alsa.support32Bit = true;
-    pulse.enable = true;
-  };
-
-  systemd.user.services.polkit-gnome-authentication-agent-1 = {
-    description = "polkit-gnome-authentication-agent-1";
-    wantedBy = [ "graphical-session.target" ];
-    wants = [ "graphical-session.target" ];
-    after = [ "graphical-session.target" ];
-    serviceConfig = {
-      Type = "simple";
-      ExecStart = "${pkgs.polkit_gnome}/libexec/polkit-gnome-authentication-agent-1";
-      Restart = "on-failure";
-      RestartSec = 1;
-      TimeoutStopSec = 10;
-    };
-  };
 }

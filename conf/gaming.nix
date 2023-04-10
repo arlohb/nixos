@@ -1,6 +1,7 @@
 hostname: { config, pkgs, ... }:
 
 {
+  # Gamemode give games various optimisations
   programs.gamemode = {
     enable = true;
 
@@ -18,10 +19,18 @@ hostname: { config, pkgs, ... }:
 
       gpu.amd_performance_level = "high";
 
+      # This could do more complicated things in the future
       custom.start = "notify-send 'GameMode started!'";
       custom.end = "notify-send 'GameMode ended!'";
     };
   };
 
+  # Steam
   programs.steam.enable = true;
+
+  # Other programs
+  environment.systemPackages = with pkgs; [
+    # micro-compositor to speed up game rendering under wayland
+    gamescope
+  ];
 }

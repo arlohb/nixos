@@ -2,6 +2,7 @@ rec {
   inputs = {
     nixpkgs.url = "nixpkgs/nixos-unstable";
 
+    # Nix User Repository
     nur.url = "github:nix-community/NUR";
 
     home-manager = {
@@ -11,12 +12,14 @@ rec {
 
     hyprland.url = "github:hyprwm/Hyprland";
 
+    # Manages persistant files when / is a tmpfs
     impermanence.url = "github:nix-community/impermanence";
   };
 
   outputs = { self, nixpkgs, nur, home-manager, hyprland, impermanence }: let
     system = "x86_64-linux";
 
+    # A module that loads nur
     nurModule = {
       nixpkgs.config.packageOverrides = pkgs: {
         nur = import nur {
@@ -40,13 +43,6 @@ rec {
 
       impermanence.nixosModules.impermanence
 
-      (import ./hardware-configuration.nix hostname)
-      (import ./conf/disks.nix hostname)
-      (import ./conf/core.nix hostname)
-      (import ./conf/persistence.nix hostname)
-      (import ./conf/base.nix hostname)
-      (import ./conf/gaming.nix hostname)
-
       home-manager.nixosModules.home-manager
       {
         home-manager.useGlobalPkgs = true;
@@ -54,7 +50,15 @@ rec {
         home-manager.users.arlo.imports = [ ./conf/home.nix ];
         home-manager.users.root.imports = [ ./conf/root-home.nix ];
       }
-    ];
+    ] ++ (map (path: import path hostname) [
+      ./conf/hardware.nix
+      ./conf/persistence.nix
+      ./conf/core.nix
+      ./conf/base.nix
+      ./conf/audio.nix
+      ./conf/wm.nix
+      ./conf/gaming.nix
+    ]);
   in {
     # Build this with:
     # nix build .#nixosConfigurations.live.config.system.build.isoImage
@@ -63,7 +67,7 @@ rec {
 
       modules = [
         "${nixpkgs}/nixos/modules/installer/cd-dvd/installation-cd-graphical-gnome.nix"
-        ./conf/core.nix
+        (import ./conf/core.nix "nix-live")
         nurModule
       ];
     };

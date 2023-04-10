@@ -12,42 +12,40 @@ in {
     username = "arlo";
     homeDirectory = "/home/arlo";
 
-    /* file = builtins.listToAttrs (map */
-    /*   (file: if lib.strings.hasPrefix "[" (builtins.baseNameOf file) */
-    /*     then {} */
-    /*     else { */
-    /*       /1* name = "${config.xdg.configHome}/${lib.strings.removePrefix "/etc/nixos/config/" (builtins.toString file)}"; *1/ */
-    /*       name = "${config.xdg.configHome}/${builtins.toString file}"; */
-    /*       /1* name = "${config.xdg.configHome}/${builtins.baseNameOf file}"; *1/ */
-    /*       value.source = file; */
-    /*     } */
-    /*   ) */
-    /*   (lib.filesystem.listFilesRecursive ../config)); */
-
+    # Link over all files in ../config to ~/.config
     file."${config.xdg.configHome}" = {
       source = ../config;
       recursive = true;
     };
 
+    # Create a git credential file from secrets
     file."${config.xdg.configHome}/git/credentials" = {
-      text = (import ../secrets.nix).git-credentials;
+      text = secrets.git-credentials;
     };
 
+    # Set x11 cursor
     pointerCursor = cursor;
   };
 
+  # Set gtk cursor
   gtk.cursorTheme = cursor;
 
   programs = {
+    # Setup git
     git = secrets.git // {
       enable = true;
 
       extraConfig = {
+        # Store credentials here
+        # This file is created from secrets
         credential.helper = "store --file ~/.config/git/credentials";
+        # This is needed for a normal user to control a git repo
+        # owned by root, even though it's in the owning group
         safe.directory = "/etc/nixos";
       };
     };
 
+    # Setup the terminal emulator
     kitty = {
       enable = true;
 
@@ -56,9 +54,11 @@ in {
       font.name = "FiraCode Nerd Font";
       font.size = 10.8;
 
+      # Inbuilt to kitty
       theme = "Dracula";
 
       settings = {
+        # Some ligature settings I prefer
         font_features =
           "FiraCodeNerdFontComplete-Regular +cv01 +ss03 +ss04 +ss08 +cv02";
         disable_ligatures = "never";

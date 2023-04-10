@@ -1,18 +1,27 @@
 hostname: { ... }:
 
 {
+  # Store all persistent files here
   environment.persistence."/nix/persistent" = {
+    # Don't show these mounts in file browsers
+    # This is because it creates lots of mounts
     hideMounts = true;
 
     directories = [
+      # Nixos config
       "/etc/nixos"
+      # Wifi connections
       "/etc/NetworkManager/system-connections"
+      # Logs
       "/var/log"
+      # Bluetooth
       "/var/lib/bluetooth"
+      # Some nixos state
       "/var/lib/nixos"
     ];
 
     files = [
+      # Used by systemd
       "/etc/machine-id"
     ];
 
@@ -25,16 +34,19 @@ hostname: { ... }:
 
     users.arlo = {
       directories = [
+        # User files
         "code"
         "Vault"
+        # Cache
         ".cache"
-        ".ssh"
+        # Various program states
         ".local/share/fish"
         ".local/share/nvim"
         ".local/share/Steam"
         ".local/state/nvim"
         ".local/state/wireplumber"
       ] ++ (map (path: ".config/${path}") [
+        # Various programs' configuration
         "obsidian"
         "vivaldi"
       ]);
