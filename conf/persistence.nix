@@ -19,9 +19,7 @@ hostname: { ... }:
     users.root = {
       home = "/root";
 
-      directories = [
-        ".config/gh"
-      ];
+      directories = [];
       files = [];
     };
 
@@ -36,7 +34,6 @@ hostname: { ... }:
         ".local/share/Steam"
         ".local/state/nvim"
       ] ++ (map (path: ".config/${path}") [
-        "gh"
         "obsidian"
         "vivaldi"
       ]);

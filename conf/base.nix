@@ -35,7 +35,6 @@ hostname: { config, pkgs, ... }:
   environment.systemPackages = with pkgs; [
     # Absolutely vital
     # HM - git
-    gh
     wget # Also nvim requirement
     curl
     zip
