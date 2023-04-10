@@ -33,6 +33,7 @@ hostname: { ... }:
         ".local/share/nvim"
         ".local/share/Steam"
         ".local/state/nvim"
+        ".local/state/wireplumber"
       ] ++ (map (path: ".config/${path}") [
         "obsidian"
         "vivaldi"
