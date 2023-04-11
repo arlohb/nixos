@@ -18,6 +18,8 @@ hostname: { ... }:
       "/var/lib/bluetooth"
       # Some nixos state
       "/var/lib/nixos"
+      # Which users have been lectured by sudo
+      "/var/db/sudo"
     ];
 
     files = [
