@@ -1,15 +1,9 @@
-{ config, pkgs, lib, ... }:
+{ inputs, pkgs, lib, ... }:
 let
   # Not in nixpkgs (yet)
   nvim-spider = pkgs.vimUtils.buildVimPluginFrom2Nix {
-    pname = "nvim-spider";
-    version = "2023-03-29";
-    src = pkgs.fetchFromGitHub {
-      owner = "chrisgrieser";
-      repo = "nvim-spider";
-      rev = "559c1e2a76e95d88dd1f26b4090384b08c3637f1";
-      sha256 = "00ssq2piy4ivli2zi9r7z5r9lfb89qwvm6bq6h12bycg8hqnr2sb";
-    };
+    name = "nvim-spider";
+    src = inputs.nvim-spider;
   };
 in {
   programs.neovim = {

@@ -1,4 +1,4 @@
-{ config, pkgs, lib, ... }:
+{ config, pkgs, ... }:
 let
   secrets = import ../secrets.nix;
   cursor = {
@@ -68,6 +68,4 @@ in {
       };
     };
   };
-
-  imports = [ ./neovim/neovim.nix ];
 }

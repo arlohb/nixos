@@ -1,4 +1,4 @@
-rec {
+{
   inputs = {
     nixpkgs.url = "nixpkgs/nixos-unstable";
 
@@ -14,9 +14,13 @@ rec {
 
     # Manages persistant files when / is a tmpfs
     impermanence.url = "github:nix-community/impermanence";
+
+    # A nvim plugin not (yet) in nixpkgs
+    nvim-spider.url = "github:chrisgrieser/nvim-spider";
+    nvim-spider.flake = false;
   };
 
-  outputs = { self, nixpkgs, nur, home-manager, hyprland, impermanence }: let
+  outputs = { self, nixpkgs, nur, home-manager, hyprland, impermanence, nvim-spider }@inputs: let
     system = "x86_64-linux";
 
     # A module that loads nur
@@ -47,7 +51,7 @@ rec {
       {
         home-manager.useGlobalPkgs = true;
         home-manager.extraSpecialArgs = { inherit inputs; };
-        home-manager.users.arlo.imports = [ ./conf/home.nix ];
+        home-manager.users.arlo.imports = [ ./conf/home.nix ./conf/neovim/neovim.nix ];
         home-manager.users.root.imports = [ ./conf/root-home.nix ];
       }
     ] ++ (map (path: import path hostname) [
