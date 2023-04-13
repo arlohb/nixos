@@ -80,4 +80,9 @@ hostname: { config, pkgs, ... }:
   };
 
   fonts.fonts = with pkgs; [ (nerdfonts.override { fonts = [ "FiraCode" ]; }) ];
+
+  services.xserver.enable = true;
+  services.xserver.displayManager.gdm = {
+    enable = true;
+  };
 }
