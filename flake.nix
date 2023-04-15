@@ -11,6 +11,7 @@
     };
 
     hyprland.url = "github:hyprwm/Hyprland";
+    hyprland.inputs.nixpkgs.follows = "nixpkgs";
 
     # Manages persistant files when / is a tmpfs
     impermanence.url = "github:nix-community/impermanence";
