@@ -63,6 +63,12 @@ hostname: { config, pkgs, ... }:
     brightnessctl
   ] else []);
 
+  # Obsidian depends on this
+  # Check: https://github.com/NixOS/nixpkgs/issues/158956
+  nixpkgs.config.permittedInsecurePackages = [
+    "electron-21.4.0"
+  ];
+
   programs.fish = {
     enable = true;
     interactiveShellInit = ''
