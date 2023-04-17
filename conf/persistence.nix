@@ -39,6 +39,7 @@ hostname: { ... }:
         # User files
         "code"
         "Vault"
+        "3d"
         # Cache
         ".cache"
         # Various program states
