@@ -21,72 +21,82 @@
     nvim-spider.flake = false;
   };
 
-  outputs = { self, nixpkgs, nur, home-manager, hyprland, impermanence, nvim-spider }@inputs: let
-    system = "x86_64-linux";
+  outputs = { self, nixpkgs, nur, home-manager, hyprland, impermanence, nvim-spider }@inputs:
+    let
+      system = "x86_64-linux";
 
-    # A module that loads nur
-    nurModule = {
-      nixpkgs.config.packageOverrides = pkgs: {
-        nur = import nur {
-          inherit pkgs;
-          nurpkgs = import nixpkgs { inherit system; };
+      pkgs = nixpkgs.legacyPackages."${system}".pkgs;
+
+      # A module that loads nur
+      nurModule = {
+        nixpkgs.config.packageOverrides = pkgs: {
+          nur = import nur {
+            inherit pkgs;
+            nurpkgs = import nixpkgs { inherit system; };
+          };
         };
       };
-    };
 
-    fullModules = hostname: [
-      nurModule
-
-      hyprland.nixosModules.default
-      {
-        programs.hyprland = {
-          enable = true;
-          nvidiaPatches = false;
-          xwayland.hidpi = false;
-        };
-      }
-
-      impermanence.nixosModules.impermanence
-
-      home-manager.nixosModules.home-manager
-      {
-        home-manager.useGlobalPkgs = true;
-        home-manager.extraSpecialArgs = { inherit inputs; };
-        home-manager.users.arlo.imports = [ ./conf/home.nix ./conf/neovim/neovim.nix ];
-        home-manager.users.root.imports = [ ./conf/root-home.nix ];
-      }
-    ] ++ (map (path: import path hostname) [
-      ./conf/hardware.nix
-      ./conf/persistence.nix
-      ./conf/core.nix
-      ./conf/base.nix
-      ./conf/audio.nix
-      ./conf/wm.nix
-      ./conf/gaming.nix
-    ]);
-  in {
-    # Build this with:
-    # nix build .#nixosConfigurations.live.config.system.build.isoImage
-    nixosConfigurations.live = nixpkgs.lib.nixosSystem {
-      inherit system;
-
-      modules = [
-        "${nixpkgs}/nixos/modules/installer/cd-dvd/installation-cd-graphical-gnome.nix"
-        (import ./conf/core.nix "nix-live")
+      fullModules = hostname: [
         nurModule
-      ];
+
+        hyprland.nixosModules.default
+        {
+          programs.hyprland = {
+            enable = true;
+            nvidiaPatches = false;
+            xwayland.hidpi = false;
+          };
+        }
+
+        impermanence.nixosModules.impermanence
+
+        home-manager.nixosModules.home-manager
+        {
+          home-manager.useGlobalPkgs = true;
+          home-manager.extraSpecialArgs = { inherit inputs; };
+          home-manager.users.arlo.imports = [ ./conf/home.nix ./conf/neovim/neovim.nix ];
+          home-manager.users.root.imports = [ ./conf/root-home.nix ];
+        }
+      ] ++ (map (path: import path hostname) [
+        ./conf/hardware.nix
+        ./conf/persistence.nix
+        ./conf/core.nix
+        ./conf/base.nix
+        ./conf/audio.nix
+        ./conf/wm.nix
+        ./conf/gaming.nix
+      ]);
+    in
+    {
+      # Build this with:
+      # nix build .#nixosConfigurations.live.config.system.build.isoImage
+      nixosConfigurations.live = nixpkgs.lib.nixosSystem {
+        inherit system;
+
+        modules = [
+          "${nixpkgs}/nixos/modules/installer/cd-dvd/installation-cd-graphical-gnome.nix"
+          (import ./conf/core.nix "nix-live")
+          nurModule
+        ];
+      };
+
+      nixosConfigurations.arlo-laptop2 = nixpkgs.lib.nixosSystem {
+        inherit system;
+
+        modules = fullModules "arlo-laptop2";
+      };
+
+      nixosConfigurations.arlo-nix = nixpkgs.lib.nixosSystem {
+        inherit system;
+
+        modules = fullModules "arlo-nix";
+      };
+
+      devShells.x86_64-linux.default = pkgs.mkShell {
+        buildInputs = with pkgs; [
+          nixpkgs-fmt
+        ];
+      };
     };
-
-    nixosConfigurations.arlo-laptop2 = nixpkgs.lib.nixosSystem {
-      inherit system;
-
-      modules = fullModules "arlo-laptop2";
-    };
-
-    nixosConfigurations.arlo-nix = nixpkgs.lib.nixosSystem {
-      inherit system;
-
-      modules = fullModules "arlo-nix";
-    };
-  };
 }

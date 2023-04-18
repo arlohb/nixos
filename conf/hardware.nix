@@ -52,11 +52,11 @@ hostname: { config, pkgs, ... }:
       device = "/dev/disk/by-label/steam";
       fsType = "ext4";
     };
-  } else {}) // (if hostname == "arlo-laptop2" then {
+  } else { }) // (if hostname == "arlo-laptop2" then {
     # Boot partition
     "/boot" = {
       device = "/dev/disk/by-uuid/58A9-81DF";
       fsType = "vfat";
     };
-  } else {});
+  } else { });
 }

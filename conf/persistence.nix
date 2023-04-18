@@ -30,8 +30,8 @@ hostname: { ... }:
     users.root = {
       home = "/root";
 
-      directories = [];
-      files = [];
+      directories = [ ];
+      files = [ ];
     };
 
     users.arlo = {
@@ -54,7 +54,7 @@ hostname: { ... }:
         "vivaldi"
       ]);
 
-      files = [];
+      files = [ ];
     };
   };
 }

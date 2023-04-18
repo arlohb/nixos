@@ -15,7 +15,7 @@ hostname: { config, pkgs, ... }:
       # sudo chmod  -R g+rw .
       # sudo chmod g+s `find . -type d` # (change `` to () for fish)
       # git init --bare --shared=all .
-      nixconfig = {};
+      nixconfig = { };
     };
 
     # The normal user
@@ -38,10 +38,10 @@ hostname: { config, pkgs, ... }:
   environment.systemPackages = with pkgs; [
     # Secret management
     git-crypt # Automatically encrypts secret files in git repos
-              # I use this in nixos config for secrets.nix
+    #          I use this in nixos config for secrets.nix
     scrypt # Encrypts files with passwords
-           # I use this so I can store the git-crypt key file
-           # in a secure-ish place, that's not acc. that secure
+    #         I use this so I can store the git-crypt key file
+    #         in a secure-ish place, that's not acc. that secure
 
     # Basic programs
     neofetch # Pretty
@@ -61,7 +61,7 @@ hostname: { config, pkgs, ... }:
   ] ++ (if hostname == "arlo-laptop2" then [
     # Laptop
     brightnessctl
-  ] else []);
+  ] else [ ]);
 
   # Obsidian depends on this
   # Check: https://github.com/NixOS/nixpkgs/issues/158956

@@ -5,7 +5,8 @@ let
     name = "nvim-spider";
     src = inputs.nvim-spider;
   };
-in {
+in
+{
   programs.neovim = {
     enable = true;
 
@@ -29,8 +30,9 @@ in {
         ./svelte.lua
       ]);
 
-    plugins = map (plugin:
-      if builtins.isAttrs plugin then ({ type = "lua"; } // plugin) else plugin)
+    plugins = map
+      (plugin:
+        if builtins.isAttrs plugin then ({ type = "lua"; } // plugin) else plugin)
       (with pkgs.vimPlugins; [
         # Required by loads of plugins
         plenary-nvim

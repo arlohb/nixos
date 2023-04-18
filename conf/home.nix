@@ -5,7 +5,8 @@ let
     package = pkgs.nordzy-cursor-theme;
     name = "Nordzy-cursors";
   };
-in {
+in
+{
   home = {
     stateVersion = "23.05";
 
