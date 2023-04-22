@@ -59,4 +59,11 @@ hostname: { config, pkgs, ... }:
       fsType = "vfat";
     };
   } else { });
-}
+} // (if (hostname == "arlo-laptop2") then {
+  # Bluetooth
+  hardware.bluetooth.enable = true;
+
+  environment.systemPackages = with pkgs; [
+    blueberry
+  ];
+} else { })
