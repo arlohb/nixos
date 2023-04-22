@@ -32,5 +32,8 @@ hostname: { config, pkgs, ... }:
   environment.systemPackages = with pkgs; [
     # micro-compositor to speed up game rendering under wayland
     gamescope
+
+    # Minecraft launcher for various modpack sources
+    prismlauncher
   ];
 }
