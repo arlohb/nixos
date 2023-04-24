@@ -10,8 +10,7 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
-    # https://github.com/hyprwm/Hyprland/issues/2120
-    hyprland.url = "github:hyprwm/Hyprland/2df0d034bc4a18fafb3524401eeeceaa6b23e753";
+    hyprland.url = "github:hyprwm/Hyprland";
     hyprland.inputs.nixpkgs.follows = "nixpkgs";
 
     # Manages persistant files when / is a tmpfs
