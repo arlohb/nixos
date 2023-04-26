@@ -68,5 +68,9 @@ in
         confirm_os_window_close = 0;
       };
     };
+
+    direnv = {
+      enable = true;
+    };
   };
 }

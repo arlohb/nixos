@@ -47,6 +47,7 @@ hostname: { ... }:
         ".local/share/nvim"
         ".local/share/Steam"
         ".local/share/PrismLauncher"
+        ".local/share/direnv"
         ".local/state/nvim"
         ".local/state/wireplumber"
       ] ++ (map (path: ".config/${path}") [

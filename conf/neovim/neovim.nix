@@ -7,6 +7,9 @@ let
   };
 in
 {
+  # Nvim requirements
+  home.packages = with pkgs; [ ripgrep fd tree-sitter gcc wl-clipboard ];
+
   programs.neovim = {
     enable = true;
 
@@ -15,9 +18,6 @@ in
 
     # Give it nodejs
     withNodeJs = true;
-
-    # Give nvim access to these packages
-    extraPackages = with pkgs; [ ripgrep fd tree-sitter gcc wl-clipboard ];
 
     # Load the lua config
     extraLuaConfig = lib.concatStrings
@@ -288,6 +288,9 @@ in
             vim.g.suda_smart_edit = 1
           '';
         }
+
+        # Integrates with direnv
+        direnv-vim
       ]);
   };
 }
