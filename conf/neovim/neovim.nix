@@ -5,6 +5,10 @@ let
     name = "nvim-spider";
     src = inputs.nvim-spider;
   };
+  neofsharp-vim = pkgs.vimUtils.buildVimPluginFrom2Nix {
+    name = "neofsharp-vim";
+    src = inputs.neofsharp-vim;
+  };
 in
 {
   # Nvim requirements

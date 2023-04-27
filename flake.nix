@@ -19,9 +19,11 @@
     # A nvim plugin not (yet) in nixpkgs
     nvim-spider.url = "github:chrisgrieser/nvim-spider";
     nvim-spider.flake = false;
+    neofsharp-vim.url = "github:adelarsq/neofsharp.vim";
+    neofsharp-vim.flake = false;
   };
 
-  outputs = { self, nixpkgs, nur, home-manager, hyprland, impermanence, nvim-spider }@inputs:
+  outputs = { self, nixpkgs, nur, home-manager, hyprland, impermanence, ... }@inputs:
     let
       system = "x86_64-linux";
 

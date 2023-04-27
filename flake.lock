@@ -79,6 +79,22 @@
         "type": "github"
       }
     },
+    "neofsharp-vim": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1672693448,
+        "narHash": "sha256-fsZoay9eGe3sPgHztfCEy3myAIYWOdfzPpKH/NveafY=",
+        "owner": "adelarsq",
+        "repo": "neofsharp.vim",
+        "rev": "f28bb9665fa859be8543b9828b477dd932743827",
+        "type": "github"
+      },
+      "original": {
+        "owner": "adelarsq",
+        "repo": "neofsharp.vim",
+        "type": "github"
+      }
+    },
     "nixpkgs": {
       "locked": {
         "lastModified": 1682453498,
@@ -130,6 +146,7 @@
         "home-manager": "home-manager",
         "hyprland": "hyprland",
         "impermanence": "impermanence",
+        "neofsharp-vim": "neofsharp-vim",
         "nixpkgs": "nixpkgs",
         "nur": "nur",
         "nvim-spider": "nvim-spider"
