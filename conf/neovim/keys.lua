@@ -66,8 +66,7 @@ require("which-key").register({
             t = { "<cmd>ToggleTerm 1 direction=float<cr>", "Terminal Float" },
             T = { "<cmd>ToggleTerm 2 direction=vertical<cr>", "Terminal Bar" },
             s = { "<cmd>Vista!!<cr>", "Symbols" },
-            l = { "<cmd>Lazy<cr>", "Lazy" },
-            m = { "<cmd>Mason<cr>", "Mason" },
+            l = { "<cmd>LspInfo<cr>", "Lsp Info" },
         },
 
         d = {
@@ -93,3 +92,9 @@ require("which-key").register({
 
 vim.keymap.set("n", ";", "<cmd>Commentary<cr>", { desc = "Comment" })
 vim.keymap.set("v", ";", ":'<,'>Commentary<cr>", { desc = "Comment" })
+
+vim.keymap.set("n", "K", vim.lsp.buf.hover, { desc = "Hover" })
+vim.keymap.set("n", "J", vim.diagnostic.open_float, { desc = "Diagnostic hover" })
+vim.keymap.set("n", "gd", vim.lsp.buf.definition, { desc = "Goto definition" })
+vim.keymap.set("n", "gD", vim.lsp.buf.declaration, { desc = "Goto declaration" })
+vim.keymap.set("n", "go", vim.lsp.buf.type_definition, { desc = "Goto type definition" })

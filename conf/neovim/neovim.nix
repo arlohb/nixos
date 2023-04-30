@@ -5,10 +5,6 @@ let
     name = "nvim-spider";
     src = inputs.nvim-spider;
   };
-  neofsharp-vim = pkgs.vimUtils.buildVimPluginFrom2Nix {
-    name = "neofsharp-vim";
-    src = inputs.neofsharp-vim;
-  };
 in
 {
   # Nvim requirements
@@ -30,6 +26,7 @@ in
         ./keys.lua
         ./lsp.lua
         ./csharp.lua
+        ./fsharp.lua
         ./rust.lua
         ./svelte.lua
       ]);
@@ -204,16 +201,7 @@ in
           '';
         }
 
-        # LSPs / fmts / DAPs installer
-        {
-          plugin = mason-nvim;
-          config = ''
-            require("mason").setup()
-          '';
-        }
-
         # LSP
-        mason-lspconfig-nvim
         nvim-lspconfig
         rust-tools-nvim
 
@@ -280,6 +268,9 @@ in
 
         # Yuck (eww) syntax support
         yuck-vim
+
+        # Good F# support
+        Ionide-vim
 
         # Detect tab width and other stuff
         # This also read editorconfig

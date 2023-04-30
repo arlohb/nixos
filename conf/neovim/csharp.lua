@@ -1,11 +1,5 @@
 require("lspconfig").omnisharp.setup {
     on_attach = function(client, bufnr)
-        vim.keymap.set("n", "K", vim.lsp.buf.hover, { desc = "Hover" })
-        vim.keymap.set("n", "J", vim.diagnostic.open_float, { desc = "Diagnostic hover" })
-        vim.keymap.set("n", "gd", vim.lsp.buf.definition, { desc = "Goto definition" })
-        vim.keymap.set("n", "gD", vim.lsp.buf.declaration, { desc = "Goto declaration" })
-        vim.keymap.set("n", "go", vim.lsp.buf.type_definition, { desc = "Goto type definition" })
-
         -- https://nicolaiarocci.com/making-csharp-and-omnisharp-play-well-with-neovim/
         client.server_capabilities.semanticTokensProvider = {
             full = vim.empty_dict(),
@@ -83,14 +77,4 @@ require("lspconfig").omnisharp.setup {
         }
     end,
     cmd = { "OmniSharp" },
-}
-
-require("lspconfig").fsautocomplete.setup {
-    on_attach = function(client, bufnr)
-        vim.keymap.set("n", "K", vim.lsp.buf.hover, { desc = "Hover" })
-        vim.keymap.set("n", "J", vim.diagnostic.open_float, { desc = "Diagnostic hover" })
-        vim.keymap.set("n", "gd", vim.lsp.buf.definition, { desc = "Goto definition" })
-        vim.keymap.set("n", "gD", vim.lsp.buf.declaration, { desc = "Goto declaration" })
-        vim.keymap.set("n", "go", vim.lsp.buf.type_definition, { desc = "Goto type definition" })
-    end
 }
