@@ -2,6 +2,9 @@
   inputs = {
     nixpkgs.url = "nixpkgs/nixos-unstable";
 
+    # https://github.com/NixOS/nixpkgs/issues/229358
+    nixpkgs-prismlauncher.url = "github:Nixos/nixpkgs?rev=8ad5e8132c5dcf977e308e7bf5517cc6cc0bf7d8";
+
     # Nix User Repository
     nur.url = "github:nix-community/NUR";
 
@@ -21,11 +24,19 @@
     nvim-spider.flake = false;
   };
 
-  outputs = { self, nixpkgs, nur, home-manager, hyprland, impermanence, ... }@inputs:
+  outputs = { self, nixpkgs, nixpkgs-prismlauncher, nur, home-manager, hyprland, impermanence, ... }@inputs:
     let
       system = "x86_64-linux";
 
       pkgs = nixpkgs.legacyPackages."${system}".pkgs;
+      pkgs-prismlauncher = nixpkgs-prismlauncher.legacyPackages."${system}".pkgs;
+
+      # A module that overlays an older nixpkgs for prismlauncher to work
+      prismlauncherFix = {
+        nixpkgs.config.packageOverrides = pkgs: {
+          prismlauncher = pkgs-prismlauncher.prismlauncher;
+        };
+      };
 
       # A module that loads nur
       nurModule = {
@@ -38,6 +49,8 @@
       };
 
       fullModules = hostname: [
+        prismlauncherFix
+
         nurModule
 
         hyprland.nixosModules.default
