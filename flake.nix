@@ -55,7 +55,7 @@
         {
           home-manager.useGlobalPkgs = true;
           home-manager.extraSpecialArgs = { inherit inputs; };
-          home-manager.users.arlo.imports = [ ./conf/home.nix ./conf/neovim/neovim.nix ];
+          home-manager.users.arlo.imports = [ (import ./conf/home.nix hostname) ./conf/neovim/neovim.nix ];
           home-manager.users.root.imports = [ ./conf/root-home.nix ];
         }
       ] ++ (map (path: import path hostname) [
