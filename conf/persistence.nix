@@ -48,12 +48,14 @@ hostname: { ... }:
         ".local/share/Steam"
         ".local/share/PrismLauncher"
         ".local/share/direnv"
+        ".local/share/lutris"
         ".local/state/nvim"
         ".local/state/wireplumber"
       ] ++ (map (path: ".config/${path}") [
         # Various programs' configuration
         "obsidian"
         "vivaldi"
+        "lutris"
       ]);
 
       files = [ ];

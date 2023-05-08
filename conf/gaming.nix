@@ -35,5 +35,12 @@ hostname: { config, pkgs, ... }:
 
     # Minecraft launcher for various modpack sources
     prismlauncher
+
+    # Game launcher for non-linux games
+    lutris
+    wineWowPackages.waylandFull
   ];
+
+  # https://nixos.wiki/wiki/Lutris
+  hardware.opengl.driSupport32Bit = true;
 }
