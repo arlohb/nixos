@@ -3,6 +3,7 @@ hostname: { pkgs, ... }:
 {
   environment.systemPackages = with pkgs; [
     pamixer
+    pavucontrol
   ];
 
   security.rtkit.enable = true;
