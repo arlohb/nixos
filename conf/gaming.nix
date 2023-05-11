@@ -39,6 +39,11 @@ hostname: { config, pkgs, ... }:
     # Game launcher for non-linux games
     lutris
     wineWowPackages.waylandFull
+
+    # Proton-GE installer
+    # This installs it to ~/.local/share/Steam/compatibilitytools.d,
+    # So is already persisted with the steam installation
+    protonup-ng
   ];
 
   # https://nixos.wiki/wiki/Lutris
