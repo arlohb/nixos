@@ -21,10 +21,11 @@ in
 
     # Add hostname specific config for hyprland
     file."${config.xdg.configHome}/hypr/monitors.conf" = {
-      source = if hostname == "arlo-nix" then
-        ../config/hypr/maybe/arlo-nix.conf
-      else
-        ../config/hypr/maybe/arlo-laptop2.conf;
+      source =
+        if hostname == "arlo-nix" then
+          ../config/hypr/maybe/arlo-nix.conf
+        else
+          ../config/hypr/maybe/arlo-laptop2.conf;
     };
 
     # Create a git credential file from secrets
