@@ -49,6 +49,7 @@ hostname: { ... }:
         ".local/share/PrismLauncher"
         ".local/share/direnv"
         ".local/share/lutris"
+        ".local/share/cura"
         ".local/state/nvim"
         ".local/state/wireplumber"
       ] ++ (map (path: ".config/${path}") [
@@ -56,6 +57,8 @@ hostname: { ... }:
         "obsidian"
         "vivaldi"
         "lutris"
+        "blender"
+        "cura"
       ]);
 
       files = [ ];

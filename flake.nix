@@ -66,6 +66,7 @@
         ./conf/audio.nix
         ./conf/wm.nix
         ./conf/gaming.nix
+        ./conf/3d.nix
       ]);
     in
     {
