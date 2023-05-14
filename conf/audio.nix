@@ -1,7 +1,7 @@
-hostname: { pkgs, ... }:
+{ pkgs, ... }:
 
 {
-  environment.systemPackages = with pkgs; [
+  pkgs = with pkgs; [
     pamixer
     pavucontrol
   ];
@@ -13,4 +13,8 @@ hostname: { pkgs, ... }:
     alsa.support32Bit = true;
     pulse.enable = true;
   };
+
+  userPersist.directories = [
+    ".local/state/wireplumber"
+  ];
 }

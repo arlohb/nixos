@@ -1,4 +1,4 @@
-hostname: { config, pkgs, ... }:
+{ pkgs, ... }:
 
 {
   # Core nix settings
@@ -15,7 +15,7 @@ hostname: { config, pkgs, ... }:
   i18n.defaultLocale = "en_GB.UTF-8";
 
   # Core packages
-  environment.systemPackages = with pkgs; [
+  pkgs = with pkgs; [
     git
     wget
     curl

@@ -1,4 +1,4 @@
-hostname: { config, pkgs, ... }:
+{ pkgs, ... }:
 
 {
   # Gamemode give games various optimisations
@@ -29,7 +29,7 @@ hostname: { config, pkgs, ... }:
   programs.steam.enable = true;
 
   # Other programs
-  environment.systemPackages = with pkgs; [
+  pkgs = with pkgs; [
     # micro-compositor to speed up game rendering under wayland
     gamescope
 
@@ -48,4 +48,13 @@ hostname: { config, pkgs, ... }:
 
   # https://nixos.wiki/wiki/Lutris
   hardware.opengl.driSupport32Bit = true;
+
+  userPersist = {
+    directories = [
+      ".local/share/Steam"
+      ".local/share/PrismLauncher"
+      ".local/share/lutris"
+      ".config/lutris"
+    ];
+  };
 }

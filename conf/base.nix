@@ -1,5 +1,8 @@
-hostname: { config, pkgs, ... }:
+{ pkgs, config, hostname, ... }:
 
+let
+  secrets = import ../secrets.nix;
+in
 {
   # Normal users
   users = {
@@ -30,12 +33,42 @@ hostname: { config, pkgs, ... }:
     };
   };
 
-  # See home.nix for more installed packages
-  # I've used codes for packages that are elsewhere
-  #  FM = Flake Module
-  #  HM = Home Manager
-  #  OC = Other Config
-  environment.systemPackages = with pkgs; [
+  # Setup home manager
+  hm.home = {
+    stateVersion = "23.05";
+
+    username = "arlo";
+    homeDirectory = "/home/arlo";
+
+    # Link over all files in ../config to ~/.config
+    file."/home/arlo/.config" = {
+      source = ../config;
+      recursive = true;
+    };
+
+    # Create a git credential file from secrets
+    file."/home/arlo/.config/git/credentials" = {
+      text = secrets.git-credentials;
+    };
+  };
+
+  # Setup git
+  hm.programs = {
+    git = secrets.git // {
+      enable = true;
+
+      extraConfig = {
+        # Store credentials here
+        # This file is created from secrets
+        credential.helper = "store --file ~/.config/git/credentials";
+        # This is needed for a normal user to control a git repo
+        # owned by root, even though it's in the owning group
+        safe.directory = "/etc/nixos";
+      };
+    };
+  };
+
+  pkgs = with pkgs; [
     # Secret management
     git-crypt # Automatically encrypts secret files in git repos
     #          I use this in nixos config for secrets.nix
@@ -63,29 +96,21 @@ hostname: { config, pkgs, ... }:
     brightnessctl
   ] else [ ]);
 
-  # Obsidian depends on this
-  # Check: https://github.com/NixOS/nixpkgs/issues/158956
-  nixpkgs.config.permittedInsecurePackages = [
-    "electron-21.4.0"
+  userPersist.directories = [
+    # User files
+    "code"
+    "Vault"
+    "3d"
+    # Cache
+    ".cache"
+    # Various programs' configuration
+    ".config/obsidian"
+    ".config/vivaldi"
   ];
 
-  programs.fish = {
-    enable = true;
-    interactiveShellInit = ''
-      set -U fish_greeting
-      colorscript -r
-    '';
-  };
-
-  users.defaultUserShell = pkgs.fish;
-
-  environment.shellAliases = {
-    neonix = ''
-      nix develop --command bash -c "WINIT_UNIX_BACKEND=x11 neovide --nofork --multigrid ."
-    '';
-  };
-
-  fonts.fonts = with pkgs; [ (nerdfonts.override { fonts = [ "FiraCode" ]; }) ];
+  fonts.fonts = with pkgs; [
+    (nerdfonts.override { fonts = [ "FiraCode" ]; })
+  ];
 
   services.xserver.enable = true;
   services.xserver.displayManager.gdm = {

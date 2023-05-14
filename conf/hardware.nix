@@ -1,4 +1,4 @@
-hostname: { config, pkgs, ... }:
+{ pkgs, config, hostname, ... }:
 
 {
   # Boot options
@@ -24,6 +24,32 @@ hostname: { config, pkgs, ... }:
   # Networking
   networking.hostName = hostname;
   networking.networkmanager.enable = true;
+
+  # State
+  persist = {
+    # Don't show these mounts in file browsers
+    # This is because it creates lots of mounts
+    hideMounts = true;
+
+    directories = [
+      # Nixos config
+      "/etc/nixos"
+      # Wifi connections
+      "/etc/NetworkManager/system-connections"
+      # Logs
+      "/var/log"
+      # Some nixos state
+      "/var/lib/nixos"
+      # Which users have been lectured by sudo
+      "/var/db/sudo"
+    ] ++ (if hostname == "arlo-laptop" then [
+      "/var/lib/bluetooth"
+    ] else [ ]);
+    files = [
+      # Used by systemd
+      "/etc/machine-id"
+    ];
+  };
 
   # Mounts
   fileSystems = {
@@ -63,7 +89,7 @@ hostname: { config, pkgs, ... }:
   # Bluetooth
   hardware.bluetooth.enable = true;
 
-  environment.systemPackages = with pkgs; [
+  pkgs = with pkgs; [
     blueberry
   ];
 } else { })

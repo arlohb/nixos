@@ -27,6 +27,8 @@
 
       pkgs = nixpkgs.legacyPackages."${system}".pkgs;
 
+      utils = import ./conf/utils.nix;
+
       # A module that loads nur
       nurModule = {
         nixpkgs.config.packageOverrides = pkgs: {
@@ -41,29 +43,20 @@
         nurModule
 
         hyprland.nixosModules.default
-        {
-          programs.hyprland = {
-            enable = true;
-            nvidiaPatches = false;
-            xwayland.hidpi = false;
-          };
-        }
-
         impermanence.nixosModules.impermanence
-
         home-manager.nixosModules.home-manager
+
         {
           home-manager.useGlobalPkgs = true;
           home-manager.extraSpecialArgs = { inherit inputs; };
-          home-manager.users.arlo.imports = [ (import ./conf/home.nix hostname) ./conf/neovim/neovim.nix ];
-          home-manager.users.root.imports = [ ./conf/root-home.nix ];
         }
-      ] ++ (map (path: import path hostname) [
-        ./conf/hardware.nix
-        ./conf/persistence.nix
+      ] ++ (utils.loadBetterModules { inherit hostname inputs; } [
         ./conf/core.nix
+        ./conf/hardware.nix
         ./conf/base.nix
         ./conf/audio.nix
+        ./conf/terminal.nix
+        ./conf/neovim/neovim.nix
         ./conf/wm.nix
         ./conf/gaming.nix
         ./conf/3d.nix
@@ -77,8 +70,8 @@
 
         modules = [
           "${nixpkgs}/nixos/modules/installer/cd-dvd/installation-cd-graphical-gnome.nix"
-          (import ./conf/core.nix "nix-live")
           nurModule
+          ({ pkgs, config, lib, ... }@moduleInputs: utils.betterModule { hostname = "nix-live"; } (import ./conf/core.nix) moduleInputs)
         ];
       };
 

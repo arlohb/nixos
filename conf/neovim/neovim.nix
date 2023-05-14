@@ -8,9 +8,14 @@ let
 in
 {
   # Nvim requirements
-  home.packages = with pkgs; [ ripgrep fd tree-sitter gcc wl-clipboard ];
+  pkgs = with pkgs; [ ripgrep fd tree-sitter gcc wl-clipboard ];
 
-  programs.neovim = {
+  userPersist.directories = [
+    ".local/share/nvim"
+    ".local/state/nvim"
+  ];
+
+  hm.programs.neovim = {
     enable = true;
 
     # Make it the default with $EDITOR
