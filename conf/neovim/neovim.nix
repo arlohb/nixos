@@ -7,8 +7,17 @@ let
   };
 in
 {
-  # Nvim requirements
-  pkgs = with pkgs; [ ripgrep fd tree-sitter gcc wl-clipboard ];
+  pkgs = with pkgs; [
+    # Nvim requirements
+    ripgrep
+    fd
+    tree-sitter
+    gcc
+    wl-clipboard
+
+    # Gui wrapper
+    neovide
+  ];
 
   userPersist.directories = [
     ".local/share/nvim"

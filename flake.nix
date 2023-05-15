@@ -53,11 +53,13 @@
       ] ++ (utils.loadBetterModules { inherit hostname inputs; } [
         ./conf/core.nix
         ./conf/hardware.nix
-        ./conf/base.nix
+        ./conf/user.nix
         ./conf/audio.nix
         ./conf/terminal.nix
+        ./conf/git.nix
         ./conf/neovim/neovim.nix
         ./conf/wm.nix
+        ./conf/programs.nix
         ./conf/gaming.nix
         ./conf/3d.nix
       ]);

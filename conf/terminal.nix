@@ -46,6 +46,11 @@
     };
   };
 
+  # The best font ever!
+  fonts.fonts = with pkgs; [
+    (nerdfonts.override { fonts = [ "FiraCode" ]; })
+  ];
+
   userPersist.directories = [
     ".local/share/fish"
     ".local/share/direnv"

@@ -7,6 +7,12 @@ let
   };
 in
 {
+  # Enable X
+  services.xserver.enable = true;
+  services.xserver.displayManager.gdm = {
+    enable = true;
+  };
+
   # Enable Hyprland
   programs.hyprland = {
     enable = true;

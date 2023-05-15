@@ -91,5 +91,6 @@
 
   pkgs = with pkgs; [
     blueberry
+    brightnessctl
   ];
 } else { })
