@@ -25,6 +25,15 @@
   networking.hostName = hostname;
   networking.networkmanager.enable = true;
 
+  # Bluetooth
+  hardware.bluetooth.enable = true;
+  services.blueman.enable = true;
+
+  pkgs = if hostname == "arlo-laptop2" then with pkgs; [
+    # Screen brightness
+    brightnessctl
+  ] else [];
+
   # State
   persist = {
     # Don't show these mounts in file browsers
@@ -85,12 +94,4 @@
       fsType = "vfat";
     };
   } else { });
-} // (if (hostname == "arlo-laptop2") then {
-  # Bluetooth
-  hardware.bluetooth.enable = true;
-
-  pkgs = with pkgs; [
-    blueberry
-    brightnessctl
-  ];
-} else { })
+}
