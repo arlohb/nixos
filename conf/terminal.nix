@@ -1,21 +1,28 @@
 { pkgs, ... }:
 
 {
+  pkgs = with pkgs; [
+    exa
+  ];
+
   programs.fish = {
     enable = true;
+
     interactiveShellInit = ''
       set -U fish_greeting
       colorscript -r
     '';
+
+    shellAliases = {
+      neonix = ''nix develop --command bash -c "WINIT_UNIX_BACKEND=x11 neovide --nofork --multigrid ."'';
+
+      ls = "exa --all --long --icons --binary --no-time --git --no-permissions --no-user";
+
+      lsl = "exa --all --long --icons --binary --no-time --git --group";
+    };
   };
 
   users.defaultUserShell = pkgs.fish;
-
-  environment.shellAliases = {
-    neonix = ''
-      nix develop --command bash -c "WINIT_UNIX_BACKEND=x11 neovide --nofork --multigrid ."
-    '';
-  };
 
   hm.programs = {
     # Setup the terminal emulator
