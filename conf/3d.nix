@@ -4,6 +4,7 @@
   pkgs = with pkgs; [
     blender
     cura
+    openscad
   ];
 
   userPersist.directories = [
