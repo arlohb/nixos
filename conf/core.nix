@@ -21,5 +21,7 @@
     curl
     zip
     unzip
+    killall
+    btop
   ];
 }
