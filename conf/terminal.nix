@@ -11,6 +11,14 @@
     interactiveShellInit = ''
       set -U fish_greeting
       colorscript -r
+
+      function nr
+        nix run "nixpkgs#$argv"
+      end
+
+      function ns
+        nix shell "nixpkgs#$argv"
+      end
     '';
 
     shellAliases = {
