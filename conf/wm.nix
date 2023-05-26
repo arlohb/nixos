@@ -29,6 +29,15 @@ in
         ../config/hypr/maybe/arlo-laptop2.conf;
   };
 
+  # Screen Lock
+  hm.programs.swaylock = {
+    enable = true;
+    settings = {
+      color = "000000";
+    };
+  };
+  security.pam.services.swaylock = {};
+
   # This is all the stuff I wouldn't need if I used a desktop environment
   pkgs = with pkgs; [
     libnotify # For testing configs
