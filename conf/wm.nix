@@ -46,7 +46,6 @@ in
     xorg.xhost # Used to disable xorg / xwayland access control
     dwt1-shell-color-scripts # Ran on shell start
     playerctl # Control media with media keys
-    nur.repos.linyinfeng.swayosd # Volume on screen displays
 
     # Screenshots
     grim # Captures the screen
