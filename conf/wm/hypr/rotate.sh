@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 
-eww close bar
+eww close laptop-bar
 
 hyprctl --batch "\
     keyword monitor eDP-1, transform, $1; \
@@ -14,4 +14,4 @@ else
     swww img -o eDP-1 /etc/nixos/backgrounds/rainbow-p.jpg
 fi
 
-eww open bar
+eww open laptop-bar

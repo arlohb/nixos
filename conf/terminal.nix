@@ -2,6 +2,9 @@
 
 {
   pkgs = with pkgs; [
+    # Ran on shell start
+    dwt1-shell-color-scripts
+    # ls replacement
     exa
   ];
 

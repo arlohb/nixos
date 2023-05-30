@@ -58,7 +58,12 @@
         ./conf/terminal.nix
         ./conf/git.nix
         ./conf/neovim/neovim.nix
-        ./conf/wm.nix
+        ./conf/wm/core.nix
+        ./conf/wm/cursor.nix
+        ./conf/wm/lockscreen.nix
+        ./conf/wm/notifications.nix
+        ./conf/wm/polkit.nix
+        ./conf/wm/hypr/hypr.nix
         ./conf/programs.nix
         ./conf/gaming.nix
         ./conf/3d.nix

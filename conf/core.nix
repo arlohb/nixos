@@ -21,7 +21,7 @@
     curl
     zip
     unzip
-    killall
+    neofetch
     btop
   ];
 }

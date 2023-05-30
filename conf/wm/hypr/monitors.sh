@@ -1,7 +1,9 @@
 #!/usr/bin/env bash
 
 if [ "$(cat /etc/hostname)" == "arlo-laptop2" ]; then
-    eww open bar
+    eww open laptop-bar
+else
+    eww open pc-bar
 fi
 
 swww init

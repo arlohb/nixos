@@ -2,11 +2,7 @@
 
 {
   pkgs = with pkgs; [
-    # Basic programs
-    neofetch # Pretty
-    feh # Image viewer
-    rofi # App launcher
-    gparted # Disk manager
+    gparted
 
     (vivaldi.override {
       proprietaryCodecs = true;
