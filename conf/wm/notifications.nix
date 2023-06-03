@@ -3,7 +3,7 @@
 {
   hm.services.dunst = {
     enable = true;
-    
+
     # Most of this is from here:
     # https://github.com/dracula/dunst/blob/master/dunstrc
     settings = {

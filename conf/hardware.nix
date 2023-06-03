@@ -29,10 +29,11 @@
   hardware.bluetooth.enable = true;
   services.blueman.enable = true;
 
-  pkgs = if hostname == "arlo-laptop2" then with pkgs; [
-    # Screen brightness
-    brightnessctl
-  ] else [];
+  pkgs =
+    if hostname == "arlo-laptop2" then with pkgs; [
+      # Screen brightness
+      brightnessctl
+    ] else [ ];
 
   # State
   persist = {
