@@ -19,6 +19,13 @@
     # A nvim plugin not (yet) in nixpkgs
     nvim-spider.url = "github:chrisgrieser/nvim-spider";
     nvim-spider.flake = false;
+
+    # A simple timer.
+    # I have to build this myself.
+    # For now this is an input here,
+    # but ideally this would be its own flake.
+    porsmo.url = "github:ColorCookie-dev/porsmo";
+    porsmo.flake = false;
   };
 
   outputs = { self, nixpkgs, nur, home-manager, hyprland, impermanence, ... }@inputs:

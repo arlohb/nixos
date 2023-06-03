@@ -125,6 +125,22 @@
         "type": "github"
       }
     },
+    "porsmo": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1685442103,
+        "narHash": "sha256-wMGrGDSs5aTLjkX/dZW+jk0Ivp7Lr5c6zXZGdYSrhKI=",
+        "owner": "ColorCookie-dev",
+        "repo": "porsmo",
+        "rev": "cf767f938706b882a3e6f86e66fd4b7a5c791099",
+        "type": "github"
+      },
+      "original": {
+        "owner": "ColorCookie-dev",
+        "repo": "porsmo",
+        "type": "github"
+      }
+    },
     "root": {
       "inputs": {
         "home-manager": "home-manager",
@@ -132,7 +148,8 @@
         "impermanence": "impermanence",
         "nixpkgs": "nixpkgs",
         "nur": "nur",
-        "nvim-spider": "nvim-spider"
+        "nvim-spider": "nvim-spider",
+        "porsmo": "porsmo"
       }
     },
     "wlroots": {
