@@ -5,7 +5,7 @@
     name = "porsmo";
     src = inputs.porsmo;
 
-    cargoSha256 = "sha256-eMhERDOvKIT06ofZ6a189Ouh5WtJthQQ+6+Ssng7qhw=";
+    cargoSha256 = "sha256-4pTto/BlyFeD55du++zYRD4JSXTR53Jn4vO2Zvmyv10=";
 
     buildInputs = [ pkgs.alsa-lib ];
     nativeBuildInputs = [ pkgs.pkg-config ];
