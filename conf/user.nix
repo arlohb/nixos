@@ -24,7 +24,7 @@
       # wheel - can use sudo
       # video - various video things
       # nixconfig - rw for /etc/nixos
-      extraGroups = [ "wheel" "video" "nixconfig" ];
+      extraGroups = [ "wheel" "video" "input" "nixconfig" ];
       # Give the user a password from secrets
       initialHashedPassword = (import ../secrets.nix).initialHashedPassword;
     };
