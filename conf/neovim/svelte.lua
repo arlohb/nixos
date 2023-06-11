@@ -48,5 +48,7 @@ require("lspconfig").svelte.setup {
 
 require("lspconfig").eslint.setup {}
 
-require("lspconfig").tailwindcss.setup {}
+require("lspconfig").tailwindcss.setup {
+    cmd = { "npm", "exec", "tailwindcss-language-server", "--stdio" },
+}
 
