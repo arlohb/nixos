@@ -43,6 +43,7 @@ in
         ./fsharp.lua
         ./rust.lua
         ./svelte.lua
+        ./c.lua
       ]);
 
     plugins = map
