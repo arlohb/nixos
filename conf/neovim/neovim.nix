@@ -192,17 +192,7 @@ in
         }
 
         # Provides correct tabbing and syntax highlighting
-        {
-          plugin = nvim-treesitter;
-          config = ''
-            require("nvim-treesitter.configs").setup {
-              hightlight = {
-                enable = true,
-                additional_vim_regex_highlighting = false,
-              },
-            }
-          '';
-        }
+        nvim-treesitter.withAllGrammars
 
         # LSP based symbols outline
         vista-vim

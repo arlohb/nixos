@@ -1,12 +1,5 @@
--- Store parsers in cache as default is nix store,
--- which fails as it's read-only
-local parser_dir = vim.fn.stdpath("cache") .. "/treesitters"
-vim.fn.mkdir(parser_dir, "p")
-vim.opt.runtimepath:append(parser_dir)
-
 require("nvim-treesitter.configs").setup({
-    parser_install_dir = parser_dir,
-    ensure_installed = "all",
+    -- Parses are installed by nix
     auto_install = false,
     highlight = {
         enable = true,
