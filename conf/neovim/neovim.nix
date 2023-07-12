@@ -225,9 +225,6 @@ in
         cmp-path
         cmp-nvim-lua
 
-        # Connects non LSP stuff into native LSP
-        null-ls-nvim
-
         # DAP
         nvim-dap
         nvim-dap-virtual-text
