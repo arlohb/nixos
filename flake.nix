@@ -72,6 +72,7 @@
         ./conf/hardware.nix
         ./conf/user.nix
         ./conf/audio.nix
+        ./conf/printing.nix
         ./conf/terminal.nix
         ./conf/git.nix
         ./conf/neovim/neovim.nix
