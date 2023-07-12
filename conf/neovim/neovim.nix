@@ -188,6 +188,7 @@ in
 
             npairs.add_rule(Rule("<", ">")
               :with_move(cond.move_right)
+              :with_pair(cond.not_before_regex(" "))
             )
           '';
         }
