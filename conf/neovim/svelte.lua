@@ -12,8 +12,6 @@ require("null-ls").setup({
     end
 })
 
--- require("prettier").setup {}
-
 require("lspconfig").tsserver.setup {
     settings = {
         typescript = {

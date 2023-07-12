@@ -228,9 +228,6 @@ in
         # Connects non LSP stuff into native LSP
         null-ls-nvim
 
-        # JS/TS fmt
-        vim-prettier
-
         # DAP
         nvim-dap
         nvim-dap-virtual-text
