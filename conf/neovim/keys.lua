@@ -67,6 +67,7 @@ require("which-key").register({
             t = { "<cmd>ToggleTerm 1 direction=float<cr>", "Terminal Float" },
             T = { "<cmd>ToggleTerm 2 direction=vertical<cr>", "Terminal Bar" },
             l = { "<cmd>LspInfo<cr>", "Lsp Info" },
+            n = { "<cmd>Telescope notify<cr>", "Notifications" },
         },
 
         d = {

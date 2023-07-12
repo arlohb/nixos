@@ -261,6 +261,15 @@ in
           '';
         }
 
+        # Nicer notification UI
+        {
+          plugin = nvim-notify;
+          config = ''
+            vim.notify = require("notify")
+            require("telescope").load_extension("notify")
+          '';
+        }
+
         # Start screen
         {
           plugin = dashboard-nvim;
