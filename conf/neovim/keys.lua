@@ -49,6 +49,7 @@ require("which-key").register({
 
         g = {
             name = "+git",
+            g = { require("neogit").open, "NeoGit" },
             d = { "<cmd>Gitsigns diffthis<cr>", "Diff" },
             s = { "<cmd>Telescope git_status<cr>", "Status" },
             S = { "<cmd>Telescope git_stash<cr>", "Stashes" },

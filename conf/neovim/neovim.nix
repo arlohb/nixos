@@ -195,6 +195,16 @@ in
         # Provides correct tabbing and syntax highlighting
         nvim-treesitter.withAllGrammars
 
+        # Magit clone
+        {
+          plugin = neogit;
+          config = ''
+            require("neogit").setup {
+              kind = "replace",
+            }
+          '';
+        }
+
         # Git diffs in file
         {
           plugin = gitsigns-nvim;
