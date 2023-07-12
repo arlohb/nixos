@@ -11,11 +11,14 @@
     obsidian
 
     ((import ../pkgs/porsmo.nix) inputs).porsmo
+
+    insomnia
   ];
 
   userPersist.directories = [
     ".config/obsidian"
     ".config/vivaldi"
+    ".config/Insomnia"
   ];
 
   nixpkgs.config.permittedInsecurePackages = [
