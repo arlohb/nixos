@@ -106,9 +106,24 @@ in
             -- This unfortunately tried to modify the read-only filesystem,
             -- and can't be configured not to
             vim.g.sonokai_better_performance = 0
-            vim.cmd("colorscheme sonokai")
+            -- vim.cmd("colorscheme sonokai")
           '';
         }
+        kanagawa-nvim
+        neovim-ayu
+        embark-vim
+        nightfox-nvim
+        jellybeans-nvim
+        oxocarbon-nvim
+        {
+          plugin = dracula-nvim;
+          config = ''
+            require("dracula").setup {}
+            vim.cmd("colorscheme dracula")
+          '';
+        }
+        vim-horizon
+        catppuccin-nvim
 
         # The status line at the bottom
         {
