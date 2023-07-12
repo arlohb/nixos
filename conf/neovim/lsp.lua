@@ -13,6 +13,16 @@ require("nvim-treesitter.configs").setup({
     },
 })
 
+vim.lsp.handlers["textDocument/hover"] = vim.lsp.with(
+    vim.lsp.handlers.hover, {
+        border = "rounded",
+    }
+)
+
+require("lspconfig.ui.windows").default_options = {
+    border = "rounded",
+}
+
 vim.diagnostic.config({
     virtual_text = false,
     signs = true,
