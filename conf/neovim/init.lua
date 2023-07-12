@@ -21,7 +21,7 @@ local g = vim.g
 g.mapleader = ' '
 
 -- Gui
-opt.guifont = { "FiraCode Nerd Font", "h10" }
+opt.guifont = { "FiraCode Nerd Font SemBd", "h10" }
 if hostname == pc then
     g.neovide_scale_factor = 0.7
 end
