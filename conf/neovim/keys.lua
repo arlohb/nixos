@@ -65,7 +65,6 @@ require("which-key").register({
             p = { "<cmd>NvimTreeToggle<cr>", "File Tree" },
             t = { "<cmd>ToggleTerm 1 direction=float<cr>", "Terminal Float" },
             T = { "<cmd>ToggleTerm 2 direction=vertical<cr>", "Terminal Bar" },
-            s = { "<cmd>Vista!!<cr>", "Symbols" },
             l = { "<cmd>LspInfo<cr>", "Lsp Info" },
         },
 

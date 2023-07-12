@@ -195,9 +195,6 @@ in
         # Provides correct tabbing and syntax highlighting
         nvim-treesitter.withAllGrammars
 
-        # LSP based symbols outline
-        vista-vim
-
         # Git diffs in file
         {
           plugin = gitsigns-nvim;
