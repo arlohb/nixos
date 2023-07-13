@@ -1,8 +1,6 @@
 {
   inputs = {
     nixpkgs.url = "nixpkgs/nixos-unstable";
-    # FIXME https://github.com/NixOS/nixpkgs/issues/241125
-    nixpkgs-blender.url = "github:NixOS/nixpkgs?rev=73b1a45dd79e414c2546fd89b47f51b3dea3e6f9";
 
     # Nix User Repository
     nur.url = "github:nix-community/NUR";
@@ -30,17 +28,11 @@
     porsmo.flake = false;
   };
 
-  outputs = { self, nixpkgs, nixpkgs-blender, nur, home-manager, hyprland, impermanence, ... }@inputs:
+  outputs = { self, nixpkgs, nur, home-manager, hyprland, impermanence, ... }@inputs:
     let
       system = "x86_64-linux";
 
       pkgs = nixpkgs.legacyPackages."${system}".pkgs;
-      pkgs-blender = nixpkgs-blender.legacyPackages."${system}".pkgs;
-      blenderFix = {
-        nixpkgs.config.packageOverrides = pkgs: {
-          blender = pkgs-blender.blender;
-        };
-      };
 
       utils = import ./conf/utils.nix;
 
@@ -56,8 +48,6 @@
 
       fullModules = hostname: [
         nurModule
-
-        blenderFix
 
         hyprland.nixosModules.default
         impermanence.nixosModules.impermanence
