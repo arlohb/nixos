@@ -129,7 +129,7 @@
        :text {EWW_BATTERY.BAT1.status == "Charging"
          ? ""
          : ["", "", "", "", ""][
-           round(EWW_BATTERY.BAT1.capacity / 20, 0) - 1
+           round(EWW_BATTERY.BAT1.capacity / 25, 0)
          ]})
       (label
        :text "${EWW_BATTERY.BAT1.capacity}%"))
