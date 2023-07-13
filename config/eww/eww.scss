@@ -46,27 +46,51 @@ label {
 
 // --------------- SLIDERS ---------------
 
-.slider {
+.slider-h {
     padding-left: 10px;
     padding-right: 10px;
     margin-top: 3px;
 }
 
-.slider scale trough highlight {
+.slider-v {
+    padding-top: 10px;
+    padding-bottom: 10px;
+    margin-left: 3px;
+}
+
+.slider-h scale trough highlight {
     background-color: $black;
 }
 
-.slider scale trough {
+.slider-v scale trough highlight {
+    background-color: $black;
+}
+
+.slider-h scale trough {
     min-width: 100px;
     min-height: 15px;
 }
 
-.slider label {
+.slider-v scale trough {
+    min-width: 15px;
+    min-height: 100px;
+}
+
+.slider-h label {
     font-size: 18px;
     margin-right: 15px;
 }
 
+.slider-v label {
+    font-size: 18px;
+    margin-bottom: 15px;
+}
+
 // --------------- LEFT ---------------
+
+.temps label {
+    font-size: 15px;
+}
 
 .btns button {
     font-size: 30px;
@@ -147,4 +171,8 @@ label {
 
 .clock {
     background-color: $red;
+}
+
+.clock label {
+    font-size: 30px;
 }

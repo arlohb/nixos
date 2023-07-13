@@ -1,11 +1,11 @@
 (defpoll
-  LIGHT
+  BACKLIGHT
   :interval "1s"
   :initial 0
   "brightnessctl get")
 
 (defpoll
-  LIGHT_MAX
+  BACKLIGHT_MAX
   :interval "10s"
   :initial 255
   "brightnessctl max")
@@ -15,6 +15,18 @@
   :interval "1s"
   :initial 0
   "pamixer --get-volume")
+
+(defpoll
+  HOURS
+  :interval "5s"
+  :initial "date +'%H'"
+   "date +'%H'")
+
+(defpoll
+  MINS
+  :interval "5s"
+  :initial "date +'%M'"
+   "date +'%M'")
 
 (defpoll
   TIME
@@ -71,7 +83,63 @@
     :image-height 64)))
 
 
-(defwindow bar
+(defwindow pc-bar
+  ; wayland
+  :exclusive true
+  :focusable false
+  :stacking "fg"
+
+  :monitor 0
+
+  :geometry (geometry
+    :width "100px"
+    :height "100%"
+    :anchor "left center")
+
+  (centerbox :orientation "v" :class "bar"
+    (box
+     :valign "start"
+     :orientation "v"
+     :space-evenly true
+     :spacing 8
+     :class "temps"
+     (box
+      :orientation "v"
+      :class "cell btn2"
+      (label :markup "<b>CPU</b>")
+      (label :text "󰞯  ${round(EWW_CPU.avg, 0)}")
+      (label :text "󱃃 ${round(EWW_TEMPS.K10TEMP_TCTL, 1)}"))
+     (box
+      :orientation "v"
+      :class "cell btn3"
+      (label :markup "<b>RAM</b>")
+      (label :markup "${round(EWW_RAM.used_mem / 1024 / 1024 / 1024, 1)} <b>G</b>")
+      (label :markup "${round(EWW_RAM.total_mem / 1024 / 1024 / 1024, 1)} <b>G</b>"))
+     (box
+      :orientation "v"
+      :class "cell btn4"
+      (label :markup "<b>GPU</b>")
+      (label :text "󱃃 ${round(EWW_TEMPS.AMDGPU_EDGE, 1)}"))
+     (box
+      :orientation "v"
+      :class "cell btn5"
+      (label :markup "<b>NVME</b>")
+      (label :text "󱃃 ${round(EWW_TEMPS.NVME_COMPOSITE_SABRENT_TEMP1, 1)}")))
+    (box
+     :orientation "v"
+     :class "cell clock"
+     (label
+      :markup "<b>${HOURS}</b>")
+     (label
+      :markup "<b>${MINS}</b>"))
+    (box
+     :valign "end"
+     :orientation "v"
+     :space-evenly false
+     :spacing 8
+     (volume :orientation "v"))))
+
+(defwindow laptop-bar
   ; wayland
   :exclusive true
   :focusable false
@@ -118,7 +186,7 @@
      :space-evenly false
      :spacing 8
      (brightness)
-     (volume)
+     (volume :orientation "h")
      (box
       :class "cell"
       :orientation "h"
@@ -147,24 +215,25 @@
   (box
    :orientation "h"
    :space-evenly false
-   :class "slider brightness"
+   :class "slider-h brightness"
    :spacing 0
    (label :text "")
    (scale
     :onchange "brightnessctl set {}"
-    :value LIGHT
+    :value BACKLIGHT
     :min 0
-    :max 255)))
+    :max BACKLIGHT_MAX)))
 
-(defwidget volume []
+(defwidget volume [orientation]
   (box
-   :orientation "h"
+   :orientation orientation
    :space-evenly false
-   :class "slider volume"
+   :class "slider-${orientation} volume"
    :spacing 0
    (label :text "")
    (scale
     :onchange "pamixer --set-volume {}"
+    :orientation orientation
     :value VOLUME
     :min 0
-    :max LIGHT_MAX)))
+    :max 100)))
