@@ -5,6 +5,9 @@
   system.stateVersion = "23.05";
   nixpkgs.hostPlatform = "x86_64-linux";
   nix.settings.experimental-features = [ "nix-command" "flakes" ];
+  # Checks for duplicate files in the store
+  nix.optimise.automatic = true;
+  nix.settings.auto-optimise-store = true;
 
   # Full package and hardware support
   nixpkgs.config.allowUnfree = true;
