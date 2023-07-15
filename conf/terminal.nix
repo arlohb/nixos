@@ -22,6 +22,10 @@
       function ns
         nix shell "nixpkgs#$argv"
       end
+
+      function whichreal
+        readlink (which neofetch)
+      end
     '';
 
     shellAliases = {
