@@ -11,11 +11,10 @@
     };
 
     # Hardware specific options
+    kernelPackages = pkgs.linuxPackages_zen;
+    kernelModules = [ "kvm-amd" ];
     initrd.availableKernelModules =
       [ "nvme" "xhci_pci" "ahci" "usb_storage" "sd_mod" "rtsx_pci_sdmmc" ];
-    initrd.kernelModules = [ ];
-    kernelModules = [ "kvm-amd" ];
-    extraModulePackages = [ ];
   };
 
   # Hardware specific options

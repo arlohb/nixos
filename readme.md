@@ -8,8 +8,8 @@ This can't be uninstalled, so why not use it?
 
 ## Kernel
 
-For now I'm just using the latest default Linux kernel,
-but I may switch to a patched one at some point.
+I'm using the Zen kernel.
+This seems to be the best but there's no particular reason for this.
 
 ## Nixos Unstable
 
