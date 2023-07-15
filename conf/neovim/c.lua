@@ -1,3 +1,1 @@
-require("lspconfig").clangd.setup {
-    cmd = { "clangd" },
-}
+require("lspconfig").ccls.setup {}
