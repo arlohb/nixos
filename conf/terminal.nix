@@ -24,7 +24,7 @@
       end
 
       function whichreal
-        readlink (which neofetch)
+        readlink (which $argv)
       end
     '';
 
