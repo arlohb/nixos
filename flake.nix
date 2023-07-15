@@ -1,6 +1,8 @@
 {
   inputs = {
     nixpkgs.url = "nixpkgs/nixos-unstable";
+    # FIXME - https://github.com/NixOS/nixpkgs/issues/243618
+    nixpkgs-vivaldi.url = "github:NixOS/nixpkgs?rev=df0136b8e085022de88c9fe77d5084c03a808d35";
 
     # Nix User Repository
     nur.url = "github:nix-community/NUR";
@@ -28,11 +30,23 @@
     porsmo.flake = false;
   };
 
-  outputs = { self, nixpkgs, nur, home-manager, hyprland, impermanence, ... }@inputs:
+  outputs = { self, nixpkgs, nixpkgs-vivaldi, nur, home-manager, hyprland, impermanence, ... }@inputs:
     let
       system = "x86_64-linux";
 
-      pkgs = nixpkgs.legacyPackages."${system}".pkgs;
+      pkgs = import nixpkgs {
+        inherit system;
+        config.allowUnfree = true;
+      };
+      pkgs-vivaldi = import nixpkgs-vivaldi {
+        inherit system;
+        config.allowUnfree = true;
+      };
+      vivaldiFix = {
+        nixpkgs.config.packageOverrides = pkgs: {
+          vivaldi = pkgs-vivaldi.vivaldi;
+        };
+      };
 
       utils = import ./conf/utils.nix;
 
@@ -48,6 +62,8 @@
 
       fullModules = hostname: [
         nurModule
+
+        vivaldiFix
 
         hyprland.nixosModules.default
         impermanence.nixosModules.impermanence
