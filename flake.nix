@@ -86,8 +86,7 @@
         modules = [
           "${nixpkgs}/nixos/modules/installer/cd-dvd/installation-cd-graphical-gnome.nix"
           nurModule
-          ({ pkgs, config, lib, ... }@moduleInputs: utils.betterModule { hostname = "nix-live"; } (import ./conf/core.nix) moduleInputs)
-        ];
+        ] ++ utils.loadBetterModules { inherit inputs; hostname = "nix-live"; } [ ./conf/core.nix ];
       };
 
       nixosConfigurations.arlo-laptop2 = nixpkgs.lib.nixosSystem {
