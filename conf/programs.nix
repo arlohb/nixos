@@ -20,8 +20,4 @@
     ".config/vivaldi"
     ".config/Insomnia"
   ];
-
-  nixpkgs.config.permittedInsecurePackages = [
-    "nodejs-16.20.0"
-  ];
 }
