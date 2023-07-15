@@ -10,6 +10,10 @@
   nixpkgs.config.allowUnfree = true;
   hardware.enableAllFirmware = true;
 
+  # Kill processes if RAM is nearly full
+  # See conf/notifications.nix for more
+  services.earlyoom.enable = true;
+
   # Locale
   time.timeZone = "Europe/London";
   i18n.defaultLocale = "en_GB.UTF-8";

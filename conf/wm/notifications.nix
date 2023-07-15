@@ -1,6 +1,15 @@
 { pkgs, ... }:
 
 {
+  services.earlyoom.killHook = pkgs.writeShellScript "earlyoom-kill-hook" ''
+    # Dunst is arlo's user service, so root can't see it.
+    # And setting DISPLAY is a bit of a hack.
+    DISPLAY=:0 \
+    /run/wrappers/bin/su arlo -c ' \
+      dunstify -u critical "Had to kill a process!" "(Should) be fine now" \
+    '
+  '';
+
   hm.services.dunst = {
     enable = true;
 
