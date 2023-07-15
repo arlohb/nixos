@@ -26,7 +26,7 @@
     # I have to build this myself.
     # For now this is an input here,
     # but ideally this would be its own flake.
-    porsmo.url = "github:ColorCookie-dev/porsmo";
+    porsmo.url = "github:ColorCookie-dev/porsmo?rev=37528c9c4421c5be853a0509812c23ec60c3eca1";
     porsmo.flake = false;
   };
 
