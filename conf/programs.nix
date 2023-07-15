@@ -1,4 +1,4 @@
-{ pkgs, ... }@inputs:
+{ pkgs, ... }:
 
 {
   # Distrobox can use podman or docker,
@@ -10,15 +10,12 @@
     distrobox
 
     gparted
-
     (vivaldi.override {
       proprietaryCodecs = true;
       enableWidevine = true;
     })
     obsidian
-
-    ((import ../pkgs/porsmo.nix) inputs).porsmo
-
+    porsmo
     insomnia
   ];
 

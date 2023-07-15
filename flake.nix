@@ -76,6 +76,7 @@
       ] ++ (utils.loadBetterModules { inherit hostname inputs; } [
         ./conf/core.nix
         ./conf/hardware.nix
+        ./pkgs/pkgs.nix
         ./conf/user.nix
         ./conf/audio.nix
         ./conf/printing.nix
