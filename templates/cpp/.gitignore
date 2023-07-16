@@ -1,5 +1,5 @@
 compile_commands.json
 build/
-.vs
-.vscode
-.clls-cache
+.vs/
+.vscode/
+.ccls-cache/
