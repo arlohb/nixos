@@ -124,5 +124,16 @@
           nvd
         ];
       };
+
+      templates = {
+        empty = {
+          path = ./templates/empty;
+          description = "An empty flake with a devShell and direnv";
+        };
+        cpp = {
+          path = ./templates/cpp;
+          description = "A c++ project using CMake, clang, ccls, and the fmt library";
+        };
+      };
     };
 }
