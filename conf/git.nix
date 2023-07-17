@@ -24,6 +24,7 @@ in
       enable = true;
 
       extraConfig = {
+        init.defaultBranch = "main";
         # Store credentials here
         # This file is created from secrets
         credential.helper = "store --file ~/.config/git/credentials";
