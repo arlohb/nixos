@@ -44,6 +44,9 @@
     # This installs it to ~/.local/share/Steam/compatibilitytools.d,
     # So is already persisted with the steam installation
     protonup-ng
+
+    # Free Magic The Gathering
+    cockatrice
   ];
 
   # https://nixos.wiki/wiki/Lutris
@@ -55,6 +58,7 @@
       ".local/share/PrismLauncher"
       ".local/share/lutris"
       ".config/lutris"
+      ".local/share/Cockatrice"
     ];
   };
 }
