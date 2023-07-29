@@ -134,6 +134,10 @@
           path = ./templates/cpp;
           description = "A c++ project using CMake, clang, ccls, and the fmt library";
         };
+        pio = {
+          path = ./templates/pio;
+          description = "A platformio project using C++ 20, ccls, and the fmt library";
+        };
       };
     };
 }
