@@ -141,6 +141,22 @@
         "type": "github"
       }
     },
+    "obsidian-nvim": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1689467320,
+        "narHash": "sha256-rQSlykd1lsLHCXBFzVwdPDcabVW+hJhAfyk96rES2OE=",
+        "owner": "epwalsh",
+        "repo": "obsidian.nvim",
+        "rev": "1982447bd8481bf5b8e6e033519d54feb77a4e41",
+        "type": "github"
+      },
+      "original": {
+        "owner": "epwalsh",
+        "repo": "obsidian.nvim",
+        "type": "github"
+      }
+    },
     "porsmo": {
       "flake": false,
       "locked": {
@@ -167,6 +183,7 @@
         "nixpkgs-vivaldi": "nixpkgs-vivaldi",
         "nur": "nur",
         "nvim-spider": "nvim-spider",
+        "obsidian-nvim": "obsidian-nvim",
         "porsmo": "porsmo"
       }
     },

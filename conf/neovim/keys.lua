@@ -82,6 +82,20 @@ require("which-key").register({
             d = { "<cmd>RustDebuggables<cr>", "Debuggables" },
         },
 
+        n = {
+            name = "+notes",
+            n = {
+                function()
+                    vim.cmd("e ~/Vault")
+                    require("telescope.builtin").find_files({
+                        find_command = {'rg', '--files', '--hidden', '-g', '!.git' }}
+                    )
+                end,
+                "Open Vault"
+            },
+            o = { "<cmd>ObsidianOpen<cr>", "Open in Obsidian" },
+        },
+
     },
     -- Moving between windows
     ["<C-h>"] = { "<C-w>h", "Go Left" },
@@ -105,4 +119,6 @@ vim.keymap.set("n", "go", vim.lsp.buf.type_definition, { desc = "Goto type defin
 -- https://www.reddit.com/r/vim/comments/2k4cbr/comment/clhv03p
 vim.cmd[[nnoremap <expr> k v:count == 0 ? 'gk' : 'k']]
 vim.cmd[[nnoremap <expr> j v:count == 0 ? 'gj' : 'j']]
+
+vim.keymap.set("n", "gf", "<cmd>ObsidianFollowLink<cr>")
 

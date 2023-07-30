@@ -5,6 +5,10 @@ let
     name = "nvim-spider";
     src = inputs.nvim-spider;
   };
+  obsidian-nvim = pkgs.vimUtils.buildVimPluginFrom2Nix {
+    name = "obsidian.nvim";
+    src = inputs.obsidian-nvim;
+  };
 in
 {
   pkgs = with pkgs; [
@@ -355,6 +359,33 @@ in
                 end,
               }
             )
+          '';
+        }
+
+        # Obsidian
+        {
+          plugin = obsidian-nvim;
+          config = ''
+            require("obsidian").setup {
+              dir = "~/Vault",
+              notes_subdir = "Cards",
+
+              daily_notes = {
+                folder = "Journal/Dailies",
+                date_format = "%Y-%m-%d",
+              },
+
+              completion = {
+                nvim_cmp = true,
+                new_notes_location = "notes_subdir",
+              },
+
+              disable_frontmatter = true,
+
+              follow_url_func = function(url)
+                vim.fn.jobstart({ "xdg-open", url })
+              end,
+            }
           '';
         }
       ]);

@@ -3,7 +3,8 @@ require("nvim-treesitter.configs").setup({
     auto_install = false,
     highlight = {
         enable = true,
-        additional_vim_regex_highlighting = false,
+        -- For obsidian.nvim
+        additional_vim_regex_highlighting = { "markdown" },
     },
     ident = { enable = true },
     rainbow = {
