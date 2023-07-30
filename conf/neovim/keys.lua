@@ -100,3 +100,9 @@ vim.keymap.set("n", "J", vim.diagnostic.open_float, { desc = "Diagnostic hover" 
 vim.keymap.set("n", "gd", vim.lsp.buf.definition, { desc = "Goto definition" })
 vim.keymap.set("n", "gD", vim.lsp.buf.declaration, { desc = "Goto declaration" })
 vim.keymap.set("n", "go", vim.lsp.buf.type_definition, { desc = "Goto type definition" })
+
+-- Makes j and k when line wraps nicer
+-- https://www.reddit.com/r/vim/comments/2k4cbr/comment/clhv03p
+vim.cmd[[nnoremap <expr> k v:count == 0 ? 'gk' : 'k']]
+vim.cmd[[nnoremap <expr> j v:count == 0 ? 'gj' : 'j']]
+
