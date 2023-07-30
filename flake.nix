@@ -21,6 +21,8 @@
     # A nvim plugin not (yet) in nixpkgs
     nvim-spider.url = "github:chrisgrieser/nvim-spider";
     nvim-spider.flake = false;
+    obsidian-nvim.url = "github:epwalsh/obsidian.nvim";
+    obsidian-nvim.flake = false;
 
     # A simple timer.
     # I have to build this myself.
