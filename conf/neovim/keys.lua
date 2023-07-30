@@ -15,6 +15,7 @@ require("which-key").register({
             r = { "<cmd>Telescope oldfiles<cr>", "Recent Files" },
             p = { "<cmd>Telescope project<cr>", "Projects" },
             s = { "<cmd>SudaRead<cr>", "Sudo current file" },
+            l = { "<cmd>NvimTreeFindFile<cr>", "Locate current file" },
         },
 
         s = {
