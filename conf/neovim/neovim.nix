@@ -429,7 +429,12 @@ in
               follow_url_func = function(url)
                 vim.fn.jobstart({ "xdg-open", url })
               end,
+
+              -- We're gonna create the mapping ourself
+              mappings = {},
             }
+
+            vim.keymap.set("n", "gf", "<cmd>ObsidianFollowLink<cr>")
           '';
         }
       ]);

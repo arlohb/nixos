@@ -120,5 +120,3 @@ vim.keymap.set("n", "go", vim.lsp.buf.type_definition, { desc = "Goto type defin
 vim.cmd[[nnoremap <expr> k v:count == 0 ? 'gk' : 'k']]
 vim.cmd[[nnoremap <expr> j v:count == 0 ? 'gj' : 'j']]
 
-vim.keymap.set("n", "gf", "<cmd>ObsidianFollowLink<cr>")
-
