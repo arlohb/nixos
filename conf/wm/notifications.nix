@@ -70,7 +70,7 @@
 
         # Actions
         dmenu = "/usr/bin/env rofi -dmenu -p dunst";
-        browser = "/usr/bin/env vivaldi";
+        browser = "/usr/bin/env firefox";
         mouse_left_click = "close_current";
         mouse_middle_click = "do_action";
         mouse_right_click = "close_all";

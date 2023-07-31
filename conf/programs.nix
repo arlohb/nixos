@@ -10,10 +10,7 @@
     distrobox
 
     gparted
-    (vivaldi.override {
-      proprietaryCodecs = true;
-      enableWidevine = true;
-    })
+    firefox
     obsidian
     porsmo
     insomnia
@@ -21,7 +18,7 @@
 
   userPersist.directories = [
     ".config/obsidian"
-    ".config/vivaldi"
+    ".mozilla"
     ".config/Insomnia"
     ".local/share/containers"
   ];
