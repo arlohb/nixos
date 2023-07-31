@@ -46,7 +46,7 @@
 
       # Home manager can install this with `font.package`,
       # But I use this everywhere to I can assume it's installed
-      font.name = "FiraCode Nerd Font";
+      font.name = "FiraCode Nerd Font SemBd";
       font.size = 10.8;
 
       # Inbuilt to kitty
