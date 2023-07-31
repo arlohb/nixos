@@ -23,6 +23,8 @@
     nvim-spider.flake = false;
     obsidian-nvim.url = "github:epwalsh/obsidian.nvim";
     obsidian-nvim.flake = false;
+    drop-nvim.url = "github:folke/drop.nvim";
+    drop-nvim.flake = false;
 
     # A simple timer.
     # I have to build this myself.

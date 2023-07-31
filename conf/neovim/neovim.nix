@@ -9,6 +9,10 @@ let
     name = "obsidian.nvim";
     src = inputs.obsidian-nvim;
   };
+  drop-nvim = pkgs.vimUtils.buildVimPluginFrom2Nix {
+    name = "drop.nvim";
+    src = inputs.drop-nvim;
+  };
 in
 {
   pkgs = with pkgs; [
@@ -140,6 +144,7 @@ in
             require("lualine").setup {
               options = {
                 theme = "auto",
+                disabled_filetypes = { "NvimTree", "alpha" },
               },
             }
           '';
@@ -289,29 +294,68 @@ in
           '';
         }
 
-        # Start screen
         {
-          plugin = dashboard-nvim;
-          config = ''
-            require("dashboard").setup {
-              theme = "doom",
-              config = {
-                -- header = {},
-                center = {
-                  {
-                    icon = " ",
-                    desc = "Find File",
-                    key = "b",
-                    action = "lua print(2)",
-                  },
-                  {
-                    icon = " ",
-                    desc = "Projects",
-                    key = "SPC f p",
+          plugin = alpha-nvim;
+          config = "
+            require('alpha').setup {
+              layout = {
+                {
+                  type = 'padding',
+                  val = 12,
+                },
+                {
+                  type = 'text',
+                  val = [[
+                                  ....
+                                .'' .'''
+.                             .'   :
+\\\\                          .:    :
+ \\\\                        _:    :       ..----.._
+  \\\\                    .:::.....:::.. .'         ''.
+   \\\\                 .'  #-. .-######'     #        '.
+    \\\\                 '.##'/ ' ################       :
+     \\\\                  #####################         :
+      \\\\               ..##.-.#### .''''###'.._        :
+       \\\\             :--:########:            '.    .' :
+        \\\\..__...--.. :--:#######.'   '.         '.     :
+        :     :  : : '':'-:'':'::        .         '.  .'
+        '---'''..: :    ':    '..'''.      '.        :'
+           \\\\  :: : :     '      ''''''.     '.      .:
+            \\\\ ::  : :     '            '.      '      :
+             \\\\::   : :           ....' ..:       '     '.
+              \\\\::  : :    .....####\\\\ .~~.:.             :
+               \\\\':.:.:.:'#########.===. ~ |.'-.   . '''.. :
+                \\\\    .'  ########## \\ \\ _.' '. '-.       '''.
+                :\\\\  :     ########   \\ \\      '.  '-.        :
+               :  \\\\'    '   #### :    \\ \\      :.    '-.      :
+              :  .'\\\\   :'  :     :     \\ \\       :      '-.    :
+             : .'  .\\\\  '  :      :     :\\ \\       :        '.   :
+             ::   :  \\\\'  :.      :     : \\ \\      :          '. :
+             ::. :    \\\\  : :      :    ;  \\ \\     :           '.:
+              : ':    '\\\\ :  :     :     :  \\:\\     :        ..'
+                 :    ' \\\\ :        :     ;  \\|      :   .'''
+                 '.   '  \\\\:                         :.''
+                  .:..... \\\\:       :            ..''
+                 '._____|'.\\\\......'''''''.:..'''
+                            \\\\
+                  ]],
+                  opts = {
+                    position = 'center',
                   },
                 },
-                -- footer = {},
               },
+            }
+          ";
+        }
+
+        {
+          plugin = drop-nvim;
+          config = ''
+            require("drop").setup {
+              theme = "snow",
+              max = 1000,
+              interval = 70,
+              screensaver = false,
             }
           '';
         }

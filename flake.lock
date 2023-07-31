@@ -1,5 +1,21 @@
 {
   "nodes": {
+    "drop-nvim": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1684907256,
+        "narHash": "sha256-qDgPbv6Hn6zjUHRHrh4A8c7s2hxbEofN9McgrUGIHlU=",
+        "owner": "folke",
+        "repo": "drop.nvim",
+        "rev": "276f0a9e26c86946567cd91759ee08e0f21ec96c",
+        "type": "github"
+      },
+      "original": {
+        "owner": "folke",
+        "repo": "drop.nvim",
+        "type": "github"
+      }
+    },
     "home-manager": {
       "inputs": {
         "nixpkgs": [
@@ -176,6 +192,7 @@
     },
     "root": {
       "inputs": {
+        "drop-nvim": "drop-nvim",
         "home-manager": "home-manager",
         "hyprland": "hyprland",
         "impermanence": "impermanence",
