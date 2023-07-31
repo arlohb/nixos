@@ -1,6 +1,8 @@
 { pkgs, ... }:
 
 {
+  fonts.enableDefaultPackages = true;
+
   # This is all the stuff I wouldn't need if I used a desktop environment
   pkgs = with pkgs; [
     # For setting backgrounds
