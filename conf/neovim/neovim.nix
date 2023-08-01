@@ -22,9 +22,6 @@ in
     tree-sitter
     gcc
     wl-clipboard
-
-    # Gui wrapper
-    neovide
   ];
 
   userPersist.directories = [
@@ -104,7 +101,7 @@ in
           config = ''
             require("which-key").setup {
               window = {
-                winblend = 50,
+                winblend = 0,
               },
             }
           '';
@@ -192,7 +189,7 @@ in
               shade_terminals = false,
               float_opts = {
                 border = "curved",
-                winblend = 50,
+                winblend = 0,
               },
             })
           '';
@@ -435,6 +432,14 @@ in
             }
 
             vim.keymap.set("n", "gf", "<cmd>ObsidianFollowLink<cr>")
+          '';
+        }
+
+        {
+          plugin = vim-smoothie;
+          config = ''
+            -- Enables gg and G
+            vim.g.smoothie_experimental_mappings = true
           '';
         }
       ]);

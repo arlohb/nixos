@@ -22,20 +22,7 @@ g.mapleader = ' '
 
 -- Gui
 opt.guifont = { "FiraCode Nerd Font SemBd", "h10" }
-if hostname == pc then
-    g.neovide_scale_factor = 0.7
-end
-if hostname == laptop then
-    g.neovide_scale_factor = 0.55
-end
-g.neovide_hide_mouse_when_typing = true
-g.neovide_remember_window_size = false
-g.neovide_cursor_antialiasing = true
-g.neovide_floating_blur_amount_x = 8.0
-g.neovide_floating_blur_amount_y = 16.0
-g.neovide_transparency = 0.8
-opt.winblend = 100
-g.neovide_cursor_vfx_mode = "railgun"
+opt.winblend = 0
 
 -- Always use the system clipboard
 opt.clipboard = "unnamedplus"
