@@ -48,7 +48,6 @@
   userPersist.directories = [
     # User files
     "code"
-    "Vault"
     "3d"
     # Cache
     ".cache"

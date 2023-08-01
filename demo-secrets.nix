@@ -10,4 +10,11 @@
   };
   # Copied to ~/.config/git/credentials
   git-credentials = "https://user:password@host.com";
+
+  # Nextcloud server info
+  nextcloud = {
+    server = "https://www.host.com";
+    user = "username";
+    password = "password";
+  };
 }

@@ -86,7 +86,7 @@ require("which-key").register({
             name = "+notes",
             n = {
                 function()
-                    vim.cmd("e ~/Vault")
+                    vim.cmd("e ~/Nextcloud/Vault")
                     require("telescope.builtin").find_files({
                         find_command = {'rg', '--files', '--hidden', '-g', '!.git' }}
                     )

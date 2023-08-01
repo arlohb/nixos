@@ -81,6 +81,7 @@
         ./conf/wm/polkit.nix
         ./conf/wm/hypr/hypr.nix
         ./conf/programs.nix
+        ./conf/nextcloud.nix
         ./conf/gaming.nix
         ./conf/3d.nix
       ]);

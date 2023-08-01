@@ -411,7 +411,7 @@ in
           plugin = obsidian-nvim;
           config = ''
             require("obsidian").setup {
-              dir = "~/Vault",
+              dir = "~/Nextcloud/Vault",
               notes_subdir = "Cards",
 
               daily_notes = {
