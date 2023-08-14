@@ -16,7 +16,6 @@
   programs.hyprland = {
     enable = true;
     nvidiaPatches = false;
-    xwayland.hidpi = false;
   };
 
   # Link over all the config files
