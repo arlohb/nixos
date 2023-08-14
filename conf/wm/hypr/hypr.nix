@@ -15,7 +15,7 @@
   # Enable Hyprland
   programs.hyprland = {
     enable = true;
-    nvidiaPatches = false;
+    enableNvidiaPatches = false;
   };
 
   # Link over all the config files
