@@ -1,68 +1,26 @@
 { pkgs, ... }:
 
 {
-  pkgs = with pkgs; [
-    # Ran on shell start
-    dwt1-shell-color-scripts
-    # ls replacement
-    exa
-  ];
-
-  programs.fish = {
+  # Setup the terminal emulator
+  hm.programs.kitty = {
     enable = true;
 
-    interactiveShellInit = ''
-      set -U fish_greeting
-      colorscript -r
+    # Home manager can install this with `font.package`,
+    # But I use this everywhere to I can assume it's installed
+    font.name = "FiraCode Nerd Font SemBd";
+    font.size = 10.8;
 
-      function nr
-        nix run "nixpkgs#$argv"
-      end
+    # Inbuilt to kitty
+    theme = "Dracula";
 
-      function ns
-        nix shell "nixpkgs#$argv"
-      end
-
-      function whichreal
-        readlink (which $argv)
-      end
-    '';
-
-    shellAliases = {
-      ls = "exa --all --long --icons --binary --no-time --git --no-permissions --no-user";
-
-      lsl = "exa --all --long --icons --binary --no-time --git --group";
-    };
-  };
-
-  users.defaultUserShell = pkgs.fish;
-
-  hm.programs = {
-    # Setup the terminal emulator
-    kitty = {
-      enable = true;
-
-      # Home manager can install this with `font.package`,
-      # But I use this everywhere to I can assume it's installed
-      font.name = "FiraCode Nerd Font SemBd";
-      font.size = 10.8;
-
-      # Inbuilt to kitty
-      theme = "Dracula";
-
-      settings = {
-        # Some ligature settings I prefer
-        font_features =
-          "FiraCodeNerdFontComplete-Regular +cv01 +ss03 +ss04 +ss08 +cv02";
-        disable_ligatures = "never";
-        enable_audio_bell = false;
-        background_opacity = "0.5";
-        confirm_os_window_close = 0;
-      };
-    };
-
-    direnv = {
-      enable = true;
+    settings = {
+      # Some ligature settings I prefer
+      font_features =
+        "FiraCodeNerdFontComplete-Regular +cv01 +ss03 +ss04 +ss08 +cv02";
+      disable_ligatures = "never";
+      enable_audio_bell = false;
+      background_opacity = "0.5";
+      confirm_os_window_close = 0;
     };
   };
 
@@ -73,6 +31,5 @@
 
   userPersist.directories = [
     ".local/share/fish"
-    ".local/share/direnv"
   ];
 }
