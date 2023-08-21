@@ -1,9 +1,9 @@
-{ pkgs, ... }:
+{ system, pkgs, ... }:
 
 {
   # Core nix settings
   system.stateVersion = "23.05";
-  nixpkgs.hostPlatform = "x86_64-linux";
+  nixpkgs.hostPlatform = system;
   nix.settings.experimental-features = [ "nix-command" "flakes" ];
   # Checks for duplicate files in the store
   nix.optimise.automatic = true;

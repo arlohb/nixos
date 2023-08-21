@@ -64,7 +64,7 @@
           home-manager.useGlobalPkgs = true;
           home-manager.extraSpecialArgs = { inherit inputs; };
         }
-      ] ++ (utils.loadBetterModules { inherit hostname inputs; } [
+      ] ++ (utils.loadBetterModules { inherit hostname system inputs; } [
         ./conf/core.nix
         ./conf/hardware.nix
         ./pkgs/pkgs.nix
@@ -96,7 +96,7 @@
         modules = [
           "${nixpkgs}/nixos/modules/installer/cd-dvd/installation-cd-graphical-gnome.nix"
           nurModule
-        ] ++ utils.loadBetterModules { inherit inputs; hostname = "nix-live"; } [ ./conf/core.nix ];
+        ] ++ utils.loadBetterModules { inherit system inputs; hostname = "nix-live"; } [ ./conf/core.nix ];
       };
 
       nixosConfigurations.arlo-laptop2 = nixpkgs.lib.nixosSystem {
@@ -111,7 +111,7 @@
         modules = fullModules "arlo-nix";
       };
 
-      devShells.x86_64-linux.default = pkgs.mkShell {
+      devShells."${system}".default = pkgs.mkShell {
         buildInputs = with pkgs; [
           nixpkgs-fmt
           nvd
