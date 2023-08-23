@@ -131,6 +131,10 @@
           path = ./templates/pio;
           description = "A platformio project using C++ 20, ccls, and the fmt library";
         };
+        rust = {
+          path = ./templates/rust;
+          description = "A simple rust project";
+        };
       };
     };
 }
