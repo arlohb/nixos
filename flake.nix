@@ -80,6 +80,7 @@
         ./conf/wm/lockscreen.nix
         ./conf/wm/notifications.nix
         ./conf/wm/polkit.nix
+        ./conf/wm/login.nix
         ./conf/wm/hypr/hypr.nix
         ./conf/programs.nix
         ./conf/nextcloud.nix

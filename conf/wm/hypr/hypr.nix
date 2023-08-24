@@ -6,11 +6,8 @@
     xorg.xhost
   ];
 
-  # Enable X
-  services.xserver.enable = true;
-  services.xserver.displayManager.gdm = {
-    enable = true;
-  };
+  # This value is 'compile-time' checked somehow
+  services.xserver.displayManager.defaultSession = "hyprland";
 
   # Enable Hyprland
   programs.hyprland = {
