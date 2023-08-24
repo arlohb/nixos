@@ -77,7 +77,6 @@
         ./conf/neovim/neovim.nix
         ./conf/wm/core.nix
         ./conf/wm/cursor.nix
-        ./conf/wm/lockscreen.nix
         ./conf/wm/notifications.nix
         ./conf/wm/polkit.nix
         ./conf/wm/login.nix
