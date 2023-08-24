@@ -36,27 +36,3 @@ meaning only I can choose exactly what is persisted,
 and the system is rebuilt on every boot,
 so it cannot be corrupted.
 
-# Modules
-
-| Module        | Description                                |
-| ------------- |:------------------------------------------ |
-| 3d            | 3d modelling and slicing software          |
-| Audio         | Pipewire and Wireplumber                   |
-| Gaming        | Launchers and runners                      |
-| Git           | Git and secret management                  |
-| Printing      | Enable cups etc                            |
-| Programs      | Browsers, image viewers etc                |
-| Terminal      | Fish, Kitty, direnv etc                    |
-| User          | User file persistence, symlink config file |
-| Neovim        | Configure and install plugins              |
-
-## WM Modules
-
-| Module        | Description                                |
-| ------------- |:------------------------------------------ |
-| Core          | Stuff I wouldn't need if I had a DE        |
-| Cursor        | Cursor themes for x11 and gtk              |
-| Lockscreen    | Swaylock                                   |
-| Notifications | Dunst and earlyoom notifications           |
-| Polkit        | Polkit gnome                               |
-
