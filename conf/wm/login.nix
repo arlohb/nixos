@@ -2,18 +2,15 @@
 
 {
   # Enable X
-  services.xserver.enable = true;
+  # services.xserver.enable = true;
 
   # Display manager
-  services.xserver.displayManager.lightdm = {
+  services.greetd = {
     enable = true;
-
-    greeters.gtk.enable = true;
-
-    greeters.gtk.extraConfig = ''
-      [greeter]
-      active-monitor=0
-    '';
+    settings.default_session = {
+      command = "${pkgs.greetd.tuigreet}/bin/tuigreet --user-menu --time --cmd Hyprland";
+      user = "greeter";
+    };
   };
 
   hm.programs.swaylock = {
