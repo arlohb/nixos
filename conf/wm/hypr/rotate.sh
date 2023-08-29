@@ -4,7 +4,8 @@ eww close laptop-bar
 
 hyprctl --batch "\
     keyword monitor eDP-1, transform, $1; \
-    keyword input:touchdevice:transform $1"
+    keyword input:touchdevice:transform $1; \
+    keyword input:tablet:transform $1"
 
 sleep 0.1
 
