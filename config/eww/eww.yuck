@@ -19,19 +19,16 @@
 (defpoll
   HOURS
   :interval "5s"
-  :initial "date +'%H'"
    "date +'%H'")
 
 (defpoll
   MINS
   :interval "5s"
-  :initial "date +'%M'"
    "date +'%M'")
 
 (defpoll
   TIME
   :interval "5s"
-  :initial "date +'%H:%M'"
    "date +'%H:%M'")
 
 
@@ -201,9 +198,36 @@
          ]})
       (label
        :text "${EWW_BATTERY.BAT1.capacity}%"))
+     (ns-sync :orientation "h")
      (label
       :class "cell clock"
       :text "${TIME}"))))
+
+(defpoll
+  NS_NOW
+  :interval "1s"
+   "date +%s")
+
+(defpoll
+  NS_EXIT_STR
+  :interval "1s"
+   "fish -c \"systemctl show nextcloud-sync.service --property=ExecMainExitTimestamp | awk -F= '{print \\$2}'\"")
+
+(defpoll
+  NS_EXIT
+  :interval "1s"
+   "fish -c \"date -d (systemctl show nextcloud-sync.service --property=ExecMainExitTimestamp | awk -F= '{print \\$2}') +%s\"")
+
+(defwidget ns-sync [orientation]
+  (box
+   :orientation orientation
+   :class "cell ns"
+   :space-evenly false
+   (label
+    :class "ns-icon"
+    :text "󰅟")
+   (label
+    :text { NS_EXIT_STR == "" ? "󰕒" : "${NS_NOW - NS_EXIT}s" })))
 
 (defwidget workspace [name]
   (button
