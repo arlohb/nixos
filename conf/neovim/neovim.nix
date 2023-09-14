@@ -403,6 +403,13 @@ in
           '';
         }
 
+        {
+          plugin = vim-markdown;
+          config = ''
+            opt.conceallevel = 2
+          '';
+        }
+
         # Obsidian
         {
           plugin = obsidian-nvim;
