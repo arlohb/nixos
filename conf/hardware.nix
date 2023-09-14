@@ -15,6 +15,9 @@
     kernelModules = [ "kvm-amd" ];
     initrd.availableKernelModules =
       [ "nvme" "xhci_pci" "ahci" "usb_storage" "sd_mod" "rtsx_pci_sdmmc" ];
+
+    # https://github.com/NixOS/nixpkgs/issues/254807
+    swraid.enable = false;
   };
 
   # Hardware specific options

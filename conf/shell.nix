@@ -5,7 +5,7 @@
     # Ran on shell start
     dwt1-shell-color-scripts
     # ls replacement
-    exa
+    eza
   ];
 
   programs.fish = {
@@ -29,9 +29,9 @@
     '';
 
     shellAliases = {
-      ls = "exa --all --long --icons --binary --no-time --git --no-permissions --no-user";
+      ls = "eza --all --long --icons --binary --no-time --git --no-permissions --no-user";
 
-      lsl = "exa --all --long --icons --binary --no-time --git --group";
+      lsl = "eza --all --long --icons --binary --no-time --git --group";
     };
   };
 
