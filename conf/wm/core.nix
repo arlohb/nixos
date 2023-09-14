@@ -1,7 +1,19 @@
 { pkgs, ... }:
 
 {
-  fonts.enableDefaultPackages = true;
+  fonts = {
+    enableDefaultPackages = true;
+
+    packages = with pkgs; [
+      roboto
+    ];
+
+    fontconfig.defaultFonts = {
+      serif = [ "roboto" ];
+      sansSerif = [ "roboto" ];
+      monospace = [ "FiraCode Nerd Font" ];
+    };
+  };
 
   # This is all the stuff I wouldn't need if I used a desktop environment
   pkgs = with pkgs; [
