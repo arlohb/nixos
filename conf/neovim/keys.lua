@@ -94,6 +94,7 @@ require("which-key").register({
                 "Open Vault"
             },
             o = { "<cmd>ObsidianOpen<cr>", "Open in Obsidian" },
+            c = { "<cmd>Toc<cr>", "Contents Page" },
         },
 
     },
