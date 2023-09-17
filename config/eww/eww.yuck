@@ -31,53 +31,11 @@
   :interval "5s"
    "date +'%H:%M'")
 
+(defpoll
+  WL_KEYS_AUTO
+  :interval "1s"
+   "/home/arlo/code/wl_keys/target/debug/wl_keys auto query")
 
-(defwindow quick-launcher
-  ; wayland
-  :exclusive false
-  :focusable false
-  :stacking "overlay"
-
-  :monitor 0
-
-  :geometry (geometry
-    :x "10px"
-    :y "10px"
-    ; :width "300px"
-    :height "100px"
-    :anchor "top left")
-
-  (box
-   :orientation "v"
-   :space-evenly false
-   (box
-    :orientation "h"
-    :space-evenly true
-    :vexpand true
-    (app
-     :cmd "vivaldi --new-window https://www.google.com"
-     :icon "/usr/share/pixmaps/vivaldi.png")
-    (app
-     :cmd "obsidian"
-     :icon "/usr/share/pixmaps/obsidian.png")
-    (app
-     :cmd "steam"
-     :icon "/usr/share/icons/hicolor/256x256/apps/steam.png")
-    (app
-     :cmd "gnome-clocks"
-     :icon "/usr/share/icons/hicolor/scalable/apps/org.gnome.clocks.svg")
-    (app
-     :cmd "blueberry"
-     :icon "/usr/share/icons/hicolor/scalable/apps/bluetooth.svg"))))
-
-(defwidget app [cmd icon]
-  (button
-   :onclick "eww close quick-launcher && ${cmd} &"
-   (image
-    :path icon
-    :width 90
-    :image-width 64
-    :image-height 64)))
 
 
 (defwindow pc-bar
@@ -157,10 +115,11 @@
      :spacing 8
      :class "btns"
      (button :class "cell btn1" :onclick "rofi -show drun &" "")
-     (button :class "cell btn2" :onclick "eww open quick-launcher" "")
-     (button :class "cell btn3" :onclick "~/.config/hypr/rotate.sh 1 &" "󰴓")
-     (button :class "cell btn4" :onclick "~/.config/hypr/rotate.sh 0 &" "󰌌")
-     (button :class "cell btn5" :onclick "hyprctl dispatch togglesplit" "󰑦"))
+     (button :class "cell btn2" :onclick "~/.config/hypr/rotate.sh 1 &" "󰴓")
+     (button :class "cell btn3" :onclick "~/.config/hypr/rotate.sh 0 &" "󰌢")
+     (button :class "cell btn4" :onclick "hyprctl dispatch togglesplit" "󰑦")
+     (button :class "cell btn5" :onclick "cd /home/arlo/code/wl_keys; ./target/debug/wl_keys auto toggle" { WL_KEYS_AUTO == "true" ? "󰌌" : "󰌐" })
+     (button :class "cell btn5" :onclick "cd /home/arlo/code/wl_keys; ./target/debug/wl_keys ui toggle" "󰧹"))
     (box
      :halign "end"
      :orientation "h"
