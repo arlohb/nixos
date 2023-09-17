@@ -170,14 +170,31 @@ label {
     font-size: 25px;
 }
 
-.ns {
+.ns-h {
     background-color: $red;
 }
 
-.ns-icon {
+.ns-v {
+    background-color: $red;
+    padding-bottom: 6px;
+}
+
+.ns-icon-v {
+    padding-right: 11px;
+    font-size: 28px;
+}
+
+.ns-icon-h {
     padding-right: 22px;
     font-size: 25px;
 }
+
+.ns-time-v {
+    font-size: 16px;
+    font-weight: 600;
+}
+
+.ns-time-h {}
 
 .clock {
     background-color: $red;

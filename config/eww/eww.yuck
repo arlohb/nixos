@@ -82,11 +82,15 @@
       (label :text "󱃃 ${round(EWW_TEMPS.NVME_COMPOSITE_SABRENT_TEMP1, 1)}")))
     (box
      :orientation "v"
-     :class "cell clock"
-     (label
-      :markup "<b>${HOURS}</b>")
-     (label
-      :markup "<b>${MINS}</b>"))
+     :space-evenly false
+      (box
+       :orientation "v"
+       :class "cell clock"
+       (label
+        :markup "<b>${HOURS}</b>")
+       (label
+        :markup "<b>${MINS}</b>"))
+      (ns-sync :orientation "v"))
     (box
      :valign "end"
      :orientation "v"
@@ -180,12 +184,13 @@
 (defwidget ns-sync [orientation]
   (box
    :orientation orientation
-   :class "cell ns"
+   :class "cell ns-${orientation}"
    :space-evenly false
    (label
-    :class "ns-icon"
+    :class "ns-icon-${orientation}"
     :text "󰅟")
    (label
+    :class "ns-time-${orientation}"
     :text { NS_EXIT_STR == "" ? "󰕒" : "${NS_NOW - NS_EXIT}s" })))
 
 (defwidget workspace [name]
