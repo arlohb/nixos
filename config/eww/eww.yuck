@@ -33,7 +33,7 @@
 
 (defpoll
   WL_KEYS_AUTO
-  :interval "1s"
+  :interval "50ms"
    "/home/arlo/code/wl_keys/target/debug/wl_keys auto query")
 
 
