@@ -123,6 +123,10 @@
           path = ./templates/empty;
           description = "An empty flake with a devShell and direnv";
         };
+        simple-c = {
+          path = ./templates/simple-c;
+          description = "A sipmle c project with gcc and make";
+        };
         cpp = {
           path = ./templates/cpp;
           description = "A c++ project using CMake, clang, ccls, and the fmt library";
