@@ -148,7 +148,6 @@
      (brightness)
      (volume :orientation "h")
      (box
-      :class "cell"
       :orientation "h"
       :space-evenly false
       :class "cell battery"
