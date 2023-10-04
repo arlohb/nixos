@@ -36,6 +36,11 @@
   :interval "50ms"
    "/home/arlo/code/wl_keys/target/debug/wl_keys auto query")
 
+(defpoll
+  BT_STATUS
+  :interval "1s"
+   "rofi-bluetooth --status")
+
 
 
 (defwindow pc-bar
@@ -160,6 +165,10 @@
          ]})
       (label
        :text "${EWW_BATTERY.BAT1.capacity}%"))
+     (button
+      :class "cell battery"
+      :onclick "rofi-bluetooth &"
+      "${BT_STATUS}")
      (ns-sync :orientation "h")
      (label
       :class "cell clock"

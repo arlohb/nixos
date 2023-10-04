@@ -29,12 +29,14 @@
 
   # Bluetooth
   hardware.bluetooth.enable = true;
-  services.blueman.enable = true;
 
   pkgs =
     if hostname == "arlo-laptop2" then with pkgs; [
       # Screen brightness
       brightnessctl
+
+      rofi-bluetooth
+      bc # required by above
     ] else [ ];
 
   # State
@@ -54,7 +56,7 @@
       "/var/lib/nixos"
       # Which users have been lectured by sudo
       "/var/db/sudo"
-    ] ++ (if hostname == "arlo-laptop" then [
+    ] ++ (if hostname == "arlo-laptop2" then [
       "/var/lib/bluetooth"
     ] else [ ]);
     files = [
