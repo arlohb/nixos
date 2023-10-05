@@ -1,6 +1,9 @@
+src = src/main.c
+out = out
+
 make:
-	gcc -o out src/main.c
+	bear -- gcc -o $(out) $(src)
 
 run: make
-	./out
+	./$(out)
 
