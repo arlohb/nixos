@@ -2,7 +2,11 @@
 
 {
   services.printing.enable = true;
-  services.avahi.enable = true;
-  services.avahi.nssmdns = true;
-  services.avahi.openFirewall = true;
+  services.avahi = {
+    enable = true;
+    nssmdns = true;
+    openFirewall = true;
+    # Oddly enough the port for this conflicts with the Logic World game server port
+    ipv6 = false;
+  };
 }
