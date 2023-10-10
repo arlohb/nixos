@@ -31,7 +31,7 @@
     shellAliases = {
       ls = "eza --all --long --icons --binary --no-time --git --no-permissions --no-user";
 
-      lsl = "eza --all --long --icons --binary --no-time --git --group";
+      lsl = "eza --all --long --icons --binary --git --group";
     };
   };
 
