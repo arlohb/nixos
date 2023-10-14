@@ -10,15 +10,10 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
-    hyprland.url = "github:hyprwm/Hyprland";
-    hyprland.inputs.nixpkgs.follows = "nixpkgs";
-
     # Manages persistant files when / is a tmpfs
     impermanence.url = "github:nix-community/impermanence";
 
     # A nvim plugin not (yet) in nixpkgs
-    nvim-spider.url = "github:chrisgrieser/nvim-spider";
-    nvim-spider.flake = false;
     obsidian-nvim.url = "github:epwalsh/obsidian.nvim";
     obsidian-nvim.flake = false;
     drop-nvim.url = "github:folke/drop.nvim";
@@ -32,7 +27,7 @@
     porsmo.flake = false;
   };
 
-  outputs = { self, nixpkgs, nur, home-manager, hyprland, impermanence, ... }@inputs:
+  outputs = { self, nixpkgs, nur, home-manager, impermanence, ... }@inputs:
     let
       system = "x86_64-linux";
 
@@ -56,7 +51,6 @@
       fullModules = hostname: [
         nurModule
 
-        hyprland.nixosModules.default
         impermanence.nixosModules.impermanence
         home-manager.nixosModules.home-manager
 

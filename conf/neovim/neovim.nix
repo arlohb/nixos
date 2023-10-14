@@ -1,15 +1,11 @@
 { inputs, pkgs, lib, ... }:
 let
   # Not in nixpkgs (yet)
-  nvim-spider = pkgs.vimUtils.buildVimPluginFrom2Nix {
-    name = "nvim-spider";
-    src = inputs.nvim-spider;
-  };
-  obsidian-nvim = pkgs.vimUtils.buildVimPluginFrom2Nix {
+  obsidian-nvim = pkgs.vimUtils.buildVimPlugin {
     name = "obsidian.nvim";
     src = inputs.obsidian-nvim;
   };
-  drop-nvim = pkgs.vimUtils.buildVimPluginFrom2Nix {
+  drop-nvim = pkgs.vimUtils.buildVimPlugin {
     name = "drop.nvim";
     src = inputs.drop-nvim;
   };

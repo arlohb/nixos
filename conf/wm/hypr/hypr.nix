@@ -12,10 +12,7 @@
   services.xserver.displayManager.defaultSession = "hyprland";
 
   # Enable Hyprland
-  programs.hyprland = {
-    enable = true;
-    enableNvidiaPatches = false;
-  };
+  programs.hyprland.enable = true;
 
   # Link over all the config files
   hm.home.file."/home/arlo/.config/hypr" = {
