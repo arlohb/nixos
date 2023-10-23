@@ -9,6 +9,10 @@ let
     name = "drop.nvim";
     src = inputs.drop-nvim;
   };
+  vim-nand2tetris-syntax = pkgs.vimUtils.buildVimPlugin {
+    name = "vim-nand2tetris-syntax";
+    src = inputs.vim-nand2tetris-syntax;
+  };
 in
 {
   pkgs = with pkgs; [
@@ -451,6 +455,8 @@ in
             vim.g.smoothie_experimental_mappings = true
           '';
         }
+
+        vim-nand2tetris-syntax
       ]);
   };
 }
