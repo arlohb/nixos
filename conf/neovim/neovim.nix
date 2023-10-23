@@ -13,6 +13,10 @@ let
     name = "vim-nand2tetris-syntax";
     src = inputs.vim-nand2tetris-syntax;
   };
+  image-nvim = pkgs.vimUtils.buildVimPlugin {
+    name = "image.nvim";
+    src = inputs.image-nvim;
+  };
 in
 {
   pkgs = with pkgs; [
@@ -22,6 +26,9 @@ in
     tree-sitter
     gcc
     wl-clipboard
+
+    # image.nvim for pdfs
+    ghostscript
   ];
 
   userPersist.directories = [
@@ -50,6 +57,11 @@ in
         ./svelte.lua
         ./c.lua
       ]);
+
+    extraLuaPackages = lpkgs: [
+      # image.nvim requirement
+      lpkgs.magick
+    ];
 
     plugins = map
       (plugin:
@@ -445,6 +457,23 @@ in
             }
 
             vim.keymap.set("n", "gf", "<cmd>ObsidianFollowLink<cr>")
+          '';
+        }
+
+        {
+          plugin = image-nvim;
+          config = ''
+            require("image").setup {
+              backend = "kitty",
+              integrations = {
+                markdown = {
+                  enabled = true,
+                  download_remote_images = true,
+                  clear_in_insert_mode = true,
+                },
+              },
+              max_width = 35,
+            }
           '';
         }
 

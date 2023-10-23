@@ -20,6 +20,8 @@
     drop-nvim.flake = false;
     vim-nand2tetris-syntax.url = "github:sevko/vim-nand2tetris-syntax";
     vim-nand2tetris-syntax.flake = false;
+    image-nvim.url = "github:3rd/image.nvim";
+    image-nvim.flake = false;
 
     # A simple timer.
     # I have to build this myself.

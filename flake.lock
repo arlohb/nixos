@@ -36,6 +36,22 @@
         "type": "github"
       }
     },
+    "image-nvim": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1698010431,
+        "narHash": "sha256-wj9ybu1Pezn/+lxE4LOdeoFcEYVkKTlWlpCrqrKruOU=",
+        "owner": "3rd",
+        "repo": "image.nvim",
+        "rev": "1cb60be1cdc108e3a3b09cb0ed115ef75ce51320",
+        "type": "github"
+      },
+      "original": {
+        "owner": "3rd",
+        "repo": "image.nvim",
+        "type": "github"
+      }
+    },
     "impermanence": {
       "locked": {
         "lastModified": 1697303681,
@@ -118,6 +134,7 @@
       "inputs": {
         "drop-nvim": "drop-nvim",
         "home-manager": "home-manager",
+        "image-nvim": "image-nvim",
         "impermanence": "impermanence",
         "nixpkgs": "nixpkgs",
         "nur": "nur",
