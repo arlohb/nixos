@@ -1,21 +1,23 @@
-{ inputs, pkgs, lib, ... }:
+{ inputs, pkgs, lib, ... }@moduleInputs:
 let
-  # Not in nixpkgs (yet)
-  obsidian-nvim = pkgs.vimUtils.buildVimPlugin {
-    name = "obsidian.nvim";
-    src = inputs.obsidian-nvim;
-  };
-  drop-nvim = pkgs.vimUtils.buildVimPlugin {
-    name = "drop.nvim";
-    src = inputs.drop-nvim;
-  };
-  vim-nand2tetris-syntax = pkgs.vimUtils.buildVimPlugin {
-    name = "vim-nand2tetris-syntax";
-    src = inputs.vim-nand2tetris-syntax;
-  };
-  image-nvim = pkgs.vimUtils.buildVimPlugin {
-    name = "image.nvim";
-    src = inputs.image-nvim;
+  custom = {
+    # Not in nixpkgs (yet)
+    obsidian-nvim = pkgs.vimUtils.buildVimPlugin {
+      name = "obsidian.nvim";
+      src = inputs.obsidian-nvim;
+    };
+    drop-nvim = pkgs.vimUtils.buildVimPlugin {
+      name = "drop.nvim";
+      src = inputs.drop-nvim;
+    };
+    vim-nand2tetris-syntax = pkgs.vimUtils.buildVimPlugin {
+      name = "vim-nand2tetris-syntax";
+      src = inputs.vim-nand2tetris-syntax;
+    };
+    image-nvim = pkgs.vimUtils.buildVimPlugin {
+      name = "image.nvim";
+      src = inputs.image-nvim;
+    };
   };
 in
 {
@@ -66,33 +68,22 @@ in
     plugins = map
       (plugin:
         if builtins.isAttrs plugin then ({ type = "lua"; } // plugin) else plugin)
+        ((lib.foldr (
+          file:
+          final:
+          final ++ ((import file) (moduleInputs // { custom = custom; }))
+        ) [] [
+          ./plugins/editing.nix
+          ./plugins/lsp.nix
+          ./plugins/md.nix
+          ./plugins/pretty.nix
+          ./plugins/start.nix
+          ./plugins/telescope.nix
+        ]) ++
       (with pkgs.vimPlugins; [
         # Required by loads of plugins
         plenary-nvim
         nvim-web-devicons
-
-        # Better word movements
-        {
-          plugin = nvim-spider;
-          config = ''
-            require("spider").setup {
-              skipInsignificantPunctuation = false,
-            }
-
-            vim.keymap.set({"n", "o", "x"}, "w", function() require("spider").motion("w") end, { desc = "Spider-w" })
-            vim.keymap.set({"n", "o", "x"}, "e", function() require("spider").motion("e") end, { desc = "Spider-e" })
-            vim.keymap.set({"n", "o", "x"}, "b", function() require("spider").motion("b") end, { desc = "Spider-b" })
-            vim.keymap.set({"n", "o", "x"}, "ge", function() require("spider").motion("ge") end, { desc = "Spider-ge" })
-          '';
-        }
-
-        # Surround selections
-        {
-          plugin = nvim-surround;
-          config = ''
-            require("nvim-surround").setup {}
-          '';
-        }
 
         # The file tree
         {
@@ -119,79 +110,6 @@ in
           '';
         }
 
-        # The theme(s)
-        {
-          plugin = sonokai;
-          config = ''
-            vim.g.sonokai_style = "andromeda"
-            -- This unfortunately tried to modify the read-only filesystem,
-            -- and can't be configured not to
-            vim.g.sonokai_better_performance = 0
-            -- vim.cmd("colorscheme sonokai")
-          '';
-        }
-        kanagawa-nvim
-        neovim-ayu
-        embark-vim
-        nightfox-nvim
-        jellybeans-nvim
-        oxocarbon-nvim
-        {
-          plugin = dracula-nvim;
-          config = ''
-            require("dracula").setup {}
-            vim.cmd("colorscheme dracula")
-          '';
-        }
-        vim-horizon
-        catppuccin-nvim
-
-        # The status line at the bottom
-        {
-          plugin = lualine-nvim;
-          config = ''
-            require("lualine").setup {
-              options = {
-                theme = "auto",
-                disabled_filetypes = { "NvimTree", "alpha" },
-              },
-            }
-          '';
-        }
-
-        # A fuzzy finder with many uses
-        {
-          plugin = telescope-nvim;
-          config = ''
-            require("telescope").setup {
-              pickers = {
-                colorscheme = {
-                  enable_preview = true
-                },
-              },
-            }
-          '';
-        }
-
-        # A telescope file browser
-        {
-          plugin = telescope-file-browser-nvim;
-          config = ''
-            require("telescope").load_extension("file_browser")
-          '';
-        }
-
-        # A telescope project manager
-        {
-          plugin = telescope-project-nvim;
-          config = ''
-            require("telescope").load_extension("project")
-          '';
-        }
-
-        # Populates the telescope symbol picker
-        telescope-symbols-nvim
-
         # A terminal that can be floating or as a side pane
         {
           plugin = toggleterm-nvim;
@@ -207,62 +125,6 @@ in
           '';
         }
 
-        # Show thin lines at indents
-        {
-          plugin = indent-blankline-nvim;
-          config = ''
-            local hooks = require("ibl.hooks")
-            hooks.register(hooks.type.HIGHLIGHT_SETUP, function()
-              -- For now this uses dracula colours until I change my nvim theme
-              vim.api.nvim_set_hl(0, "RainbowRed", { fg = "#FF5555" })
-              vim.api.nvim_set_hl(0, "RainbowYellow", { fg = "#F1FA8C" })
-              vim.api.nvim_set_hl(0, "RainbowBlue", { fg = "#8BE9FD" })
-              vim.api.nvim_set_hl(0, "RainbowOrange", { fg = "#FFB86C" })
-              vim.api.nvim_set_hl(0, "RainbowGreen", { fg = "#50FA7B" })
-              vim.api.nvim_set_hl(0, "RainbowViolet", { fg = "#BD93F9" })
-            end)
-
-            require("ibl").setup {
-              indent = {
-                highlight = {
-                  "RainbowRed",
-                  "RainbowOrange",
-                  "RainbowYellow",
-                  "RainbowGreen",
-                  "RainbowBlue",
-                  "RainbowViolet",
-                },
-              },
-              scope = {
-                enabled = false,
-              },
-            }
-          '';
-        }
-
-        # Comment and uncomment lines easily
-        vim-commentary
-
-        # Autopair brackets and other stuff
-        {
-          plugin = nvim-autopairs;
-          config = ''
-            local Rule = require("nvim-autopairs.rule")
-            local cond = require("nvim-autopairs.conds")
-            local npairs = require("nvim-autopairs")
-
-            require("nvim-autopairs").setup {}
-
-            npairs.add_rule(Rule("<", ">")
-              :with_move(cond.move_right)
-              :with_pair(cond.not_before_regex(" "))
-            )
-          '';
-        }
-
-        # Provides correct tabbing and syntax highlighting
-        nvim-treesitter.withAllGrammars
-
         # Magit clone
         {
           plugin = neogit;
@@ -270,150 +132,6 @@ in
             require("neogit").setup {
               kind = "replace",
             }
-          '';
-        }
-
-        # Git diffs in file
-        {
-          plugin = gitsigns-nvim;
-          config = ''
-            require("gitsigns").setup()
-          '';
-        }
-
-        # LSP
-        nvim-lspconfig
-        rust-tools-nvim
-
-        # Completion
-        nvim-cmp
-        vim-vsnip
-        cmp-nvim-lsp
-        cmp-path
-        cmp-nvim-lua
-        {
-          plugin = lsp_signature-nvim;
-          config = ''
-            require("lsp_signature").setup {
-              bind = true, -- This is mandatory, otherwise border config won't get registered.
-              handler_opts = {
-                border = "rounded"
-              }
-            }
-          '';
-        }
-
-        # DAP
-        nvim-dap
-        nvim-dap-virtual-text
-        nvim-dap-ui
-
-        # DAP telescope
-        {
-          plugin = telescope-dap-nvim;
-          config = ''
-            require("telescope").load_extension("dap")
-          '';
-        }
-
-        # Makes UI nicer
-        {
-          plugin = dressing-nvim;
-          config = ''
-            require("dressing").setup {}
-          '';
-        }
-
-        # Nicer notification UI
-        {
-          plugin = nvim-notify;
-          config = ''
-            vim.notify = require("notify")
-            require("telescope").load_extension("notify")
-          '';
-        }
-
-        {
-          plugin = alpha-nvim;
-          config = "
-            require('alpha').setup {
-              layout = {
-                {
-                  type = 'padding',
-                  val = 12,
-                },
-                {
-                  type = 'text',
-                  val = [[
-                                  ....
-                                .'' .'''
-.                             .'   :
-\\\\                          .:    :
- \\\\                        _:    :       ..----.._
-  \\\\                    .:::.....:::.. .'         ''.
-   \\\\                 .'  #-. .-######'     #        '.
-    \\\\                 '.##'/ ' ################       :
-     \\\\                  #####################         :
-      \\\\               ..##.-.#### .''''###'.._        :
-       \\\\             :--:########:            '.    .' :
-        \\\\..__...--.. :--:#######.'   '.         '.     :
-        :     :  : : '':'-:'':'::        .         '.  .'
-        '---'''..: :    ':    '..'''.      '.        :'
-           \\\\  :: : :     '      ''''''.     '.      .:
-            \\\\ ::  : :     '            '.      '      :
-             \\\\::   : :           ....' ..:       '     '.
-              \\\\::  : :    .....####\\\\ .~~.:.             :
-               \\\\':.:.:.:'#########.===. ~ |.'-.   . '''.. :
-                \\\\    .'  ########## \\ \\ _.' '. '-.       '''.
-                :\\\\  :     ########   \\ \\      '.  '-.        :
-               :  \\\\'    '   #### :    \\ \\      :.    '-.      :
-              :  .'\\\\   :'  :     :     \\ \\       :      '-.    :
-             : .'  .\\\\  '  :      :     :\\ \\       :        '.   :
-             ::   :  \\\\'  :.      :     : \\ \\      :          '. :
-             ::. :    \\\\  : :      :    ;  \\ \\     :           '.:
-              : ':    '\\\\ :  :     :     :  \\:\\     :        ..'
-                 :    ' \\\\ :        :     ;  \\|      :   .'''
-                 '.   '  \\\\:                         :.''
-                  .:..... \\\\:       :            ..''
-                 '._____|'.\\\\......'''''''.:..'''
-                            \\\\
-                  ]],
-                  opts = {
-                    position = 'center',
-                  },
-                },
-              },
-            }
-          ";
-        }
-
-        {
-          plugin = drop-nvim;
-          config = ''
-            require("drop").setup {
-              theme = "snow",
-              max = 1000,
-              interval = 70,
-              screensaver = false,
-            }
-          '';
-        }
-
-        # Yuck (eww) syntax support
-        yuck-vim
-
-        # Good F# support
-        Ionide-vim
-
-        # Detect tab width and other stuff
-        # This also read editorconfig
-        vim-sleuth
-
-        # Open files as sudo
-        {
-          plugin = suda-vim;
-          config = ''
-            vim.g.suda_smart_edit = 1
           '';
         }
 
@@ -444,78 +162,6 @@ in
             )
           '';
         }
-
-        {
-          plugin = vim-markdown;
-          config = ''
-            -- Enable the link folding
-            vim.opt.conceallevel = 2
-
-            -- Open all folds by default
-            vim.g.vim_markdown_folding_level = 6
-            vim.opt.foldlevel = 99
-          '';
-        }
-
-        # Obsidian
-        {
-          plugin = obsidian-nvim;
-          config = ''
-            require("obsidian").setup {
-              dir = "~/Nextcloud/Vault",
-              notes_subdir = "Cards",
-
-              daily_notes = {
-                folder = "Journal/Dailies",
-                date_format = "%Y-%m-%d",
-              },
-
-              completion = {
-                nvim_cmp = true,
-                new_notes_location = "notes_subdir",
-                prepend_note_id = false,
-              },
-
-              disable_frontmatter = true,
-
-              follow_url_func = function(url)
-                vim.fn.jobstart({ "xdg-open", url })
-              end,
-
-              -- We're gonna create the mapping ourself
-              mappings = {},
-            }
-
-            vim.keymap.set("n", "gf", "<cmd>ObsidianFollowLink<cr>")
-          '';
-        }
-
-        {
-          plugin = image-nvim;
-          config = ''
-            require("image").setup {
-              backend = "kitty",
-              integrations = {
-                markdown = {
-                  enabled = true,
-                  download_remote_images = true,
-                  clear_in_insert_mode = true,
-                },
-              },
-              max_width = 35,
-            }
-          '';
-        }
-
-        {
-          plugin = vim-smoothie;
-          config = ''
-            -- Enables gg and G
-            vim.g.smoothie_experimental_mappings = true
-          '';
-        }
-
-        vim-nand2tetris-syntax
-      ]);
+      ]));
   };
 }
