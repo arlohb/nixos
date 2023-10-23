@@ -402,7 +402,12 @@ in
         {
           plugin = vim-markdown;
           config = ''
-            opt.conceallevel = 2
+            -- Enable the link folding
+            vim.opt.conceallevel = 2
+
+            -- Open all folds by default
+            vim.g.vim_markdown_folding_level = 6
+            vim.opt.foldlevel = 99
           '';
         }
 
@@ -422,6 +427,7 @@ in
               completion = {
                 nvim_cmp = true,
                 new_notes_location = "notes_subdir",
+                prepend_note_id = false,
               },
 
               disable_frontmatter = true,
