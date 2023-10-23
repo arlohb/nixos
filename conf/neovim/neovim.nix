@@ -208,7 +208,37 @@ in
         }
 
         # Show thin lines at indents
-        indent-blankline-nvim
+        {
+          plugin = indent-blankline-nvim;
+          config = ''
+            local hooks = require("ibl.hooks")
+            hooks.register(hooks.type.HIGHLIGHT_SETUP, function()
+              -- For now this uses dracula colours until I change my nvim theme
+              vim.api.nvim_set_hl(0, "RainbowRed", { fg = "#FF5555" })
+              vim.api.nvim_set_hl(0, "RainbowYellow", { fg = "#F1FA8C" })
+              vim.api.nvim_set_hl(0, "RainbowBlue", { fg = "#8BE9FD" })
+              vim.api.nvim_set_hl(0, "RainbowOrange", { fg = "#FFB86C" })
+              vim.api.nvim_set_hl(0, "RainbowGreen", { fg = "#50FA7B" })
+              vim.api.nvim_set_hl(0, "RainbowViolet", { fg = "#BD93F9" })
+            end)
+
+            require("ibl").setup {
+              indent = {
+                highlight = {
+                  "RainbowRed",
+                  "RainbowOrange",
+                  "RainbowYellow",
+                  "RainbowGreen",
+                  "RainbowBlue",
+                  "RainbowViolet",
+                },
+              },
+              scope = {
+                enabled = false,
+              },
+            }
+          '';
+        }
 
         # Comment and uncomment lines easily
         vim-commentary
