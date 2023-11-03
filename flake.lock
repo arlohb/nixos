@@ -82,6 +82,22 @@
         "type": "indirect"
       }
     },
+    "nixpkgs-prismlauncher": {
+      "locked": {
+        "lastModified": 1696748146,
+        "narHash": "sha256-tO4LUnUeUoJGlsedMH8VSVsYPIGckIB1UBbxG0+v9Qw=",
+        "owner": "NixOS",
+        "repo": "nixpkgs",
+        "rev": "3c1857b601f33a1e742654606dbff24299d33c64",
+        "type": "github"
+      },
+      "original": {
+        "owner": "NixOS",
+        "repo": "nixpkgs",
+        "rev": "3c1857b601f33a1e742654606dbff24299d33c64",
+        "type": "github"
+      }
+    },
     "nur": {
       "locked": {
         "lastModified": 1698328047,
@@ -137,6 +153,7 @@
         "image-nvim": "image-nvim",
         "impermanence": "impermanence",
         "nixpkgs": "nixpkgs",
+        "nixpkgs-prismlauncher": "nixpkgs-prismlauncher",
         "nur": "nur",
         "obsidian-nvim": "obsidian-nvim",
         "porsmo": "porsmo",
