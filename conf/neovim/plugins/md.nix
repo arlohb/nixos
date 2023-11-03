@@ -57,6 +57,7 @@ with pkgs.vimPlugins; [
           },
         },
         max_width = 35,
+        window_overlap_clear_enabled = true,
       }
     '';
   }
