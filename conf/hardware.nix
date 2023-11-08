@@ -106,4 +106,4 @@
   # Kill processes if RAM is nearly full
   # See conf/notifications.nix for more
   services.earlyoom.enable = false;
-})
+} else { })
