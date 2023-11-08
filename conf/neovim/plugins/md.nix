@@ -61,4 +61,6 @@ with pkgs.vimPlugins; [
       }
     '';
   }
+
+  vim-table-mode
 ]
