@@ -34,9 +34,9 @@
     if hostname == "arlo-laptop2" then with pkgs; [
       # Screen brightness
       brightnessctl
-
-      rofi-bluetooth
-      bc # required by above
+      
+      # Bluetooth gui
+      blueberry
     ] else [ ];
 
   # State

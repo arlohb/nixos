@@ -39,7 +39,7 @@
 (defpoll
   BT_STATUS
   :interval "1s"
-   "rofi-bluetooth --status")
+   "./bl_status.sh")
 
 
 
@@ -166,8 +166,8 @@
       (label
        :text "${EWW_BATTERY.BAT1.capacity}%"))
      (button
-      :class "cell battery"
-      :onclick "rofi-bluetooth &"
+      :class "cell battery h300"
+      :onclick "blueberry &"
       "${BT_STATUS}")
      (ns-sync :orientation "h")
      (label
