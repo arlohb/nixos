@@ -99,4 +99,11 @@
       fsType = "vfat";
     };
   } else { });
-}
+} // (if hostname == "arlo-nix" then {
+  # Only useful on pc, because RAM there only fills up,
+  # If something has gone horrifically wrong
+
+  # Kill processes if RAM is nearly full
+  # See conf/notifications.nix for more
+  services.earlyoom.enable = false;
+})
