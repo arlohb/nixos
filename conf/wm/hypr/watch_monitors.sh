@@ -2,7 +2,7 @@
 
 function set_background {
     MONITOR=$(swww query | grep -v eDP-1 | cut -d: -f1)
-    swww img -o $MONITOR /etc/nixos/backgrounds/knight.png
+    swww img -o $MONITOR /etc/nixos/backgrounds/disco_elysium/title_screen.jpeg
 }
 
 function handle {

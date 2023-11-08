@@ -14,6 +14,8 @@
     obsidian
     porsmo
     insomnia
+
+    gnome.gnome-calendar
   ];
 
   userPersist.directories = [

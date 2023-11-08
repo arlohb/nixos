@@ -65,24 +65,24 @@
      :class "temps"
      (box
       :orientation "v"
-      :class "cell btn2"
+      :class "cell h000"
       (label :markup "<b>CPU</b>")
       (label :text "󰞯  ${round(EWW_CPU.avg, 0)}")
       (label :text "󱃃 ${round(EWW_TEMPS.K10TEMP_TCTL, 1)}"))
      (box
       :orientation "v"
-      :class "cell btn3"
+      :class "cell h040"
       (label :markup "<b>RAM</b>")
       (label :markup "${round(EWW_RAM.used_mem / 1024 / 1024 / 1024, 1)} <b>G</b>")
       (label :markup "${round(EWW_RAM.total_mem / 1024 / 1024 / 1024, 1)} <b>G</b>"))
      (box
       :orientation "v"
-      :class "cell btn4"
+      :class "cell h080"
       (label :markup "<b>GPU</b>")
       (label :text "󱃃 ${round(EWW_TEMPS.AMDGPU_EDGE, 1)}"))
      (box
       :orientation "v"
-      :class "cell btn5"
+      :class "cell h120"
       (label :markup "<b>NVME</b>")
       (label :text "󱃃 ${round(EWW_TEMPS.NVME_COMPOSITE_SABRENT_TEMP1, 1)}")))
     (box
@@ -90,7 +90,7 @@
      :space-evenly false
       (box
        :orientation "v"
-       :class "cell clock"
+       :class "cell pc-clock h160"
        (label
         :markup "<b>${HOURS}</b>")
        (label
@@ -123,12 +123,12 @@
      :space-evenly true
      :spacing 8
      :class "btns"
-     (button :class "cell btn1" :onclick "rofi -show drun &" "")
-     (button :class "cell btn2" :onclick "~/.config/hypr/rotate.sh 1 &" "󰴓")
-     (button :class "cell btn3" :onclick "~/.config/hypr/rotate.sh 0 &" "󰌢")
-     (button :class "cell btn4" :onclick "hyprctl dispatch togglesplit" "󰑦")
-     (button :class "cell btn5" :onclick "cd /home/arlo/code/wl_keys; ./target/debug/wl_keys auto toggle" { WL_KEYS_AUTO == "true" ? "󰌌" : "󰌐" })
-     (button :class "cell btn5" :onclick "cd /home/arlo/code/wl_keys; ./target/debug/wl_keys ui toggle" "󰧹"))
+     (button :class "cell h000" :onclick "rofi -show drun &" "")
+     (button :class "cell h020" :onclick "~/.config/hypr/rotate.sh 1 &" "󰴓")
+     (button :class "cell h040" :onclick "~/.config/hypr/rotate.sh 0 &" "󰌢")
+     (button :class "cell h060" :onclick "hyprctl dispatch togglesplit" "󰑦")
+     (button :class "cell h080" :onclick "cd /home/arlo/code/wl_keys; ./target/debug/wl_keys auto toggle" { WL_KEYS_AUTO == "true" ? "󰌌" : "󰌐" })
+     (button :class "cell h100" :onclick "cd /home/arlo/code/wl_keys; ./target/debug/wl_keys ui toggle" "󰧹"))
     (box
      :halign "end"
      :orientation "h"
@@ -142,7 +142,7 @@
       (for i in "[1, 2, 3, 4]"
         (workspace :name i)))
      (button
-      :class "cell close"
+      :class "cell close h200"
       :onclick "hyprctl dispatch killactive"
       (label :text "X")))
     (box
@@ -155,7 +155,7 @@
      (box
       :orientation "h"
       :space-evenly false
-      :class "cell battery"
+      :class "cell h280"
       (label
        :class "battery-icon"
        :text {EWW_BATTERY.BAT1.status == "Charging"
@@ -166,13 +166,14 @@
       (label
        :text "${EWW_BATTERY.BAT1.capacity}%"))
      (button
-      :class "cell battery h300"
+      :class "cell h300"
       :onclick "blueberry &"
       "${BT_STATUS}")
      (ns-sync :orientation "h")
-     (label
-      :class "cell clock"
-      :text "${TIME}"))))
+     (button
+      :class "cell h340"
+      :onclick "gnome-calendar &"
+      "${TIME}"))))
 
 (defpoll
   NS_NOW
@@ -192,7 +193,7 @@
 (defwidget ns-sync [orientation]
   (box
    :orientation orientation
-   :class "cell ns-${orientation}"
+   :class "cell ns-${orientation} ${orientation == "h" ? "h320" : "h200"}"
    :space-evenly false
    (label
     :class "ns-icon-${orientation}"
@@ -203,7 +204,7 @@
 
 (defwidget workspace [name]
   (button
-   :class "cell workspace"
+   :class "cell workspace h${[120, 140, 160, 180][name - 1]}"
    :onclick "hyprctl dispatch workspace ${name}"
    "${name}"))
 
@@ -211,7 +212,7 @@
   (box
    :orientation "h"
    :space-evenly false
-   :class "slider-h brightness"
+   :class "slider-h brightness h220"
    :spacing 0
    (label :text "")
    (scale
@@ -224,7 +225,8 @@
   (box
    :orientation orientation
    :space-evenly false
-   :class "slider-${orientation} volume"
+   ; Yes I'm skipping h240, too blue
+   :class "slider-${orientation} volume h260"
    :spacing 0
    (label :text "")
    (scale
