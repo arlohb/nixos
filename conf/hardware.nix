@@ -28,7 +28,15 @@
   networking.networkmanager.enable = true;
 
   # Bluetooth
-  hardware.bluetooth.enable = true;
+  hardware.bluetooth = {
+    enable = true;
+    settings = {
+      # Needed to get battery from dbus in bl_status.sh
+      General.Experimental = true;
+    };
+  };
+
+  # services.upower.enable = true;
 
   pkgs =
     if hostname == "arlo-laptop2" then with pkgs; [

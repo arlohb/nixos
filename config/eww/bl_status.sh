@@ -20,17 +20,25 @@ device_connected() {
     fi
 }
 
+get_battery() {
+    # Replace : with _
+    device=$(echo $1 | tr ':' '_')
+    path="/org/bluez/hci0/dev_$device"
+    echo $(dbus-send --print-reply=literal \
+        --system --dest=org.bluez \
+        $path \
+        org.freedesktop.DBus.Properties.Get string:"org.bluez.Battery1" string:"Percentage" \
+        | tr -s ' ' \
+        | cut -d ' ' -f 4)
+}
+
 if power_on; then
-    printf ''
+    printf ' '
 
-    paired_devices_cmd="devices Paired"
-    # Check if an outdated version of bluetoothctl is used to preserve backwards compatibility
-    if (( $(echo "$(bluetoothctl version | cut -d ' ' -f 2) < 5.65" | bc -l) )); then
-        paired_devices_cmd="paired-devices"
-    fi
-
-    mapfile -t paired_devices < <(bluetoothctl $paired_devices_cmd | grep Device | cut -d ' ' -f 2)
+    mapfile -t paired_devices < <(bluetoothctl devices Paired | grep Device | cut -d ' ' -f 2)
     counter=0
+
+    last_device=""
 
     for device in "${paired_devices[@]}"; do
         if device_connected "$device"; then
@@ -43,8 +51,44 @@ if power_on; then
             fi
 
             ((counter++))
+
+            last_device=$device
         fi
     done
+
+    # Battery seems to return one value for all devices
+    # So just do it for the last device
+    # And let the user figure out which one it is
+    if [ -n "$last_device" ]; then
+        battery=$(get_battery $last_device)
+
+        printf " "
+
+        if [ $battery -lt 15 ]; then
+            printf "󰤾 "
+        elif [ $battery -lt 25 ]; then
+            printf "󰤿 "
+        elif [ $battery -lt 35 ]; then
+            printf "󰥀 "
+        elif [ $battery -lt 45 ]; then
+            printf "󰥁 "
+        elif [ $battery -lt 55 ]; then
+            printf "󰥂 "
+        elif [ $battery -lt 65 ]; then
+            printf "󰥃 "
+        elif [ $battery -lt 75 ]; then
+            printf "󰥄 "
+        elif [ $battery -lt 85 ]; then
+            printf "󰥅 "
+        elif [ $battery -lt 95 ]; then
+            printf "󰥆 "
+        else
+            printf "󰥈 "
+        fi
+
+        printf " %d%%" $battery
+    fi
+
     printf "\n"
 else
     echo ""
