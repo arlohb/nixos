@@ -2,8 +2,6 @@
   inputs = {
     nixpkgs.url = "nixpkgs/nixos-unstable";
 
-    nixpkgs-prismlauncher.url = "github:NixOS/nixpkgs?rev=3c1857b601f33a1e742654606dbff24299d33c64";
-
     # Nix User Repository
     nur.url = "github:nix-community/NUR";
 
@@ -33,23 +31,13 @@
     porsmo.flake = false;
   };
 
-  outputs = { self, nixpkgs, nixpkgs-prismlauncher, nur, home-manager, impermanence, ... }@inputs:
+  outputs = { self, nixpkgs, nur, home-manager, impermanence, ... }@inputs:
     let
       system = "x86_64-linux";
 
       pkgs = import nixpkgs {
         inherit system;
         config.allowUnfree = true;
-      };
-
-      pkgs-prismlauncher = import nixpkgs-prismlauncher {
-        inherit system;
-        config.allowUnfree = true;
-      };
-      prismlauncherFix = {
-        nixpkgs.config.packageOverrides = pkgs: {
-          prismLauncher = pkgs-prismlauncher.prismlauncher;
-        };
       };
 
       utils = import ./conf/utils.nix;
@@ -65,8 +53,6 @@
       };
 
       fullModules = hostname: [
-        prismlauncherFix
-
         nurModule
 
         impermanence.nixosModules.impermanence
