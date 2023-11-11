@@ -32,13 +32,41 @@ get_battery() {
         | cut -d ' ' -f 4)
 }
 
+print_battery() {
+    battery=$(get_battery $device)
+
+    printf " "
+
+    if [ $battery -lt 15 ]; then
+        printf "󰤾 "
+    elif [ $battery -lt 25 ]; then
+        printf "󰤿 "
+    elif [ $battery -lt 35 ]; then
+        printf "󰥀 "
+    elif [ $battery -lt 45 ]; then
+        printf "󰥁 "
+    elif [ $battery -lt 55 ]; then
+        printf "󰥂 "
+    elif [ $battery -lt 65 ]; then
+        printf "󰥃 "
+    elif [ $battery -lt 75 ]; then
+        printf "󰥄 "
+    elif [ $battery -lt 85 ]; then
+        printf "󰥅 "
+    elif [ $battery -lt 95 ]; then
+        printf "󰥆 "
+    else
+        printf "󰥈 "
+    fi
+
+    printf " %d%%" $battery
+}
+
 if power_on; then
     printf ' '
 
     mapfile -t paired_devices < <(bluetoothctl devices Paired | grep Device | cut -d ' ' -f 2)
     counter=0
-
-    last_device=""
 
     for device in "${paired_devices[@]}"; do
         if device_connected "$device"; then
@@ -52,44 +80,9 @@ if power_on; then
 
             ((counter++))
 
-            last_device=$device
+            print_battery $device
         fi
     done
-
-    # Battery seems to return one value for all devices
-    # So just do it for the last device
-    # And let the user figure out which one it is
-    if [ -n "$last_device" ]; then
-        battery=$(get_battery $last_device)
-
-        printf " "
-
-        if [ $battery -lt 15 ]; then
-            printf "󰤾 "
-        elif [ $battery -lt 25 ]; then
-            printf "󰤿 "
-        elif [ $battery -lt 35 ]; then
-            printf "󰥀 "
-        elif [ $battery -lt 45 ]; then
-            printf "󰥁 "
-        elif [ $battery -lt 55 ]; then
-            printf "󰥂 "
-        elif [ $battery -lt 65 ]; then
-            printf "󰥃 "
-        elif [ $battery -lt 75 ]; then
-            printf "󰥄 "
-        elif [ $battery -lt 85 ]; then
-            printf "󰥅 "
-        elif [ $battery -lt 95 ]; then
-            printf "󰥆 "
-        else
-            printf "󰥈 "
-        fi
-
-        printf " %d%%" $battery
-    fi
-
-    printf "\n"
 else
     echo ""
 fi
