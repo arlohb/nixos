@@ -34,7 +34,6 @@ in
         --user ${secrets.nextcloud.user} \
         --password ${secrets.nextcloud.password} \
         --unsyncedfolders ${pkgs.writeText "NextCloudNoSync.txt" ''
-          Videos
         ''} \
         ~/Nextcloud ${secrets.nextcloud.server}
     '';
