@@ -94,7 +94,78 @@ require("which-key").register({
                 "Open Vault"
             },
             o = { "<cmd>ObsidianOpen<cr>", "Open in Obsidian" },
-            c = { "<cmd>Toc<cr>", "Contents Page" },
+            t = { "<cmd>Toc<cr>", "Table of Contents" },
+
+            c = { "gg/incomplete<cr>Daunchecked<esc>", "Complete Note" },
+            C = { "gg/unchecked<cr>2x", "Check Note" },
+
+            l = {
+                function()
+                    -- Get the current file
+                    local path = vim.fn.expand("%")
+                    -- Find the position of the last slash
+                    local last_slash = path:find("/[^/]*$")
+                    -- Get the lecture number and add 1
+                    local lecture_number = tonumber(path:sub(last_slash + 6, last_slash + 7)) + 1
+                    -- Add the new lecture number to the path
+                    path = path:sub(0, last_slash + 5) .. string.format("%02d", lecture_number)
+                    -- Sub the ' ' for '\ '
+                    path = path:gsub(" ", "\\ ")
+                    -- Create the cmd
+                    local cmd = "<cmd>e " .. path .. "*<cr>"
+
+                    -- Run the cmd
+                    vim.api.nvim_feedkeys(
+                        vim.api.nvim_replace_termcodes(cmd, true, true, true),
+                        "n", true
+                    )
+                end,
+                "Next Lecture"
+            },
+            h = {
+                function()
+                    -- Get the current file
+                    local path = vim.fn.expand("%")
+                    -- Find the position of the last slash
+                    local last_slash = path:find("/[^/]*$")
+                    -- Get the lecture number and minus 1
+                    local lecture_number = tonumber(path:sub(last_slash + 6, last_slash + 7)) - 1
+                    -- Add the new lecture number to the path
+                    path = path:sub(0, last_slash + 5) .. string.format("%02d", lecture_number)
+                    -- Sub the ' ' for '\ '
+                    path = path:gsub(" ", "\\ ")
+                    -- Create the cmd
+                    local cmd = "<cmd>e " .. path .. "*<cr>"
+
+                    -- Run the cmd
+                    vim.api.nvim_feedkeys(
+                        vim.api.nvim_replace_termcodes(cmd, true, true, true),
+                        "n", true
+                    )
+                end,
+                "Previous Lecture"
+            },
+            k = {
+                function()
+                    -- Get the current file
+                    local path = vim.fn.expand("%")
+                    -- Find the position of the last slash
+                    local last_slash = path:find("/[^/]*$")
+                    -- Add the lecture number "00" to the path
+                    path = path:sub(0, last_slash + 5) .. "00.md"
+                    -- Sub the ' ' for '\ '
+                    path = path:gsub(" ", "\\ ")
+                    -- Create the cmd
+                    local cmd = "<cmd>e " .. path .. "<cr>"
+
+                    -- Run the cmd
+                    vim.api.nvim_feedkeys(
+                        vim.api.nvim_replace_termcodes(cmd, true, true, true),
+                        "n", true
+                    )
+                end,
+                "This Module"
+            },
         },
 
     },
