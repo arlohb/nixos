@@ -38,6 +38,10 @@ with pkgs.vimPlugins; [
 
         -- We're gonna create the mapping ourself
         mappings = {},
+
+        note_id_func = function(title)
+          return title
+        end
       }
 
       vim.keymap.set("n", "gf", "<cmd>ObsidianFollowLink<cr>")
