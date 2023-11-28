@@ -172,7 +172,8 @@
      (ns-sync :orientation "h")
      (button
       :class "cell h340"
-      :onclick "gnome-calendar &"
+      :onclick "gnome-clocks &"
+      :onrightclick "gnome-calendar &"
       "${TIME}"))))
 
 (defpoll

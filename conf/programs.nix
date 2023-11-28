@@ -16,6 +16,7 @@
     insomnia
 
     gnome.gnome-calendar
+    gnome.gnome-clocks
   ];
 
   userPersist.directories = [
