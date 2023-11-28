@@ -26,8 +26,8 @@ with pkgs.vimPlugins; [
 
         completion = {
           nvim_cmp = true,
-          new_notes_location = "notes_subdir",
-          prepend_note_id = false,
+          new_notes_location = "current_dir",
+          prepend_note_id = true,
         },
 
         disable_frontmatter = true,
