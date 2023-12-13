@@ -1,11 +1,6 @@
 { inputs, pkgs, lib, ... }@moduleInputs:
 let
   custom = {
-    # Not in nixpkgs (yet)
-    obsidian-nvim = pkgs.vimUtils.buildVimPlugin {
-      name = "obsidian.nvim";
-      src = inputs.obsidian-nvim;
-    };
     drop-nvim = pkgs.vimUtils.buildVimPlugin {
       name = "drop.nvim";
       src = inputs.drop-nvim;

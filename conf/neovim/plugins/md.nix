@@ -1,50 +1,40 @@
 { pkgs, custom, ... }:
 with pkgs.vimPlugins; [
-  {
-    plugin = vim-markdown;
-    config = ''
-      -- Enable the link folding
-      vim.opt.conceallevel = 2
-
-      -- Open all folds by default
-      vim.g.vim_markdown_folding_level = 6
-      vim.opt.foldlevel = 99
-    '';
-  }
+  # Maybe in the future
+  # - https://github.com/jakewvincent/mkdnflow.nvim
+  # - https://github.com/iamcco/markdown-preview.nvim
+  # - https://alpha2phi.medium.com/neovim-for-beginners-note-taking-writing-diagramming-and-presentation-72d301aae28
 
   {
-    plugin = custom.obsidian-nvim;
+    plugin = mkdnflow-nvim;
     config = ''
-      require("obsidian").setup {
-        dir = "~/Nextcloud/Vault",
-        notes_subdir = "Cards",
-
-        daily_notes = {
-          folder = "Journal/Dailies",
-          date_format = "%Y-%m-%d",
+      require("mkdnflow").setup {
+        modules = {
+          bib = false,
+          maps = false,
+          -- TODO maybe change to this from vim-table-mode
+          tables = false,
         },
-
-        completion = {
-          nvim_cmp = true,
-          new_notes_location = "current_dir",
-          prepend_note_id = true,
+        perspective = {
+          priority = "root",
+          root_tell = "Scratch.md"
         },
+        links = {
+          style = "wiki",
+          conceal = true,
+          transform_implicit = function(input)
+            -- If path is http(s):// or file:
+            if input:find(":") then
+              return input
+            end
 
-        disable_frontmatter = true,
-
-        follow_url_func = function(url)
-          vim.fn.jobstart({ "xdg-open", url })
-        end,
-
-        -- We're gonna create the mapping ourself
-        mappings = {},
-
-        note_id_func = function(title)
-          return title
-        end
+            return "**/"..input..".md"
+          end,
+        },
+        create_dirs = false,
       }
 
-      vim.keymap.set("n", "gf", "<cmd>ObsidianFollowLink<cr>")
+      vim.keymap.set("n", "gf", "<cmd>MkdnEnter<cr>")
     '';
   }
 

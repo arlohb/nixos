@@ -93,8 +93,6 @@ require("which-key").register({
                 end,
                 "Open Vault"
             },
-            o = { "<cmd>ObsidianOpen<cr>", "Open in Obsidian" },
-            t = { "<cmd>Toc<cr>", "Table of Contents" },
 
             c = { "gg/incomplete<cr>Daunchecked<esc>", "Complete Note" },
             C = { "gg/unchecked<cr>2x", "Check Note" },

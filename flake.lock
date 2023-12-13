@@ -97,22 +97,6 @@
         "type": "github"
       }
     },
-    "obsidian-nvim": {
-      "flake": false,
-      "locked": {
-        "lastModified": 1702327492,
-        "narHash": "sha256-UeGqqt4jqlabmQvQbjpq4mwcbBn0n/jG6KJbtRHCdzA=",
-        "owner": "epwalsh",
-        "repo": "obsidian.nvim",
-        "rev": "6ddc2d4dbe044b8e114c52633c04391077f1f734",
-        "type": "github"
-      },
-      "original": {
-        "owner": "epwalsh",
-        "repo": "obsidian.nvim",
-        "type": "github"
-      }
-    },
     "porsmo": {
       "flake": false,
       "locked": {
@@ -138,7 +122,6 @@
         "impermanence": "impermanence",
         "nixpkgs": "nixpkgs",
         "nur": "nur",
-        "obsidian-nvim": "obsidian-nvim",
         "porsmo": "porsmo",
         "vim-nand2tetris-syntax": "vim-nand2tetris-syntax"
       }

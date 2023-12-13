@@ -14,8 +14,6 @@
     impermanence.url = "github:nix-community/impermanence";
 
     # A nvim plugin not (yet) in nixpkgs
-    obsidian-nvim.url = "github:epwalsh/obsidian.nvim";
-    obsidian-nvim.flake = false;
     drop-nvim.url = "github:folke/drop.nvim";
     drop-nvim.flake = false;
     vim-nand2tetris-syntax.url = "github:sevko/vim-nand2tetris-syntax";
