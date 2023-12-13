@@ -25,4 +25,10 @@
     ".config/Insomnia"
     ".local/share/containers"
   ];
+
+  # TODO when obsidian updates electron
+  # https://github.com/NixOS/nixpkgs/issues/273611
+  nixpkgs.config.permittedInsecurePackages = [
+    "electron-25.9.0"
+  ];
 }
