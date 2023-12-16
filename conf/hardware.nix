@@ -68,6 +68,8 @@
       "/var/db/sudo"
     ] ++ (if hostname == "arlo-laptop2" then [
       "/var/lib/bluetooth"
+    ] else if hostname == "arlo-nix" then [
+      "/var/lib/bluetooth"
     ] else [ ]);
     files = [
       # Used by systemd
