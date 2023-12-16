@@ -45,6 +45,8 @@
       
       # Bluetooth gui
       blueberry
+    ] else if hostname == "arlo-nix" then with pkgs; [
+      blueberry
     ] else [ ];
 
   # State
