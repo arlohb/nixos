@@ -166,6 +166,8 @@ require("which-key").register({
             },
         },
 
+        [";"] = { require("notify").dismiss, "Dismiss notifications" },
+
     },
     -- Moving between windows
     ["<C-h>"] = { "<C-w>h", "Go Left" },
