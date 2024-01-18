@@ -1,4 +1,5 @@
 {
+  description = "An empty flake with a devShell and direnv";
   inputs = {
     nixpkgs.url = "nixpkgs/nixos-unstable";
     flake-utils.url = "github:numtide/flake-utils";

@@ -114,6 +114,6 @@
         ];
       };
 
-      templates = import ./templates/templates.nix;
+      templates = import ./templates/templates.nix nixpkgs.lib;
     };
 }

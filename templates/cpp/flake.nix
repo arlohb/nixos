@@ -1,4 +1,5 @@
 {
+  description = "A c++ project using CMake, clang, ccls, and the fmt library";
   inputs = {
     nixpkgs.url = "nixpkgs/nixos-unstable";
     flake-utils.url = "github:numtide/flake-utils";

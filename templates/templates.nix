@@ -1,26 +1,26 @@
-{
-  empty = {
-    path = ./empty;
-    description = "An empty flake with a devShell and direnv";
-  };
-  simple-c = {
-    path = ./simple-c;
-    description = "A sipmle c project with gcc and make";
-  };
-  ansi-c = {
-    path = ./ansi-c;
-    description = "A sipmle ansi c project with gcc and make";
-  };
-  cpp = {
-    path = ./cpp;
-    description = "A c++ project using CMake, clang, ccls, and the fmt library";
-  };
-  pio = {
-    path = ./pio;
-    description = "A platformio project using C++ 20, ccls, and the fmt library";
-  };
-  rust = {
-    path = ./rust;
-    description = "A simple rust project";
-  };
-}
+lib:
+let
+
+  # Get the folders inside a directory
+  folders_in_dir = dir:
+    lib.attrsets.mapAttrsToList
+      (path: type: path)
+      (
+        lib.attrsets.filterAttrs
+          (path: type: type == "directory")
+          (builtins.readDir dir)
+      );
+
+in builtins.listToAttrs (
+  map
+    (name:
+      {
+        inherit name;
+        value = {
+          path = ./${name};
+          description = (import ./${name}/flake.nix).description;
+        };
+      }
+    )
+    (folders_in_dir ./.)
+)

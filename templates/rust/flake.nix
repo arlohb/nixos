@@ -1,4 +1,5 @@
 {
+  description = "A simple rust project";
   inputs = {
     nixpkgs.url = "nixpkgs/nixos-unstable";
     flake-utils.url = "github:numtide/flake-utils";

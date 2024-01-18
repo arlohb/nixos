@@ -1,4 +1,5 @@
 {
+  description = "A simple c project with gcc and make";
   inputs = {
     nixpkgs.url = "nixpkgs/nixos-unstable";
     flake-utils.url = "github:numtide/flake-utils";
