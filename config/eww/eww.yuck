@@ -12,9 +12,9 @@
 
 (defpoll
   VOLUME
-  :interval "1s"
+  :interval "100ms"
   :initial 0
-  "pamixer --get-volume")
+  "~/.config/hypr/volume.fish get")
 
 (defpoll
   HOURS
@@ -231,7 +231,7 @@
    :spacing 0
    (label :text "")
    (scale
-    :onchange "pamixer --set-volume {}"
+    :onchange "~/.config/hypr/volume.fish set {} 5"
     :orientation orientation
     :value VOLUME
     :min 0

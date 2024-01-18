@@ -2,7 +2,6 @@
 
 {
   pkgs = with pkgs; [
-    pamixer
     pavucontrol
   ];
 
