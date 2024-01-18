@@ -29,7 +29,7 @@
     porsmo.flake = false;
   };
 
-  outputs = { self, nixpkgs, nur, home-manager, impermanence, ... }@inputs:
+  outputs = { self, nixpkgs, home-manager, impermanence, ... }@inputs:
     let
       system = "x86_64-linux";
 
@@ -40,19 +40,7 @@
 
       utils = import ./conf/utils.nix;
 
-      # A module that loads nur
-      nurModule = {
-        nixpkgs.config.packageOverrides = pkgs: {
-          nur = import nur {
-            inherit pkgs;
-            nurpkgs = pkgs;
-          };
-        };
-      };
-
       fullModules = hostname: [
-        nurModule
-
         impermanence.nixosModules.impermanence
         home-manager.nixosModules.home-manager
 
@@ -91,7 +79,6 @@
 
         modules = [
           "${nixpkgs}/nixos/modules/installer/cd-dvd/installation-cd-graphical-gnome.nix"
-          nurModule
         ] ++ utils.loadBetterModules { inherit system inputs; hostname = "nix-live"; } [ ./conf/core.nix ];
       };
 

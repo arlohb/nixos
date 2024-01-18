@@ -1,4 +1,4 @@
-{ system, pkgs, ... }:
+{ system, pkgs, inputs, ... }:
 
 {
   # Core nix settings
@@ -27,4 +27,12 @@
     neofetch
     btop
   ];
+
+  # NUR
+  nixpkgs.config.packageOverrides = pkgs: {
+    nur = import inputs.nur {
+      inherit pkgs;
+      nurpkgs = pkgs;
+    };
+  };
 }
