@@ -39,7 +39,7 @@ with pkgs.vimPlugins; [
   }
 
   {
-    plugin = custom.image-nvim;
+    plugin = image-nvim;
     config = ''
       require("image").setup {
         backend = "kitty",

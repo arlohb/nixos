@@ -9,10 +9,6 @@ let
       name = "vim-nand2tetris-syntax";
       src = inputs.vim-nand2tetris-syntax;
     };
-    image-nvim = pkgs.vimUtils.buildVimPlugin {
-      name = "image.nvim";
-      src = inputs.image-nvim;
-    };
   };
 in
 {
