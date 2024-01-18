@@ -1,17 +1,4 @@
-lib:
-let
-
-  # Get the folders inside a directory
-  folders_in_dir = dir:
-    lib.attrsets.mapAttrsToList
-      (path: type: path)
-      (
-        lib.attrsets.filterAttrs
-          (path: type: type == "directory")
-          (builtins.readDir dir)
-      );
-
-in builtins.listToAttrs (
+lib: builtins.listToAttrs (
   map
     (name:
       {
@@ -22,5 +9,5 @@ in builtins.listToAttrs (
         };
       }
     )
-    (folders_in_dir ./.)
+    ((import ../utils.nix lib).folders_in_dir ./.)
 )

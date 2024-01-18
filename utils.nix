@@ -1,4 +1,4 @@
-rec {
+lib: rec {
   # Lots of very common options are very long,
   # So I've remapped them to shorter names:
   #   - environment.systemPackages                           -> pkgs
@@ -55,4 +55,14 @@ rec {
     { pkgs, config, lib, ... }@moduleInputs:
     betterModule specialInputs (import path) moduleInputs
   );
+
+  # Get the folders inside a directory
+  folders_in_dir = dir:
+    lib.attrsets.mapAttrsToList
+      (path: type: path)
+      (
+        lib.attrsets.filterAttrs
+          (path: type: type == "directory")
+          (builtins.readDir dir)
+      );
 }
