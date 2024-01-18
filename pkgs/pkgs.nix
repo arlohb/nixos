@@ -2,6 +2,6 @@
 
 {
   nixpkgs.config.packageOverrides = pkgs: {
-    porsmo = ((import ../pkgs/porsmo.nix) inputs).porsmo;
+    porsmo = (import ../pkgs/porsmo.nix inputs).porsmo;
   };
 }
