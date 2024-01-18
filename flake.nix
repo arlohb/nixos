@@ -46,7 +46,6 @@
 
         {
           home-manager.useGlobalPkgs = true;
-          home-manager.extraSpecialArgs = { inherit inputs; };
         }
       ] ++ (utils.loadBetterModules { inherit hostname system inputs; } [
         ./conf/core.nix
