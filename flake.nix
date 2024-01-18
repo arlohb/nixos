@@ -35,7 +35,7 @@
         config.allowUnfree = true;
       };
 
-      utils = import ./conf/utils.nix;
+      utils = import ./utils.nix;
 
       fullModules = hostname: [
         impermanence.nixosModules.impermanence
