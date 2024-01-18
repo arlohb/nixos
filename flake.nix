@@ -44,28 +44,15 @@
         {
           home-manager.useGlobalPkgs = true;
         }
-      ] ++ (utils.loadBetterModules { inherit hostname system inputs; } [
-        ./conf/core.nix
-        ./conf/hardware.nix
-        ./pkgs/pkgs.nix
-        ./conf/user.nix
-        ./conf/audio.nix
-        ./conf/printing.nix
-        ./conf/shell.nix
-        ./conf/terminal.nix
-        ./conf/git.nix
-        ./conf/neovim/neovim.nix
-        ./conf/wm/core.nix
-        ./conf/wm/cursor.nix
-        ./conf/wm/notifications.nix
-        ./conf/wm/polkit.nix
-        ./conf/wm/login.nix
-        ./conf/wm/hypr/hypr.nix
-        ./conf/programs.nix
-        ./conf/nextcloud.nix
-        ./conf/gaming.nix
-        ./conf/3d.nix
-      ]);
+      ] ++ (utils.loadBetterModules { inherit hostname system inputs; } (
+        (utils.file_paths_in_dir ./conf)
+        ++ (utils.file_paths_in_dir ./conf/wm)
+        ++ [
+          ./pkgs/pkgs.nix
+          ./conf/wm/hypr/hypr.nix
+          ./conf/neovim/neovim.nix
+        ]
+      ));
     in
     {
       # Build this with:
