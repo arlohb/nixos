@@ -22,9 +22,8 @@
     image-nvim.flake = false;
 
     # A simple timer.
-    # I have to build this myself.
-    # For now this is an input here,
-    # but ideally this would be its own flake.
+    # I don't use this, and it's now in nixpkgs
+    # But I'll leave it so I know how to add my own pkgs
     porsmo.url = "github:ColorCookie-dev/porsmo?rev=37528c9c4421c5be853a0509812c23ec60c3eca1";
     porsmo.flake = false;
   };
