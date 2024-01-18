@@ -114,31 +114,6 @@
         ];
       };
 
-      templates = {
-        empty = {
-          path = ./templates/empty;
-          description = "An empty flake with a devShell and direnv";
-        };
-        simple-c = {
-          path = ./templates/simple-c;
-          description = "A sipmle c project with gcc and make";
-        };
-        ansi-c = {
-          path = ./templates/ansi-c;
-          description = "A sipmle ansi c project with gcc and make";
-        };
-        cpp = {
-          path = ./templates/cpp;
-          description = "A c++ project using CMake, clang, ccls, and the fmt library";
-        };
-        pio = {
-          path = ./templates/pio;
-          description = "A platformio project using C++ 20, ccls, and the fmt library";
-        };
-        rust = {
-          path = ./templates/rust;
-          description = "A simple rust project";
-        };
-      };
+      templates = import ./templates/templates.nix;
     };
 }
