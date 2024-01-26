@@ -1,4 +1,4 @@
-{ pkgs, hostname, ... }:
+{ pkgs, hostname, lib, ... }:
 
 {
   pkgs = with pkgs; [
@@ -14,9 +14,23 @@
   # Enable Hyprland
   programs.hyprland.enable = true;
 
+  hm.wayland.windowManager.hyprland = {
+    enable = true;
+    extraConfig = lib.concatStrings
+      (map (path: (builtins.readFile path) + "\n") [
+        ./animations.conf
+        ./general.conf
+        ./hyprland.conf
+        ./input.conf
+        ./keys.conf
+        ./pretty.conf
+        ./rules.conf
+      ]);
+  };
+
   # Link over all the config files
   hm.home.file."/home/arlo/.config/hypr" = {
-    source = ./.;
+    source = ./scripts;
     recursive = true;
   };
 
