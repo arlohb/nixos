@@ -49,6 +49,7 @@ in
         ./rust.lua
         ./svelte.lua
         ./c.lua
+        ./hs.lua
       ]);
 
     extraLuaPackages = lpkgs: [
