@@ -50,6 +50,7 @@ in
         ./svelte.lua
         ./c.lua
         ./hs.lua
+        ./java.lua
       ]);
 
     extraLuaPackages = lpkgs: [
