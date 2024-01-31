@@ -1,9 +1,6 @@
 { pkgs, hostname, ... }:
 
 {
-  # Enable X
-  # services.xserver.enable = true;
-
   # Display manager
   services.greetd = {
     enable = true;
