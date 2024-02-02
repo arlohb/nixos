@@ -11,7 +11,7 @@ sleep 0.1
 
 if [ "$(cat /etc/hostname)" == "arlo-nix" ]; then
     # swww img -o DP-3 /etc/nixos/backgrounds/disco_elysium/cryptid.jpg
-    swww img -o HDMI-A-1 /etc/nixos/backgrounds/cp2077/photomode_16012024_150431.png
+    swww img -o HDMI-A-1 /etc/nixos/backgrounds/cp2077/DogTownFog.png
     # swww img -o DP-2 /etc/nixos/backgrounds/disco_elysium/whirling_in_rags.jpg
 else
     swww img -o eDP-1 /etc/nixos/backgrounds/rainbow-l.jpg
