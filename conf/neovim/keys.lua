@@ -1,3 +1,17 @@
+function open_file(path)
+    -- Sub the ' ' for '\ '
+    path = path:gsub(" ", "\\ ")
+
+    -- Create the cmd
+    local cmd = "<cmd>e " .. path .. "<cr>"
+
+    -- Run the cmd
+    vim.api.nvim_feedkeys(
+        vim.api.nvim_replace_termcodes(cmd, true, true, true),
+        "n", true
+    )
+end
+
 -- Documentation is here:
 -- https://github.com/folke/which-key.nvim
 require("which-key").register({
@@ -103,20 +117,14 @@ require("which-key").register({
                     local path = vim.fn.expand("%")
                     -- Find the position of the last slash
                     local last_slash = path:find("/[^/]*$")
+                    -- Get the pos of first space in file name
+                    local first_space = last_slash + path:sub(last_slash + 1):find(' ')
                     -- Get the lecture number and add 1
-                    local lecture_number = tonumber(path:sub(last_slash + 6, last_slash + 7)) + 1
+                    local lecture_number = tonumber(path:sub(first_space + 1, first_space + 2)) + 1
                     -- Add the new lecture number to the path
-                    path = path:sub(0, last_slash + 5) .. string.format("%02d", lecture_number)
-                    -- Sub the ' ' for '\ '
-                    path = path:gsub(" ", "\\ ")
-                    -- Create the cmd
-                    local cmd = "<cmd>e " .. path .. "*<cr>"
+                    path = path:sub(0, first_space) .. string.format("%02d", lecture_number)
 
-                    -- Run the cmd
-                    vim.api.nvim_feedkeys(
-                        vim.api.nvim_replace_termcodes(cmd, true, true, true),
-                        "n", true
-                    )
+                    open_file(path .. "*")
                 end,
                 "Next Lecture"
             },
@@ -126,20 +134,14 @@ require("which-key").register({
                     local path = vim.fn.expand("%")
                     -- Find the position of the last slash
                     local last_slash = path:find("/[^/]*$")
-                    -- Get the lecture number and minus 1
-                    local lecture_number = tonumber(path:sub(last_slash + 6, last_slash + 7)) - 1
+                    -- Get the pos of first space in file name
+                    local first_space = last_slash + path:sub(last_slash + 1):find(' ')
+                    -- Get the lecture number and add 1
+                    local lecture_number = tonumber(path:sub(first_space + 1, first_space + 2)) - 1
                     -- Add the new lecture number to the path
-                    path = path:sub(0, last_slash + 5) .. string.format("%02d", lecture_number)
-                    -- Sub the ' ' for '\ '
-                    path = path:gsub(" ", "\\ ")
-                    -- Create the cmd
-                    local cmd = "<cmd>e " .. path .. "*<cr>"
+                    path = path:sub(0, first_space) .. string.format("%02d", lecture_number)
 
-                    -- Run the cmd
-                    vim.api.nvim_feedkeys(
-                        vim.api.nvim_replace_termcodes(cmd, true, true, true),
-                        "n", true
-                    )
+                    open_file(path .. "*")
                 end,
                 "Previous Lecture"
             },
@@ -151,16 +153,8 @@ require("which-key").register({
                     local last_slash = path:find("/[^/]*$")
                     -- Add the lecture number "00" to the path
                     path = path:sub(0, last_slash + 5) .. "00.md"
-                    -- Sub the ' ' for '\ '
-                    path = path:gsub(" ", "\\ ")
-                    -- Create the cmd
-                    local cmd = "<cmd>e " .. path .. "<cr>"
 
-                    -- Run the cmd
-                    vim.api.nvim_feedkeys(
-                        vim.api.nvim_replace_termcodes(cmd, true, true, true),
-                        "n", true
-                    )
+                    open_file(path)
                 end,
                 "This Module"
             },
