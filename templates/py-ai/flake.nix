@@ -16,8 +16,8 @@
               numpy
               pandas
               scikit-learn
+              jupyter
             ]))
-            jupyter
           ];
         };
       }
