@@ -14,6 +14,7 @@
     obsidian
     porsmo
     insomnia
+    spotify
 
     gnome.gnome-calendar
     gnome.gnome-clocks
