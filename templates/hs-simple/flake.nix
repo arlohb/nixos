@@ -1,5 +1,5 @@
 {
-  description = "A python flake providing various libs useful for AI, and jupyter";
+  description = "An empty flake with a devShell and direnv";
   inputs = {
     nixpkgs.url = "nixpkgs/nixos-unstable";
     flake-utils.url = "github:numtide/flake-utils";
@@ -11,13 +11,8 @@
       in {
         devShells.default = pkgs.mkShell {
           buildInputs = with pkgs; [
-            (python3.withPackages (ps: with ps; [
-              matplotlib
-              numpy
-              pandas
-              scikit-learn
-              jupyter
-            ]))
+            ghc
+            haskell-language-server
           ];
         };
       }
