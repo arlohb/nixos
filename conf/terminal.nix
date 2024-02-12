@@ -10,6 +10,11 @@
     font.name = "FiraCode Nerd Font SemBd";
     font.size = 10.8;
 
+    extraConfig = ''
+      italic_font   VictorMono NF SemiBold Italic
+      bold_font     FiraCode Nerd Font Bold
+    '';
+
     # Inbuilt to kitty
     theme = "Dracula";
 
@@ -26,7 +31,10 @@
 
   # The best font ever!
   fonts.packages = with pkgs; [
-    (nerdfonts.override { fonts = [ "FiraCode" ]; })
+    (nerdfonts.override { fonts = [
+      "FiraCode"
+      "VictorMono"
+    ]; })
   ];
 
   userPersist.directories = [
