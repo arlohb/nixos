@@ -12,6 +12,10 @@ let
       name = "vim-nand2tetris-syntax";
       src = inputs.vim-nand2tetris-syntax;
     };
+    everblush-nvim = pkgs.vimUtils.buildVimPlugin {
+      name = "everblush.nvim";
+      src = inputs.everblush-nvim;
+    };
   };
 in
 {

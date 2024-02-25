@@ -1,4 +1,4 @@
-{ pkgs, ... }:
+{ pkgs, custom, ... }:
 with pkgs.vimPlugins; [
   # The theme(s)
   {
@@ -26,6 +26,9 @@ with pkgs.vimPlugins; [
   }
   vim-horizon
   catppuccin-nvim
+  tokyonight-nvim
+  material-nvim
+  custom.everblush-nvim
 
   # The status line at the bottom
   {

@@ -16,6 +16,22 @@
         "type": "github"
       }
     },
+    "everblush-nvim": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1683809130,
+        "narHash": "sha256-O6Erp+Tzk5TV5gpgVs73cO6v9vgeUVYpunrtf/7Ppic=",
+        "owner": "Everblush",
+        "repo": "nvim",
+        "rev": "9a0e695fdd57b340d3ba2b72406e3ca519029f25",
+        "type": "github"
+      },
+      "original": {
+        "owner": "Everblush",
+        "repo": "nvim",
+        "type": "github"
+      }
+    },
     "home-manager": {
       "inputs": {
         "nixpkgs": [
@@ -101,6 +117,7 @@
     "root": {
       "inputs": {
         "drop-nvim": "drop-nvim",
+        "everblush-nvim": "everblush-nvim",
         "home-manager": "home-manager",
         "impermanence": "impermanence",
         "nixpkgs": "nixpkgs",
