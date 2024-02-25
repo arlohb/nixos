@@ -1,3 +1,6 @@
+# TODO: Maybe switch to nixvim
+# https://github.com/nix-community/nixvim
+
 { inputs, pkgs, lib, ... }@moduleInputs:
 let
   custom = {
