@@ -1,5 +1,5 @@
 {
-  description = "Simple script to map libinput stylus touches to wayland events";
+  description = "Simple shell script as a flake";
   inputs = {
     nixpkgs.url = "nixpkgs/nixos-unstable";
     flake-utils.url = "github:numtide/flake-utils";
