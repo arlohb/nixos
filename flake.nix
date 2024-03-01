@@ -26,9 +26,12 @@
     # But I'll leave it so I know how to add my own pkgs
     porsmo.url = "github:ColorCookie-dev/porsmo?rev=37528c9c4421c5be853a0509812c23ec60c3eca1";
     porsmo.flake = false;
+
+    fix_pen.url = "path:./pkgs/fix_pen";
+    fix_pen.flake = true;
   };
 
-  outputs = { self, nixpkgs, home-manager, impermanence, ... }@inputs:
+  outputs = { self, nixpkgs, home-manager, impermanence, fix_pen, ... }@inputs:
     let
       system = "x86_64-linux";
 
@@ -45,6 +48,7 @@
 
         {
           home-manager.useGlobalPkgs = true;
+          environment.systemPackages = [ fix_pen.packages.${system}.default ];
         }
       ] ++ (utils.loadBetterModules { inherit hostname system inputs; } (
         (utils.file_paths_in_dir ./conf)
