@@ -32,22 +32,6 @@
         "type": "github"
       }
     },
-    "fix_pen": {
-      "inputs": {
-        "flake-utils": "flake-utils",
-        "nixpkgs": "nixpkgs"
-      },
-      "locked": {
-        "lastModified": 1,
-        "narHash": "sha256-1U6r4Vlp8RTUUctfB/KbYmzDwFNYrIw2bf2Q+VQ9IUE=",
-        "path": "./pkgs/fix_pen",
-        "type": "path"
-      },
-      "original": {
-        "path": "./pkgs/fix_pen",
-        "type": "path"
-      }
-    },
     "flake-utils": {
       "inputs": {
         "systems": "systems"
@@ -103,21 +87,6 @@
     },
     "nixpkgs": {
       "locked": {
-        "lastModified": 1709150264,
-        "narHash": "sha256-HofykKuisObPUfj0E9CJVfaMhawXkYx3G8UIFR/XQ38=",
-        "owner": "NixOS",
-        "repo": "nixpkgs",
-        "rev": "9099616b93301d5cf84274b184a3a5ec69e94e08",
-        "type": "github"
-      },
-      "original": {
-        "id": "nixpkgs",
-        "ref": "nixos-unstable",
-        "type": "indirect"
-      }
-    },
-    "nixpkgs_2": {
-      "locked": {
         "lastModified": 1708655239,
         "narHash": "sha256-ZrP/yACUvDB+zbqYJsln4iwotbH6CTZiTkANJ0AgDv4=",
         "owner": "NixOS",
@@ -167,13 +136,34 @@
       "inputs": {
         "drop-nvim": "drop-nvim",
         "everblush-nvim": "everblush-nvim",
-        "fix_pen": "fix_pen",
         "home-manager": "home-manager",
         "impermanence": "impermanence",
-        "nixpkgs": "nixpkgs_2",
+        "nixpkgs": "nixpkgs",
         "nur": "nur",
         "porsmo": "porsmo",
+        "scripts": "scripts",
         "vim-nand2tetris-syntax": "vim-nand2tetris-syntax"
+      }
+    },
+    "scripts": {
+      "inputs": {
+        "flake-utils": "flake-utils",
+        "nixpkgs": [
+          "nixpkgs"
+        ]
+      },
+      "locked": {
+        "lastModified": 1709661615,
+        "narHash": "sha256-beeOJySEHoIZrY9T3JDguuH6qmUztmNNiuoPq5Q58bY=",
+        "owner": "arlohb",
+        "repo": "scripts",
+        "rev": "ac3992bb2a6fdd60e1c0b9155f93476671a9f63c",
+        "type": "github"
+      },
+      "original": {
+        "owner": "arlohb",
+        "repo": "scripts",
+        "type": "github"
       }
     },
     "systems": {

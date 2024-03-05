@@ -27,11 +27,11 @@
     porsmo.url = "github:ColorCookie-dev/porsmo?rev=37528c9c4421c5be853a0509812c23ec60c3eca1";
     porsmo.flake = false;
 
-    fix_pen.url = "path:./pkgs/fix_pen";
-    fix_pen.flake = true;
+    scripts.url = "github:arlohb/scripts";
+    scripts.inputs.nixpkgs.follows = "nixpkgs";
   };
 
-  outputs = { self, nixpkgs, home-manager, impermanence, fix_pen, ... }@inputs:
+  outputs = { self, nixpkgs, home-manager, impermanence, scripts, ... }@inputs:
     let
       system = "x86_64-linux";
 
@@ -48,7 +48,7 @@
 
         {
           home-manager.useGlobalPkgs = true;
-          environment.systemPackages = [ fix_pen.packages.${system}.default ];
+          environment.systemPackages = pkgs.lib.attrValues scripts.packages.${system};
         }
       ] ++ (utils.loadBetterModules { inherit hostname system inputs; } (
         (utils.file_paths_in_dir ./conf)
