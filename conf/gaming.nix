@@ -47,6 +47,12 @@
 
     # Free Magic The Gathering
     cockatrice
+
+    (retroarch.override {
+      cores = with libretro; [
+        citra
+      ];
+    })
   ];
 
   # https://nixos.wiki/wiki/Lutris
@@ -59,6 +65,7 @@
       ".local/share/lutris"
       ".config/lutris"
       ".local/share/Cockatrice"
+      ".config/retroarch"
     ];
   };
 }
