@@ -26,7 +26,10 @@
   services.acpid = if hostname == "arlo-laptop2" then {
     enable = true;
 
+    # TODO: add handler to turn off anims when unplugged
+
     handlers.lock = {
+      # use acpi_listen to find event
       event = "button/lid.*.close";
       action = ''
         ${pkgs.su}/bin/su arlo -c ' \
