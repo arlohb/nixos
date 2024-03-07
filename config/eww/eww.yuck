@@ -187,12 +187,12 @@
 (defpoll
   NS_EXIT_STR
   :interval "1s"
-   "fish -c \"systemctl show nextcloud-sync.service --property=ExecMainExitTimestamp | awk -F= '{print \\$2}'\"")
+   "fish -c \"systemctl show --user nextcloud-sync.service --property=ExecMainExitTimestamp | awk -F= '{print \\$2}'\"")
 
 (defpoll
   NS_EXIT
   :interval "1s"
-   "fish -c \"date -d (systemctl show nextcloud-sync.service --property=ExecMainExitTimestamp | awk -F= '{print \\$2}') +%s\"")
+   "fish -c \"date -d (systemctl show --user nextcloud-sync.service --property=ExecMainExitTimestamp | awk -F= '{print \\$2}') +%s\"")
 
 (defwidget ns-sync [orientation]
   (box

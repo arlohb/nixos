@@ -12,28 +12,26 @@ in
     "Nextcloud"
   ];
 
-  # TODO: convert to a hm user timer
-  # then enabled / disabled / time changes
-  # can be done without sudo
-  #
-  # nextcloud-sync.service could also be a user service
-  # currently its running under arlo, but still managed by root
-  systemd.timers."nextcloud-sync" = {
-    wantedBy = [ "timers.target" ];
-    timerConfig = {
+  hm.systemd.user.timers."nextcloud-sync" = {
+    Install.WantedBy = [ "timers.target" ];
+    Timer = {
       OnBootSec = "2m";
       OnUnitActiveSec = "2m";
       Unit = "nextcloud-sync.service";
     };
   };
 
-  systemd.services."nextcloud-sync" = {
+  hm.systemd.user.services."nextcloud-sync" = {
+    Unit.Description = "Sync ~/Nextcloud to Nextcloud server";
+
     # This is a real issue, that's been closed without being fixed, so may never be fixed.
     # It *may* be related to ~/Nextcloud being a bind mount or something, but who knows.
     # https://github.com/nextcloud/desktop/issues/3840
     # For now this 'fix' works
     # https://github.com/nextcloud/desktop/issues/3840#issuecomment-1356843834
-    script = ''
+    Service.ExecStart = pkgs.writeShellScript "nextcloud-sync" ''
+      #!/usr/bin/env bash
+
       ${pkgs.sqlite}/bin/sqlite3 ~/Nextcloud/.*.db "PRAGMA journal_mode = delete;"
 
       ${pkgs.nextcloud-client}/bin/nextcloudcmd \
@@ -43,9 +41,5 @@ in
         ''} \
         ~/Nextcloud ${secrets.nextcloud.server}
     '';
-    serviceConfig = {
-      Type = "oneshot";
-      User = "arlo";
-    };
   };
 }
