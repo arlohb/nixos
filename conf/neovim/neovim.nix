@@ -94,6 +94,9 @@ in
                 enable = true,
                 show_on_dirs = true,
               },
+              renderer = {
+                group_empty = true,
+              },
             }
           '';
         }
