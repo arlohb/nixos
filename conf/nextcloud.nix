@@ -12,6 +12,12 @@ in
     "Nextcloud"
   ];
 
+  # TODO: convert to a hm user timer
+  # then enabled / disabled / time changes
+  # can be done without sudo
+  #
+  # nextcloud-sync.service could also be a user service
+  # currently its running under arlo, but still managed by root
   systemd.timers."nextcloud-sync" = {
     wantedBy = [ "timers.target" ];
     timerConfig = {

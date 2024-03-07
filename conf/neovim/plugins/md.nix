@@ -1,6 +1,6 @@
 { pkgs, custom, ... }:
 with pkgs.vimPlugins; [
-  # Maybe in the future
+  # TODO: Maybe in the future
   # - https://github.com/jakewvincent/mkdnflow.nvim
   # - https://github.com/iamcco/markdown-preview.nvim
   # - https://alpha2phi.medium.com/neovim-for-beginners-note-taking-writing-diagramming-and-presentation-72d301aae28
