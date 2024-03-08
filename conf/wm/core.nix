@@ -20,7 +20,7 @@
     # For setting backgrounds
     swww
     # The top bar and more
-    eww-wayland
+    eww
     # Control media with media keys
     playerctl
     # Image viewer
