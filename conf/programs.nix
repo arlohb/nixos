@@ -18,6 +18,8 @@
 
     gnome.gnome-calendar
     gnome.gnome-clocks
+
+    android-studio
   ];
 
   userPersist.directories = [
@@ -25,5 +27,6 @@
     ".mozilla"
     ".config/Insomnia"
     ".local/share/containers"
+    ".local/share/Android"
   ];
 }
