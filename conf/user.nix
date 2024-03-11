@@ -44,6 +44,8 @@
     };
   };
 
+  hm.xdg.enable = true;
+
   # Persist user files
   userPersist.directories = [
     # User files

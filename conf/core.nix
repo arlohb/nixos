@@ -5,6 +5,7 @@
   system.stateVersion = "23.05";
   nixpkgs.hostPlatform = system;
   nix.settings.experimental-features = [ "nix-command" "flakes" ];
+  nix.settings.use-xdg-base-directories = true;
   # Checks for duplicate files in the store
   nix.optimise.automatic = true;
   nix.settings.auto-optimise-store = true;
