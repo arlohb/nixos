@@ -28,5 +28,8 @@
     ".config/Insomnia"
     ".local/share/containers"
     ".local/share/Android"
+    ".config/Google"
+    # Couldn't change even after trying very hard
+    ".android"
   ];
 }
