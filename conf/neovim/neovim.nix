@@ -58,6 +58,7 @@ in
         ./c.lua
         ./hs.lua
         ./java.lua
+        ./python.lua
       ]);
 
     extraLuaPackages = lpkgs: [
