@@ -1,7 +1,7 @@
 #!/usr/bin/env fish
 
 if test (count $argv) = 0
-    set initial $(hyprctl getoption animations:enabled | awk 'NR==2{print $2}')
+    set initial $(hyprctl getoption animations:enabled | awk 'NR==1{print $2}')
     set v $(math 1 - $initial)
 else
     set v $argv
