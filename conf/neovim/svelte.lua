@@ -13,6 +13,13 @@ require("lspconfig").tsserver.setup {
     },
 }
 
+local capabilities = vim.lsp.protocol.make_client_capabilities()
+capabilities.textDocument.completion.completionItem.snippetSupport = true
+
+require("lspconfig").html.setup {
+  capabilities = capabilities,
+}
+
 require("lspconfig").svelte.setup {
     on_attach = function(_, bufnr)
         vim.api.nvim_create_autocmd("BufWritePre", {
