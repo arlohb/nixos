@@ -12,11 +12,13 @@ in
     "Nextcloud"
   ];
 
+  # Couldn't change timer to above the time here with change_timer
+  # So I'll set this to the max and reduce with exec-once in hyprland
   hm.systemd.user.timers."nextcloud-sync" = {
     Install.WantedBy = [ "timers.target" ];
     Timer = {
-      OnBootSec = "2m";
-      OnUnitActiveSec = "2m";
+      OnBootSec = "10m";
+      OnUnitActiveSec = "10m";
       Unit = "nextcloud-sync.service";
     };
   };

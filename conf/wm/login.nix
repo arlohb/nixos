@@ -26,7 +26,7 @@
   services.acpid = if hostname == "arlo-laptop2" then {
     enable = true;
 
-    # TODO: add handler to turn off anims when unplugged
+    # TODO: run performance.fish when unplugged and plugged in
 
     handlers.lock = {
       # use acpi_listen to find event
