@@ -26,7 +26,15 @@
   services.acpid = if hostname == "arlo-laptop2" then {
     enable = true;
 
-    # TODO: run performance.fish when unplugged and plugged in
+    acEventCommands = ''
+      ${pkgs.su}/bin/su arlo -c ' \
+        bash -c " \
+          XDG_RUNTIME_DIR=/run/user/1000; \
+          WAYLAND_DISPLAY=wayland-1; \
+          ${pkgs.fish}/bin/fish ~/.config/hypr/performance.fish \
+        " \
+      '
+    '';
 
     handlers.lock = {
       # use acpi_listen to find event
