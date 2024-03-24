@@ -1,6 +1,13 @@
 { pkgs, hostname, ... }:
 
 {
+  # TODO: Setup something like howdy for face recognition
+  # Howdy: https://github.com/boltgolt/howdy
+  # - NixOS decided not to merge,
+  #   because of a (faulty) PAM module
+  # - But other people have packaged and stuff
+  #   here: https://github.com/NixOS/nixpkgs/issues/76928
+
   # Display manager
   services.greetd = {
     enable = true;
