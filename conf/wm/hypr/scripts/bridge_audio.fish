@@ -3,21 +3,21 @@
 # If no args passed in
 if test (count $argv) = 0
     # Default to headphones
-    set out "bluez_output.F4_4E_FD_00_15_C9.1:playback_"
+    set out "NC75 Pro:playback_"
 else
     switch $argv[1]
         case headphones
-            set out "bluez_output.F4_4E_FD_00_15_C9.1:playback_"
+            set out "NC75 Pro:playback_"
         case speaker
-            set out "bluez_output.08_EB_ED_76_44_32.1:playback_"
+            set out "SoundCore 2:playback_"
         case "*"
             set out $argv[1]
     end
 end
 
-pw-link alsa_input.pci-0000_0b_00.3.analog-stereo:capture_FL \
+pw-link "ALC887-VD Analog:capture_FL" \
     "$out"FL
 
-pw-link alsa_input.pci-0000_0b_00.3.analog-stereo:capture_FR \
+pw-link "ALC887-VD Analog:capture_FR" \
     "$out"FR
 
