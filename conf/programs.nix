@@ -20,6 +20,7 @@
     gnome.gnome-clocks
 
     android-studio
+    eclipses.eclipse-java
   ];
 
   userPersist.directories = [
@@ -32,5 +33,6 @@
     ".config/Google"
     # Couldn't change even after trying very hard
     ".android"
+    ".config/eclipse-workspace"
   ];
 }
