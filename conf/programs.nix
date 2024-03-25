@@ -6,6 +6,8 @@
   # that podman doesn't require a daemon but docker does.
   virtualisation.podman.enable = true;
 
+  # TODO add some synergy like software
+
   pkgs = with pkgs; [
     distrobox
 
