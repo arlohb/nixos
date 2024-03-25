@@ -8,7 +8,7 @@ with pkgs.vimPlugins; [
       -- This unfortunately tried to modify the read-only filesystem,
       -- and can't be configured not to
       vim.g.sonokai_better_performance = 0
-      -- vim.cmd("colorscheme sonokai")
+      vim.cmd("colorscheme sonokai")
     '';
   }
   kanagawa-nvim
@@ -21,10 +21,9 @@ with pkgs.vimPlugins; [
     plugin = dracula-nvim;
     config = ''
       require("dracula").setup {}
-      vim.cmd("colorscheme dracula")
+      -- vim.cmd("colorscheme dracula")
     '';
   }
-  vim-horizon
   catppuccin-nvim
   tokyonight-nvim
   material-nvim
@@ -74,7 +73,8 @@ with pkgs.vimPlugins; [
     config = ''
       local hooks = require("ibl.hooks")
       hooks.register(hooks.type.HIGHLIGHT_SETUP, function()
-        -- For now this uses dracula colours until I change my nvim theme
+        -- This is using dracula colours,
+        -- Which still look fine with other themes
         vim.api.nvim_set_hl(0, "RainbowRed", { fg = "#FF5555" })
         vim.api.nvim_set_hl(0, "RainbowYellow", { fg = "#F1FA8C" })
         vim.api.nvim_set_hl(0, "RainbowBlue", { fg = "#8BE9FD" })
