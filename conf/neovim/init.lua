@@ -30,6 +30,7 @@ opt.clipboard = "unnamedplus"
 -- Context
 opt.number = true -- bool: Show line numbers
 opt.relativenumber = true -- bool: Show relative line numbers
+-- TODO experiment with this number
 opt.scrolloff = 4 -- int:  Min num lines of context
 opt.signcolumn = "yes" -- str:  Show the sign column
 
@@ -54,6 +55,7 @@ opt.softtabstop = 4 -- num:  Number of spaces tabs count for in insert mode
 opt.tabstop = 4 -- num:  Number of spaces tabs count for
 
 -- Line at 80 char
+-- TODO turn off line wrapping
 opt.colorcolumn = "80"
 
 -- Splits
