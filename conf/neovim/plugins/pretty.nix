@@ -8,7 +8,7 @@ with pkgs.vimPlugins; [
       -- This unfortunately tried to modify the read-only filesystem,
       -- and can't be configured not to
       vim.g.sonokai_better_performance = 0
-      vim.cmd("colorscheme sonokai")
+      -- vim.cmd("colorscheme sonokai")
     '';
   }
   kanagawa-nvim
@@ -24,7 +24,12 @@ with pkgs.vimPlugins; [
       -- vim.cmd("colorscheme dracula")
     '';
   }
-  catppuccin-nvim
+  {
+    plugin = catppuccin-nvim;
+    config = ''
+      vim.cmd("colorscheme catppuccin")
+    '';
+  }
   tokyonight-nvim
   material-nvim
   custom.everblush-nvim
