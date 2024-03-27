@@ -55,8 +55,9 @@ opt.softtabstop = 4 -- num:  Number of spaces tabs count for in insert mode
 opt.tabstop = 4 -- num:  Number of spaces tabs count for
 
 -- Line at 80 char
--- TODO turn off line wrapping
 opt.colorcolumn = "80"
+-- Turn off line wrapping
+vim.wo.wrap = false
 
 -- Splits
 opt.splitright = true -- bool: Place new window to right of current one
