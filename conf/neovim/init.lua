@@ -30,8 +30,7 @@ opt.clipboard = "unnamedplus"
 -- Context
 opt.number = true -- bool: Show line numbers
 opt.relativenumber = true -- bool: Show relative line numbers
--- TODO experiment with this number
-opt.scrolloff = 4 -- int:  Min num lines of context
+opt.scrolloff = 12 -- int:  Min num lines of context
 opt.signcolumn = "yes" -- str:  Show the sign column
 
 -- Filetypes
