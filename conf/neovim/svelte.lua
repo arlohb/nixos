@@ -43,3 +43,7 @@ require("lspconfig").tailwindcss.setup {
     cmd = { "npm", "exec", "tailwindcss-language-server", "--stdio" },
 }
 
+require("lspconfig").cssls.setup {
+  capabilities = capabilities,
+}
+
