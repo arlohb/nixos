@@ -1,14 +1,5 @@
 const mpris = await Service.import("mpris");
 
-mpris.bind("players").as(players => {
-    const player = players[0];
-    console.log(player);
-});
-
-mpris.connect("changed", (mpris, ...args) => {
-    print(mpris.getPlayer()?.cover_path);
-});
-
 const icon = Widget.Icon({
     icon: mpris.bind("players").as(_ => mpris.getPlayer()?.cover_path ?? ""),
     size: 100,
