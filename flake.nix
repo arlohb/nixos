@@ -54,13 +54,18 @@
           environment.systemPackages = pkgs.lib.attrValues scripts.packages.${system};
         }
       ] ++ (utils.loadBetterModules { inherit hostname system inputs; } (
-        (utils.file_paths_in_dir ./conf)
-        ++ (utils.file_paths_in_dir ./conf/wm)
-        ++ [
-          ./pkgs/pkgs.nix
-          ./conf/wm/hypr/hypr.nix
-          ./conf/neovim/neovim.nix
-        ]
+        pkgs.lib.remove
+          # A disabled module
+          ./conf/android-studio.nix
+          (
+            (utils.file_paths_in_dir ./conf)
+            ++ (utils.file_paths_in_dir ./conf/wm)
+            ++ [
+              ./pkgs/pkgs.nix
+              ./conf/wm/hypr/hypr.nix
+              ./conf/neovim/neovim.nix
+            ]
+          )
       ));
     in
     {

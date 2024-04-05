@@ -21,7 +21,6 @@
     gnome.gnome-calendar
     gnome.gnome-clocks
 
-    android-studio
     eclipses.eclipse-java
   ];
 
@@ -30,11 +29,6 @@
     ".mozilla"
     ".config/Insomnia"
     ".local/share/containers"
-    ".local/share/Android"
-    ".local/share/Google"
-    ".config/Google"
-    # Couldn't change even after trying very hard
-    ".android"
     ".config/eclipse-workspace"
   ];
 }
