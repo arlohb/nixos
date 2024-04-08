@@ -47,3 +47,5 @@ require("lspconfig").cssls.setup {
   capabilities = capabilities,
 }
 
+require("lspconfig").denols.setup {}
+

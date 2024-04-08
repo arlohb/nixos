@@ -54,7 +54,7 @@ in
         ./csharp.lua
         ./fsharp.lua
         ./rust.lua
-        ./svelte.lua
+        ./js.lua
         ./c.lua
         ./hs.lua
         ./java.lua
