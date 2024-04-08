@@ -13,6 +13,7 @@
           buildInputs = with pkgs; [
             bun
             nodePackages.typescript-language-server
+            vscode-langservers-extracted
           ];
         };
       }
