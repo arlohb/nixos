@@ -9,7 +9,7 @@
   ];
 
   # This value is 'compile-time' checked somehow
-  services.xserver.displayManager.defaultSession = "hyprland";
+  services.displayManager.defaultSession = "hyprland";
 
   # Enable Hyprland
   programs.hyprland.enable = true;
