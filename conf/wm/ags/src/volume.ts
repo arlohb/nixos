@@ -2,6 +2,8 @@ const { speaker } = await Service.import("audio");
 
 export default () => Widget.Box({
     className: "widget volume",
+    spacing: 8,
+    vertical: true,
     children: [
         Widget.Label("󰕾"),
         Widget.Slider({

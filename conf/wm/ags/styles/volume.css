@@ -1,13 +1,10 @@
 
 .volume {
-    min-height: 150px;
     padding: 16px;
 }
 
 .volume label {
-    font-size: 40px;
-    margin-right: 28px;
-    margin-left: 4px;
+    font-size: 32px;
 }
 
 .volume fill {
@@ -18,6 +15,7 @@
     padding: 16px;
     border-radius: 4px;
     background-color: #05000c;
+    min-height: 100px;
 }
 
 .volume trough {

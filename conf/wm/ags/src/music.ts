@@ -4,7 +4,7 @@ const mpris = await Service.import("mpris");
 
 export default () => Widget.Box({
     vertical: true,
-    spacing: 16,
+    spacing: 12,
     className: "widget music",
 }).hook(mpris, self => {
     const player = mpris.getPlayer();
@@ -14,7 +14,7 @@ export default () => Widget.Box({
         children.push(
             Widget.Icon({
                 icon: player?.cover_path,
-                size: 100,
+                size: 60,
             })
         );
     }
