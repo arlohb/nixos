@@ -1,0 +1,14 @@
+
+.nextcloud {
+    padding: 8px;
+}
+
+.nextcloud label:first-child {
+    padding-right: 10px;
+    font-size: 32px;
+}
+
+.nextcloud label {
+    font-size: 20px;
+}
+
