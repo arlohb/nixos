@@ -1,7 +1,3 @@
-* {
-    color: white;
-}
-
 window {
     background-color: rgba(0, 0, 0, 0);
 }
@@ -12,7 +8,12 @@ window {
 
 .widget {
     min-width: 100px;
-    background-color: rgb(50, 50, 50);
-    border-radius: 8px;
+    background-color: #0d001d;
+    border: 2px solid #d32288;
+    border-radius: 2px;
+}
+
+label {
+    color: #d32288;
 }
 
