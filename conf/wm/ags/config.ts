@@ -5,7 +5,7 @@ const mpris = await Service.import("mpris");
 const music = () => Widget.Box({
     vertical: true,
     spacing: 16,
-    className: "widget",
+    className: "widget music",
 }).hook(mpris, self => {
     const player = mpris.getPlayer();
     const children: Gtk.Widget[] = [];
@@ -54,8 +54,9 @@ const bar = Widget.Window({
     anchor: ["left", "top", "bottom"],
     exclusivity: "exclusive",
     child: Widget.Box({
-        spacing: 16,
+        spacing: 8,
         vertical: true,
+        className: "container",
         children: [music(), music(), music()],
     }),
 });
