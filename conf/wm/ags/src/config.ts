@@ -31,7 +31,6 @@ const bar = Widget.Window({
         vertical: true,
         startWidget: container([
             music(),
-            music(),
         ]),
         centerWidget: container([
             clock(),
