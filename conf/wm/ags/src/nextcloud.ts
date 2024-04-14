@@ -34,7 +34,7 @@ export default () => Widget.Box({
     children: [
         Widget.Label("󰅟"),
         Widget.Label({
-            label: time.bind().as(time => time.toString()),
+            label: time.bind().as(time => `${time}s`),
         }),
     ],
 });
