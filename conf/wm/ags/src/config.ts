@@ -50,6 +50,13 @@ const loadCss = (): string => {
     // Find files in styles/
     return Utils.exec(`ls ${stylesPath}`)
         .split("\n")
+        // Sort putting style.css first
+        // So it can be overwritten in other files
+        .sort((a, b) => {
+            if (a == "style.css") return -1;
+            if (b == "style.css") return 1;
+            return 0;
+        })
         // Relative => absolute paths
         .map(name => `${stylesPath}/${name}`)
         // Read the files
