@@ -1,5 +1,6 @@
 import "./utils.ts";
 import music from "./music";
+import clock from "./clock.js";
 
 /** Directory with all the css styles */
 const stylesPath = `${App.configDir}/styles`;
@@ -13,7 +14,7 @@ const bar = Widget.Window({
         spacing: 8,
         vertical: true,
         className: "container",
-        children: [music(), music(), music()],
+        children: [music(), music(), music(), clock()],
     }),
 });
 
