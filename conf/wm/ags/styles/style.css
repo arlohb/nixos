@@ -16,11 +16,3 @@ window {
     border-radius: 8px;
 }
 
-.music {
-    padding: 8px;
-}
-
-.music > image {
-    margin-top: 4px;
-}
-
