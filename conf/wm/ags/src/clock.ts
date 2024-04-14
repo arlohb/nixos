@@ -13,10 +13,10 @@ export default () => Widget.Box({
     className: "widget clock",
     children: [
         Widget.Label({
-            label: time.bind().as(({ hours }) => hours.toString()),
+            label: time.bind().as(({ hours }) => hours.toString().padStart(2, "0")),
         }),
         Widget.Label({
-            label: time.bind().as(({ mins }) => mins.toString()),
+            label: time.bind().as(({ mins }) => mins.toString().padStart(2, "0")),
         }),
     ],
 });
