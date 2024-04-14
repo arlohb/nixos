@@ -3,7 +3,7 @@
 if [ "$(cat /etc/hostname)" == "arlo-laptop2" ]; then
     eww open laptop-bar
 else
-    eww open pc-bar
+    nix run /etc/nixos/conf/ags &
 fi
 
 swww init

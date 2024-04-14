@@ -21,9 +21,6 @@
     everblush-nvim.url = "github:Everblush/nvim";
     everblush-nvim.flake = false;
 
-    # Widgets
-    ags.url = "github:Aylur/ags";
-
     # A simple timer.
     # I don't use this, and it's now in nixpkgs
     # But I'll leave it so I know how to add my own pkgs

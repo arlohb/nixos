@@ -35,11 +35,4 @@
     # Region selection
     slurp
   ];
-
-  # Widgets
-  hm.imports = [ inputs.ags.homeManagerModules.default ];
-  hm.programs.ags = {
-    enable = true;
-    configDir = ./ags;
-  };
 }

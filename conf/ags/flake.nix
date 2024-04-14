@@ -11,6 +11,7 @@
 
         buildInputs = with pkgs; [
           bun
+          ags
           inotify-tools
           nodePackages.typescript-language-server
           vscode-langservers-extracted
