@@ -2,12 +2,12 @@
 
 function run {
     ags --quit
-    ags -c ./config.js &
+    ags -c /etc/nixos/conf/wm/ags/config.js &
 }
 
 run
 
-while inotifywait -qq -e modify src; do
+while inotifywait -qq -e modify /etc/nixos/conf/wm/ags/src; do
     run
 done
 
