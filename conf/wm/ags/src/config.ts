@@ -1,3 +1,4 @@
+import "./utils.ts";
 import music from "./music";
 
 /** Directory with all the css styles */

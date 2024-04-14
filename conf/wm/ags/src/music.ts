@@ -10,7 +10,7 @@ export default () => Widget.Box({
     const player = mpris.getPlayer();
     const children: Gtk.Widget[] = [];
 
-    if (player?.cover_path && player?.cover_path !== "") {
+    if (player?.cover_path) {
         children.push(
             Widget.Icon({
                 icon: player?.cover_path,
@@ -19,28 +19,28 @@ export default () => Widget.Box({
         );
     }
 
-    if (player?.track_title && player?.track_title !== "") {
+    if (player?.track_title) {
         children.push(
             Widget.Label({
-                label: player?.track_title,
+                label: player?.track_title.clip(14),
                 wrap: true,
             }),
         );
     }
 
-    if (player?.track_album && player?.track_album !== "") {
+    if (player?.track_album) {
         children.push(
             Widget.Label({
-                label: player?.track_album,
+                label: player?.track_album.clip(14),
                 wrap: true,
             })
         );
     }
 
-    if (player?.track_artists && player?.track_artists.length !== 0) {
+    if (player?.track_artists) {
         children.push(
             Widget.Label({
-                label: player?.track_artists.join(", "),
+                label: player?.track_artists.join(", ").clip(14),
                 wrap: true,
             }),
         );
