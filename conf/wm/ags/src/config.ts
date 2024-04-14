@@ -1,26 +1,47 @@
-import "./utils.ts";
+import "./utils";
 import music from "./music";
 import clock from "./clock";
 import nextcloud from "./nextcloud";
+import { BoxProps } from "types/widgets/box.js";
 
 /** Directory with all the css styles */
 const stylesPath = `${App.configDir}/styles`;
+
+/** Contains widgets.
+* Use 3 of these, in top, center, and bottom. */
+const container = (
+    children: BoxProps["children"],
+    props?: BoxProps
+) => Widget.Box({
+    spacing: 8,
+    vertical: true,
+    className: "container",
+    children,
+    ...props
+});
 
 /** The bar window */
 const bar = Widget.Window({
     name: "bar",
     anchor: ["left", "top", "bottom"],
     exclusivity: "exclusive",
-    child: Widget.Box({
+    child: Widget.CenterBox({
         spacing: 8,
         vertical: true,
-        className: "container",
-        children: [
+        startWidget: container([
             music(),
             music(),
+        ]),
+        centerWidget: container([
             clock(),
             nextcloud(),
-        ],
+        ]),
+        endWidget: container([
+            Widget.Label({
+                className: "widget clock",
+                label: "Test",
+            }),
+        ], { vpack: "end" }),
     }),
 });
 
