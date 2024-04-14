@@ -2,6 +2,7 @@ import "./utils";
 import music from "./music";
 import clock from "./clock";
 import nextcloud from "./nextcloud";
+import volume from "./volume";
 import { BoxProps } from "types/widgets/box.js";
 
 /** Directory with all the css styles */
@@ -37,10 +38,7 @@ const bar = Widget.Window({
             nextcloud(),
         ]),
         endWidget: container([
-            Widget.Label({
-                className: "widget clock",
-                label: "Test",
-            }),
+            volume(),
         ], { vpack: "end" }),
     }),
 });

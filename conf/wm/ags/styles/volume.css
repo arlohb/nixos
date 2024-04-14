@@ -1,0 +1,35 @@
+
+.volume {
+    min-height: 150px;
+    padding: 16px;
+}
+
+.volume label {
+    font-size: 40px;
+    margin-right: 28px;
+    margin-left: 4px;
+}
+
+.volume fill {
+    background-color: red;
+}
+
+.volume contents {
+    padding: 16px;
+    border-radius: 4px;
+    background-color: #05000c;
+}
+
+.volume trough {
+    background-color: #0d001d;
+    border-radius: 10px;
+    border-width: 0;
+    min-width: 10px;
+}
+
+.volume highlight {
+    background-color: #d32288;
+    border-radius: 10px;
+    border-width: 0;
+}
+
