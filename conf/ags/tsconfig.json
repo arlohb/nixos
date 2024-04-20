@@ -1,18 +1,30 @@
 {
   "compilerOptions": {
-    "target": "ES2022",
-    "module": "ES2022",
-    "lib": [
-      "ES2022"
-    ],
+    // Enable latest features
+    "lib": ["ESNext"],
+    "target": "ESNext",
+    "module": "ESNext",
+    "moduleDetection": "force",
     "allowJs": true,
     "checkJs": true,
+
+    // Bundler mode
+    "moduleResolution": "bundler",
+    "allowImportingTsExtensions": true,
+    "verbatimModuleSyntax": true,
+    "noEmit": true,
+
+    // Best practices
     "strict": true,
-    "noImplicitAny": false,
-    "baseUrl": ".",
+    "skipLibCheck": true,
+    "noFallthroughCasesInSwitch": true,
+
+    // Ags
     "typeRoots": [
       "./types"
     ],
-    "skipLibCheck": true
+    "paths": {
+      "types/*": [ "types/*" ]
+    }
   }
 }

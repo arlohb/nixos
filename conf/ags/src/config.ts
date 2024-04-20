@@ -3,7 +3,7 @@ import music from "./music";
 import clock from "./clock";
 import nextcloud from "./nextcloud";
 import volume from "./volume";
-import { BoxProps } from "types/widgets/box.js";
+import type { BoxProps } from "types/widgets/box";
 
 /** Directory with all the css styles */
 const stylesPath = `${App.configDir}/styles`;
