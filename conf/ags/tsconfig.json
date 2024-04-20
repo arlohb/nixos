@@ -24,7 +24,7 @@
       "./types"
     ],
     "paths": {
-      "types/*": [ "types/*" ]
+      "types/*": [ "./types/*" ]
     }
   }
 }
