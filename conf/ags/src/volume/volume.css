@@ -14,6 +14,13 @@
     padding: 16px;
     border-radius: 4px;
     background-color: #05000c;
+}
+
+.volumeH contents {
+    min-width: 100px;
+}
+
+.volumeV contents {
     min-height: 100px;
 }
 
@@ -21,6 +28,13 @@
     background-color: #0d001d;
     border-radius: 10px;
     border-width: 0;
+}
+
+.volumeH trough {
+    min-height: 10px;
+}
+
+.volumeV trough {
     min-width: 10px;
 }
 

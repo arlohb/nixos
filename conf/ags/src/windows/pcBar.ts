@@ -34,7 +34,7 @@ export default () => [Widget.Window({
             nextcloud(),
         ]),
         endWidget: container([
-            volume(),
+            volume("V"),
         ], { vpack: "end" }),
     }),
 })];

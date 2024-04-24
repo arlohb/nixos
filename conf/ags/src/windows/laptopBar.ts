@@ -30,7 +30,7 @@ export default () => [Widget.Window({
         centerWidget: container([
         ]),
         endWidget: container([
-            volume(),
+            volume("H"),
             nextcloud(),
             clock(),
         ], { hpack: "end" }),
