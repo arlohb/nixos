@@ -31,7 +31,7 @@ export default () => [Widget.Window({
         ]),
         endWidget: container([
             volume("H"),
-            nextcloud(),
+            nextcloud("H"),
             clock(),
         ], { hpack: "end" }),
     }),

@@ -27,9 +27,9 @@ const time = Variable(0, {
     }],
 });
 
-export default () => Widget.Box({
-    vertical: true,
-    spacing: 8,
+export default (orientation: "H" | "V") => Widget.Box({
+    orientation: orientation == "H" ? 0 : 1,
+    spacing: orientation == "H" ? 16 : 8,
     className: "widget nextcloud",
     children: [
         Widget.Label("󰅟"),
