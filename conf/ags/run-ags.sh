@@ -7,7 +7,7 @@ function run {
 
 run
 
-while inotifywait -qq -e modify /etc/nixos/conf/ags/src; do
+while inotifywait --recursive -qq --event modify /etc/nixos/conf/ags/src; do
     run
 done
 
