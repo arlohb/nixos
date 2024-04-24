@@ -28,12 +28,12 @@ export default () => [Widget.Window({
             music(),
         ]),
         centerWidget: container([
-            clock(),
-            nextcloud(),
         ]),
         endWidget: container([
             volume(),
-        ], { vpack: "end" }),
+            nextcloud(),
+            clock(),
+        ], { hpack: "end" }),
     }),
 })];
 
