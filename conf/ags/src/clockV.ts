@@ -10,7 +10,7 @@ const time = Variable({ hours: 0, mins: 0 }, {
 
 export default () => Widget.Box({
     vertical: true,
-    className: "widget clock",
+    className: "widget clockV",
     children: [
         Widget.Label({
             label: time.bind().as(({ hours }) => hours.toString().padStart(2, "0")),

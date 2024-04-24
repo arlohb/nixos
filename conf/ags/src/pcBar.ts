@@ -1,5 +1,5 @@
 import music from "./music";
-import clock from "./clock";
+import clock from "./clockV";
 import nextcloud from "./nextcloud";
 import volume from "./volume";
 import type { BoxProps } from "types/widgets/box";
