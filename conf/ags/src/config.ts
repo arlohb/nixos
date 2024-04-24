@@ -1,46 +1,23 @@
 import "./utils";
-import music from "./music";
-import clock from "./clock";
-import nextcloud from "./nextcloud";
-import volume from "./volume";
-import type { BoxProps } from "types/widgets/box";
+import pcBar from "./pcBar";
+import laptopBar from "./laptopBar";
+
+const debug = true;
+
+enum Host {
+    ArloNix,
+    ArloLaptop2,
+    Debug,
+}
+
+const host = debug
+    ? Host.Debug
+    : Utils.exec("hostname") == "arlo-nix"
+        ? Host.ArloNix
+        : Host.ArloLaptop2;
 
 /** Directory with all the css styles */
 const stylesPath = `${App.configDir}/styles`;
-
-/** Contains widgets.
-* Use 3 of these, in top, center, and bottom. */
-const container = (
-    children: BoxProps["children"],
-    props?: BoxProps
-) => Widget.Box({
-    spacing: 8,
-    vertical: true,
-    className: "container",
-    children,
-    ...props
-});
-
-/** The bar window */
-const bar = Widget.Window({
-    name: "bar",
-    anchor: ["left", "top", "bottom"],
-    exclusivity: "exclusive",
-    child: Widget.CenterBox({
-        spacing: 8,
-        vertical: true,
-        startWidget: container([
-            music(),
-        ]),
-        centerWidget: container([
-            clock(),
-            nextcloud(),
-        ]),
-        endWidget: container([
-            volume(),
-        ], { vpack: "end" }),
-    }),
-});
 
 /** Load the CSS files and return one css src text. */
 const loadCss = (): string => {
@@ -66,7 +43,11 @@ const loadCss = (): string => {
 const applyCss = (): void => App.applyCss(loadCss(), true);
 
 // Create app
-App.config({ windows: [bar] });
+App.config({
+    windows: host == Host.ArloNix ? pcBar
+        : host == Host.ArloLaptop2 ? laptopBar
+        : [...pcBar(), ...laptopBar()],
+});
 
 // Apply css
 applyCss();
