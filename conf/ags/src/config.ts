@@ -2,7 +2,7 @@ import pcBar from "./windows/pcBar";
 import laptopBar from "./windows/laptopBar";
 import { listDirRecAbsolute } from "./utils";
 
-const debug = true;
+const debug = false;
 
 enum Host {
     ArloNix,
