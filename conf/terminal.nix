@@ -23,6 +23,8 @@
       "ctrl+shift+w" = "";
     };
 
+    shellIntegration.mode = "enabled";
+
     settings = {
       # Some ligature settings I prefer
       font_features =
