@@ -18,6 +18,11 @@
     # Inbuilt to kitty
     theme = "Dracula";
 
+    keybindings = {
+      # Disable quit hotkey
+      "ctrl+shift+w" = "";
+    };
+
     settings = {
       # Some ligature settings I prefer
       font_features =
