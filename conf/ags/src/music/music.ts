@@ -2,6 +2,13 @@ import Gtk from "types/@girs/gtk-3.0/gtk-3.0";
 
 const mpris = await Service.import("mpris");
 
+/**
+ * An oddly specific function,
+ * But "(Taylor's Version)" everywhere just clutters up the widget a bit.
+ */
+const remove_taylors_version = (str: string): string =>
+    str.replace(" (Taylor's Version)", "");
+
 export default () => Widget.Box({
     vertical: true,
     spacing: 12,
@@ -22,7 +29,7 @@ export default () => Widget.Box({
     if (player?.track_title) {
         children.push(
             Widget.Label({
-                label: player?.track_title.clip(14),
+                label: remove_taylors_version(player?.track_title).clip(14),
                 wrap: true,
             }),
         );
@@ -31,7 +38,7 @@ export default () => Widget.Box({
     if (player?.track_album) {
         children.push(
             Widget.Label({
-                label: player?.track_album.clip(14),
+                label: remove_taylors_version(player?.track_album).clip(14),
                 wrap: true,
             })
         );
