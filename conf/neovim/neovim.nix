@@ -138,6 +138,8 @@ in
             }
           '';
         }
+        # An integration for neogit
+        diffview-nvim
 
         # Integrates with direnv
         {
