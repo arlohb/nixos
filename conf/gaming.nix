@@ -31,6 +31,8 @@
   # Other programs
   pkgs = with pkgs; [
     # micro-compositor to speed up game rendering under wayland
+    # Installed here instead of in scripts where its used,
+    # As other programs like lutris and retroarch can use this
     gamescope
 
     # Minecraft launcher for various modpack sources
