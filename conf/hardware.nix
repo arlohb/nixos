@@ -27,6 +27,7 @@
   networking.hostName = hostname;
   networking.networkmanager.enable = true;
 
+  # TODO: Split bluetooth into its own module
   # Bluetooth
   hardware.bluetooth = {
     enable = true;
