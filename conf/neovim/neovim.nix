@@ -102,6 +102,19 @@ in
           '';
         }
 
+        # Edit filesystem like text
+        {
+          plugin = dirbuf-nvim;
+          config = ''
+            require("dirbuf").setup {
+              hash_padding = 2,
+              show_hidden = true,
+              sort_order = "default",
+              write_cmd = "DirbufSync",
+            }
+          '';
+        }
+
         # The tooltips when pressing a partial chord
         {
           plugin = which-key-nvim;
