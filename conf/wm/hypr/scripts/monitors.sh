@@ -3,8 +3,9 @@
 if [ "$(cat /etc/hostname)" == "arlo-laptop2" ]; then
     eww open laptop-bar
 else
-    nix run /etc/nixos/conf/ags#gen-types
-    nix run /etc/nixos/conf/ags &
+    cd /etc/nixos/conf/ags
+    nix run .#gen-types
+    nix run . &
 fi
 
 swww init
