@@ -5,6 +5,11 @@ with pkgs.vimPlugins; [
   # - https://github.com/iamcco/markdown-preview.nvim
   # - https://alpha2phi.medium.com/neovim-for-beginners-note-taking-writing-diagramming-and-presentation-72d301aae28
 
+  # TODO: Maybe fix this
+  # Tables really slowing down markdown editing
+  # - I think this fixes it temporarily
+  # - :TSBufDisable highlight
+
   {
     plugin = mkdnflow-nvim;
     config = ''
