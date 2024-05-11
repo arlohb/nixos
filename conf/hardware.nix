@@ -27,27 +27,10 @@
   networking.hostName = hostname;
   networking.networkmanager.enable = true;
 
-  # TODO: Split bluetooth into its own module
-  # Bluetooth
-  hardware.bluetooth = {
-    enable = true;
-    settings = {
-      # Needed to get battery from dbus in bl_status.sh
-      General.Experimental = true;
-    };
-  };
-
-  # services.upower.enable = true;
-
   pkgs =
     if hostname == "arlo-laptop2" then with pkgs; [
       # Screen brightness
       brightnessctl
-      
-      # Bluetooth gui
-      blueberry
-    ] else if hostname == "arlo-nix" then with pkgs; [
-      blueberry
     ] else [ ];
 
   # State
@@ -67,11 +50,7 @@
       "/var/lib/nixos"
       # Which users have been lectured by sudo
       "/var/db/sudo"
-    ] ++ (if hostname == "arlo-laptop2" then [
-      "/var/lib/bluetooth"
-    ] else if hostname == "arlo-nix" then [
-      "/var/lib/bluetooth"
-    ] else [ ]);
+    ];
     files = [
       # Used by systemd
       "/etc/machine-id"
