@@ -34,6 +34,7 @@ export default () => [Widget.Window({
             nextcloud("V"),
         ]),
         endWidget: container([
+            // TODO: Add bluetooth widget
             volume("V"),
         ], { vpack: "end" }),
     }),
