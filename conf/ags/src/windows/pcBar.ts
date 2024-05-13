@@ -27,7 +27,7 @@ export default () => [Widget.Window({
         spacing: 8,
         vertical: true,
         startWidget: container([
-            music(),
+            music("V"),
         ]),
         centerWidget: container([
             clock(),

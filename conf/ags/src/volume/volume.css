@@ -1,5 +1,11 @@
-.volume {
-    padding: 16px;
+.volumeV {
+    padding-top: 16px;
+    padding-bottom: 16px;
+}
+
+.volumeH {
+    padding-left: 16px;
+    padding-right: 16px;
 }
 
 .volume label {

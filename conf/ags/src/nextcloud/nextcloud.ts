@@ -1,3 +1,5 @@
+import { ResizeMode } from "types/@girs/gtk-3.0/gtk-3.0.cjs";
+
 const time = Variable(0, {
     poll: [1000, () => {
         const dateStr = Utils.exec(`fish -c " \
@@ -30,7 +32,9 @@ const time = Variable(0, {
 export default (orientation: "H" | "V") => Widget.Box({
     orientation: orientation == "H" ? 0 : 1,
     spacing: orientation == "H" ? 16 : 8,
-    className: "widget nextcloud",
+    className: `widget nextcloud nextcloud${orientation}`,
+    // Fixes some resize issue
+    resizeMode: ResizeMode.QUEUE,
     children: [
         Widget.Label("󰅟"),
         Widget.Label({

@@ -5,7 +5,5 @@
 .music > image {
     border: 2px solid #d32288;
     border-radius: 2px;
-    /* Left space around image without this */
-    margin: 6px 6px;
 }
 

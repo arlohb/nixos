@@ -25,7 +25,7 @@ export default () => [Widget.Window({
     child: Widget.CenterBox({
         spacing: 8,
         startWidget: container([
-            music(),
+            music("H"),
         ]),
         centerWidget: container([
         ]),
