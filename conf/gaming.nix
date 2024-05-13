@@ -60,6 +60,9 @@
   # https://nixos.wiki/wiki/Lutris
   hardware.opengl.driSupport32Bit = true;
 
+  # Enable support for bluetooth xbox controllers
+  hardware.xpadneo.enable = true;
+
   userPersist = {
     directories = [
       ".local/share/Steam"
