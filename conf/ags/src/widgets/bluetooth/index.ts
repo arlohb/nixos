@@ -9,16 +9,19 @@ const devicesToString = (devices: BluetoothDevice[]) => devices
     .map(deviceToString)
     .join(", ");
 
-export default () => Widget.Box({
-    className: "widget bluetooth",
-    hpack: "fill",
-    vpack: "fill",
-    children: [
-        Widget.Label({
-            label: bluetooth
-                .bind("connected_devices")
-                .transform(devices => `   ${devicesToString(devices)}`)
-        }),
-    ],
+export default () => Widget.EventBox({
+    onPrimaryClick: () => {
+        Utils.execAsync("blueberry");
+    },
+    child: Widget.Box({
+        className: "widget bluetooth",
+        children: [
+            Widget.Label({
+                label: bluetooth
+                   .bind("connected_devices")
+                   .transform(devices => `   ${devicesToString(devices)}`)
+            }),
+        ],
+    }),
 });
 
