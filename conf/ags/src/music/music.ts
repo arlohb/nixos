@@ -11,7 +11,6 @@ const remove_taylors_version = (str: string): string =>
     str.replace(" (Taylor's Version)", "");
 
 export default (orientation: "H" | "V") => Widget.Box({
-    vertical: true,
     spacing: 12,
     className: "widget music",
     orientation: orientation === "H"
@@ -31,12 +30,13 @@ export default (orientation: "H" | "V") => Widget.Box({
     }
 
     const clipLen = orientation === "H" ? 20 : 14;
+    const wrap = orientation !== "H";
 
     if (player?.track_title) {
         children.push(
             Widget.Label({
                 label: remove_taylors_version(player?.track_title).clip(clipLen),
-                wrap: true,
+                wrap,
             }),
         );
     }
@@ -45,7 +45,7 @@ export default (orientation: "H" | "V") => Widget.Box({
         children.push(
             Widget.Label({
                 label: remove_taylors_version(player?.track_album).clip(clipLen),
-                wrap: true,
+                wrap,
             })
         );
     }
@@ -54,7 +54,7 @@ export default (orientation: "H" | "V") => Widget.Box({
         children.push(
             Widget.Label({
                 label: player?.track_artists.join(", ").clip(clipLen),
-                wrap: true,
+                wrap,
             }),
         );
     }

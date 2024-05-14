@@ -2,6 +2,7 @@ import music from "../music/music";
 import clock from "../clock/clockH";
 import nextcloud from "../nextcloud/nextcloud";
 import volume from "../volume/volume";
+import bluetooth from "../bluetooth/bluetooth";
 import type { BoxProps } from "types/widgets/box";
 
 /** Contains widgets.
@@ -30,6 +31,7 @@ export default () => [Widget.Window({
         centerWidget: container([
         ]),
         endWidget: container([
+            bluetooth(),
             volume("H"),
             nextcloud("H"),
             clock(),

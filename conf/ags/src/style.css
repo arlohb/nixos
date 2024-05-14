@@ -11,7 +11,6 @@ window {
 }
 
 .widget {
-    min-width: 60px;
     background-color: #0d001d;
     border: 2px solid #d32288;
     border-radius: 2px;
