@@ -22,7 +22,7 @@ const findCssFiles = (): string[] => {
         // This one needs to come first
         `${App.configDir}/src/style.css`,
         ...listDirRecAbsolute(`${App.configDir}/src`)
-            .filter(name => name.endsWith(".css") && !name.endsWith("style.css"))
+            .filter(name => name.endsWith(".css") && !name.endsWith("src/style.css"))
     ];
 }
 

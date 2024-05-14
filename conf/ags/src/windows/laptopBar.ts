@@ -1,8 +1,8 @@
-import music from "../music/music";
-import clock from "../clock/clockH";
-import nextcloud from "../nextcloud/nextcloud";
-import { volume } from "../slider/slider";
-import bluetooth from "../bluetooth/bluetooth";
+import music from "@widgets/music";
+import { clockH } from "@widgets/clock";
+import nextcloud from "@widgets/nextcloud";
+import { volume } from "@widgets/slider";
+import bluetooth from "@widgets/bluetooth";
 import type { BoxProps } from "types/widgets/box";
 
 /** Contains widgets.
@@ -16,7 +16,6 @@ const container = (
     children,
     ...props
 });
-
 
 /** The bar window */
 export default () => [Widget.Window({
@@ -34,7 +33,7 @@ export default () => [Widget.Window({
             bluetooth(),
             volume("H"),
             nextcloud("H"),
-            clock(),
+            clockH(),
         ], { hpack: "end" }),
     }),
 })];

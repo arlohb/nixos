@@ -24,7 +24,8 @@
       "./types"
     ],
     "paths": {
-      "types/*": [ "./types/*" ]
+      "types/*": [ "./types/*" ],
+      "@widgets/*": [ "./src/widgets/*" ]
     }
   }
 }
