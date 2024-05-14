@@ -1,4 +1,5 @@
 import type { SliderProps } from "types/widgets/slider";
+import brightnessService from "@services/brightness";
 
 const { speaker } = await Service.import("audio");
 
@@ -30,4 +31,10 @@ export const volume = slider(
     speaker.bind("volume"),
     ({ value }) => speaker.volume = value,
 );
+
+export const brightness = slider(
+    "",
+    brightnessService.bind("percent"),
+    ({ value }) => brightnessService.percent = value,
+)
 

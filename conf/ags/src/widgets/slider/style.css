@@ -9,7 +9,11 @@
 }
 
 .slider label {
-    font-size: 32px;
+    font-size: 26px;
+}
+
+.sliderH label {
+    padding-right: 4px;
 }
 
 .slider fill {
