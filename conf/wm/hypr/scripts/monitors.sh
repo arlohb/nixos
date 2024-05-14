@@ -1,12 +1,12 @@
 #!/usr/bin/env bash
 
-if [ "$(cat /etc/hostname)" == "arlo-laptop2" ]; then
-    eww open laptop-bar
-else
-    cd /etc/nixos/conf/ags
-    nix run .#gen-types
-    nix run . &
-fi
+# Start ags in background
+# So it doesn't delay startup
+sh -c " \
+    cd /etc/nixos/conf/ags; \
+    nix run .#gen-types; \
+    nix run . & \
+" &
 
 swww init
 sleep 0.1
