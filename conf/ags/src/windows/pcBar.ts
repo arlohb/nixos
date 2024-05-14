@@ -1,5 +1,5 @@
 import music from "@widgets/music";
-import { clockV } from "@widgets/clock";
+import clock from "@widgets/clock";
 import nextcloud from "@widgets/nextcloud";
 import { volume } from "@widgets/slider";
 import type { BoxProps } from "types/widgets/box";
@@ -30,7 +30,7 @@ export default () => [Widget.Window({
             music("V"),
         ]),
         centerWidget: container([
-            clockV(),
+            clock("V"),
             nextcloud("V"),
         ]),
         endWidget: container([

@@ -1,5 +1,5 @@
 import music from "@widgets/music";
-import { clockH } from "@widgets/clock";
+import clock from "@widgets/clock";
 import nextcloud from "@widgets/nextcloud";
 import { brightness, volume } from "@widgets/slider";
 import bluetooth from "@widgets/bluetooth";
@@ -34,7 +34,7 @@ export default () => [Widget.Window({
             brightness("H"),
             volume("H"),
             nextcloud("H"),
-            clockH(),
+            clock("H"),
         ], { hpack: "end" }),
     }),
 })];
