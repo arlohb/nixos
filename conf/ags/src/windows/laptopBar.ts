@@ -4,6 +4,7 @@ import nextcloud from "@widgets/nextcloud";
 import { brightness, volume } from "@widgets/slider";
 import bluetooth from "@widgets/bluetooth";
 import battery from "@widgets/battery";
+import button from "@widgets/button";
 import type { BoxProps } from "types/widgets/box";
 
 /** Contains widgets.
@@ -26,9 +27,16 @@ export default () => [Widget.Window({
     child: Widget.CenterBox({
         spacing: 8,
         startWidget: container([
-            music("H"),
+            button("󰣇", () => Utils.execAsync("rofi -show drun")),
+            button("󰴓", () => Utils.execAsync(`${Utils.HOME}/.config/hypr/rotate.sh 1`)),
+            button("󰌢", () => Utils.execAsync(`${Utils.HOME}/.config/hypr/rotate.sh 0`)),
+            button("󰑦", () => Utils.execAsync("hyprctl dispatch togglesplit")),
+            // TODO: Change icon to "󰌌" based on `wl_keys auto query` or internal state
+            button("󰌐", () => Utils.execAsync(`sh -c "cd ${Utils.HOME}/code/wl_keys; ./target/debug/wl_keys auto toggle"`)),
+            button("󰧹", () => Utils.execAsync(`sh -c "cd ${Utils.HOME}/code/wl_keys; ./target/debug/wl_keys ui toggle"`)),
         ]),
         centerWidget: container([
+            music("H"),
         ]),
         endWidget: container([
             bluetooth(),
