@@ -10,9 +10,7 @@ const devicesToString = (devices: BluetoothDevice[]) => devices
     .join(", ");
 
 export default () => Widget.EventBox({
-    onPrimaryClick: () => {
-        Utils.execAsync("blueberry");
-    },
+    onPrimaryClick: () => Utils.execAsync("blueberry"),
     child: Widget.Box({
         className: "widget bluetooth",
         children: [
