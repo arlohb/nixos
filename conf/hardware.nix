@@ -27,6 +27,9 @@
   networking.hostName = hostname;
   networking.networkmanager.enable = true;
 
+  # Used to get battery of laptop and other devices
+  services.upower.enable = true;
+
   pkgs =
     if hostname == "arlo-laptop2" then with pkgs; [
       # Screen brightness
