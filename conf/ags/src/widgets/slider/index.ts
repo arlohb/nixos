@@ -11,7 +11,6 @@ const slider = (
     orientation: "H" | "V",
 ) => Widget.Box({
     className: `widget slider slider${orientation}`,
-    spacing: 8,
     orientation : orientation == "H" ? 0 : 1,
     children: [
         Widget.Label(icon),

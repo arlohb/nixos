@@ -2,13 +2,21 @@
     padding: 8px;
 }
 
-.nextcloud label:first-child {
+.nextcloudV label:first-child {
     padding-right: 10px;
-    font-size: 32px;
+    font-size: 28px;
 }
 
-.nextcloud label {
+.nextcloudH label:first-child {
+    padding-right: 4px;
+    font-size: 24px;
+}
+
+.nextcloudV label {
     font-size: 20px;
-    padding-right: 10px;
+}
+
+.nextcloudH label {
+    font-size: 18px;
 }
 

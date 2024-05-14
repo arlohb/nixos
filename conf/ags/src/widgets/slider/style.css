@@ -4,8 +4,8 @@
 }
 
 .sliderH {
-    padding-left: 16px;
-    padding-right: 16px;
+    padding-left: 8px;
+    padding-right: 8px;
 }
 
 .slider label {
@@ -13,7 +13,11 @@
 }
 
 .sliderH label {
-    padding-right: 4px;
+    padding-right: 12px;
+}
+
+.sliderV label {
+    padding-bottom: 8px;
 }
 
 .slider fill {
@@ -21,13 +25,13 @@
 }
 
 .slider contents {
-    padding: 16px;
+    padding: 12px;
     border-radius: 4px;
-    background-color: #05000c;
+    background-color: #000000;
 }
 
 .sliderH contents {
-    min-width: 100px;
+    min-width: 80px;
 }
 
 .sliderV contents {
