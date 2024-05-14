@@ -1,50 +1,50 @@
-.volumeV {
+.sliderV {
     padding-top: 16px;
     padding-bottom: 16px;
 }
 
-.volumeH {
+.sliderH {
     padding-left: 16px;
     padding-right: 16px;
 }
 
-.volume label {
+.slider label {
     font-size: 32px;
 }
 
-.volume fill {
+.slider fill {
     background-color: red;
 }
 
-.volume contents {
+.slider contents {
     padding: 16px;
     border-radius: 4px;
     background-color: #05000c;
 }
 
-.volumeH contents {
+.sliderH contents {
     min-width: 100px;
 }
 
-.volumeV contents {
+.sliderV contents {
     min-height: 100px;
 }
 
-.volume trough {
+.slider trough {
     background-color: #0d001d;
     border-radius: 10px;
     border-width: 0;
 }
 
-.volumeH trough {
+.sliderH trough {
     min-height: 10px;
 }
 
-.volumeV trough {
+.sliderV trough {
     min-width: 10px;
 }
 
-.volume highlight {
+.slider highlight {
     background-color: #d32288;
     border-radius: 10px;
     border-width: 0;

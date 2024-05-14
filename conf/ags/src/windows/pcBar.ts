@@ -1,7 +1,7 @@
 import music from "../music/music";
 import clock from "../clock/clockV";
 import nextcloud from "../nextcloud/nextcloud";
-import volume from "../volume/volume";
+import { volume } from "../slider/slider";
 import type { BoxProps } from "types/widgets/box";
 
 /** Contains widgets.
