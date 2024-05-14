@@ -1,0 +1,21 @@
+.battery {
+    padding: 8px;
+}
+
+.batteryV label:first-child {
+    padding-right: 16px;
+    font-size: 28px;
+}
+
+.batteryH label:first-child {
+    font-size: 24px;
+}
+
+.batteryV label {
+    font-size: 20px;
+}
+
+.batteryH label {
+    font-size: 18px;
+}
+

@@ -3,6 +3,7 @@ import clock from "@widgets/clock";
 import nextcloud from "@widgets/nextcloud";
 import { brightness, volume } from "@widgets/slider";
 import bluetooth from "@widgets/bluetooth";
+import battery from "@widgets/battery";
 import type { BoxProps } from "types/widgets/box";
 
 /** Contains widgets.
@@ -34,6 +35,7 @@ export default () => [Widget.Window({
             brightness("H"),
             volume("H"),
             nextcloud("H"),
+            battery("H"),
             clock("H"),
         ], { hpack: "end" }),
     }),
