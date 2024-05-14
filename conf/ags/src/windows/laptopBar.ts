@@ -43,6 +43,7 @@ export default () => [Widget.Window({
                 )),
             button(" X", () => Utils.execAsync("hyprctl dispatch killactive")),
             Widget.Separator(),
+            // TODO: Don't show this and a couple other is portrait
             music("H"),
         ]),
         endWidget: container([
