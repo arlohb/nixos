@@ -36,6 +36,13 @@ export default () => [Widget.Window({
             button("󰧹", () => Utils.execAsync(`sh -c "cd ${Utils.HOME}/code/wl_keys; ./target/debug/wl_keys ui toggle"`)),
         ]),
         centerWidget: container([
+            ...[1, 2, 3, 4]
+                .map(i => button(
+                    ` ${i}`,
+                    () => Utils.execAsync(`hyprctl dispatch workspace ${i}`)
+                )),
+            button(" X", () => Utils.execAsync("hyprctl dispatch killactive")),
+            Widget.Separator(),
             music("H"),
         ]),
         endWidget: container([
