@@ -1,4 +1,3 @@
-import type { Binding } from "types/service";
 import type { SliderProps } from "types/widgets/slider";
 
 const { speaker } = await Service.import("audio");
