@@ -104,6 +104,7 @@ in
 
         # Edit filesystem like text
         {
+          # TODO: Maybe switch to oil.nvim
           plugin = dirbuf-nvim;
           config = ''
             require("dirbuf").setup {
