@@ -26,7 +26,8 @@
     "paths": {
       "types/*": [ "./types/*" ],
       "@widgets/*": [ "./src/widgets/*" ],
-      "@services/*": [ "./src/services/*" ]
+      "@services/*": [ "./src/services/*" ],
+      "@utils": [ "./src/utils" ]
     }
   }
 }

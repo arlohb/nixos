@@ -71,3 +71,8 @@ export const listDirRecRelative = (path: string): string[] => {
         .map(name => name.slice(path.length + 1));
 }
 
+/** Checks if a cmd exists using `which`. */
+export const cmdExists = (cmd: string): boolean => {
+    return "" !== Utils.exec(`bash -c "which ${cmd}"`);
+};
+

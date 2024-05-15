@@ -33,7 +33,12 @@ export const volume = slider(
 
 export const brightness = slider(
     "",
-    brightnessService.bind("percent"),
-    ({ value }) => brightnessService.percent = value,
+    brightnessService
+        ? brightnessService.bind("percent")
+        : 0,
+    ({ value }) => {
+        if (brightnessService)
+            brightnessService.percent = value;
+    },
 )
 

@@ -1,3 +1,5 @@
+import { cmdExists } from "@utils";
+
 const clamp = (value: number, min: number, max: number): number => {
     const a = Math.max(value, min);
     return Math.min(a, max);
@@ -58,5 +60,9 @@ class BrightnessService extends Service {
     }
 }
 
-export default new BrightnessService;
+const service = cmdExists("brightnessctl")
+    ? new BrightnessService
+    : null;
+
+export default service;
 
