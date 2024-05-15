@@ -1,8 +1,9 @@
+import type { BoxProps } from "types/widgets/box";
 import music from "@widgets/music";
 import clock from "@widgets/clock";
 import nextcloud from "@widgets/nextcloud";
 import { volume } from "@widgets/slider";
-import type { BoxProps } from "types/widgets/box";
+import bluetooth from "@widgets/bluetooth";
 
 /** Contains widgets.
 * Use 3 of these, in top, center, and bottom. */
@@ -35,6 +36,7 @@ export default () => [Widget.Window({
         ]),
         endWidget: container([
             // TODO: Add bluetooth widget
+            bluetooth("V"),
             volume("V"),
         ], { vpack: "end" }),
     }),

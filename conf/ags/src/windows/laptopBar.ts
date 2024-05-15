@@ -47,7 +47,7 @@ export default () => [Widget.Window({
             music("H"),
         ]),
         endWidget: container([
-            bluetooth(),
+            bluetooth("H"),
             brightness("H"),
             volume("H"),
             nextcloud("H"),
