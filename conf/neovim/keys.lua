@@ -76,6 +76,7 @@ require("which-key").register({
             a = { "<cmd>Gitsigns stage_hunk<cr>", "Stage" },
             u = { "<cmd>Gitsigns undo_stage_hunk<cr>", "Undo Stage" },
             p = { "<cmd>Gitsigns preview_hunk<cr>", "Preview" },
+            x = { "<cmd>Gitsigns reset_hunk<cr>", "Discard" },
         },
 
         o = {
