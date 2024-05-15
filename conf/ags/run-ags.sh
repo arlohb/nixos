@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 
 # Kill ags
-pkill --exact ags
+pkill --exact .ags-wrapped
 # Kill all run-ags except this process
 pgrep run-ags | grep -v $$ | xargs -r kill
 
