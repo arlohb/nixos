@@ -30,7 +30,7 @@ require("which-key").register({
             p = { "<cmd>Telescope project<cr>", "Projects" },
             s = { "<cmd>SudaRead<cr>", "Sudo current file" },
             l = { "<cmd>NvimTreeFindFile<cr>", "Locate current file" },
-            e = { "<cmd>Dirbuf<cr>", "Edit as Buffer" },
+            e = { "<cmd>Oil<cr>", "Edit as Buffer (Oil)" },
         },
 
         s = {
@@ -103,7 +103,7 @@ require("which-key").register({
             name = "+notes",
             n = {
                 function()
-                    vim.cmd("e ~/Nextcloud/Vault")
+                    vim.cmd("e ~/Nextcloud/Vault/Scratch.md")
                     require("telescope.builtin").find_files({
                         find_command = {'rg', '--files', '--hidden', '-g', '!.git' }}
                     )
