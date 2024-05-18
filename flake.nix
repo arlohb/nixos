@@ -13,6 +13,11 @@
     # Manages persistant files when / is a tmpfs
     impermanence.url = "github:nix-community/impermanence";
 
+    # The new nixvim nvim config
+    # Not yet switched to
+    nixvim.url = "github:arlohb/nvim";
+    nixvim.inputs.nixpkgs.follows = "nixpkgs";
+
     # A nvim plugin not (yet) in nixpkgs
     drop-nvim.url = "github:folke/drop.nvim";
     drop-nvim.flake = false;
@@ -31,7 +36,7 @@
     scripts.inputs.nixpkgs.follows = "nixpkgs";
   };
 
-  outputs = { self, nixpkgs, home-manager, impermanence, scripts, ... }@inputs:
+  outputs = { self, nixpkgs, home-manager, impermanence, nixvim, scripts, ... }@inputs:
     let
       system = "x86_64-linux";
 
@@ -49,6 +54,16 @@
         {
           home-manager.useGlobalPkgs = true;
           environment.systemPackages = pkgs.lib.attrValues scripts.packages.${system};
+        }
+        {
+          environment.systemPackages = [
+            # Rename nixvim's nvim to nixvim until I switch from Home Manager's nvim
+            # https://www.reddit.com/r/NixOS/comments/nur5zv/comment/h0z39ze
+            (pkgs.writeShellScriptBin
+              "nixvim"
+              "exec -a $0 ${nixvim.packages."${system}".default}/bin/nvim"
+            )
+          ];
         }
       ] ++ (utils.loadBetterModules { inherit hostname system inputs; } (
         pkgs.lib.remove
