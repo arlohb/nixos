@@ -1,4 +1,4 @@
-{ pkgs, ... }:
+{ pkgs, hostname, ... }:
 
 let
   secrets = import ../secrets.nix;
@@ -10,7 +10,10 @@ in
 
   userPersist.directories = [
     "Nextcloud"
-  ];
+  ] ++ (if hostname == "arlo-laptop2" then [
+    # TODO: Make automatic every week or something
+    "NextcloudBackup"
+  ] else [ ]);
 
   # Couldn't change timer to above the time here with change_timer
   # So I'll set this to the max and reduce with exec-once in hyprland
