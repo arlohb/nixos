@@ -10,7 +10,7 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
-    # Manages persistant files when / is a tmpfs
+    # Manages persistent files when / is a tmpfs
     impermanence.url = "github:nix-community/impermanence";
 
     # The new nixvim nvim config
