@@ -163,6 +163,15 @@ require("which-key").register({
             },
         },
 
+        z = {
+            name = "+spellcheck",
+            g = { "zg", "Good word" },
+            G = { "zw", "Bad word" },
+            l = { "]s", "Next issue" },
+            h = { "[s", "Prev issue" },
+            z = { "z=", "Correct" },
+        },
+
         [";"] = { require("notify").dismiss, "Dismiss notifications" },
 
     },

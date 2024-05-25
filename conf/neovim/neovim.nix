@@ -32,6 +32,7 @@ in
   ];
 
   userPersist.directories = [
+    ".config/nvim/spell"
     ".local/share/nvim"
     ".local/state/nvim"
   ];

@@ -49,3 +49,8 @@ opt.splitbelow = true -- bool: Place new window below the current one
 -- Make whichkey show up faster
 opt.timeoutlen = 200
 
+-- Enable spell checking
+-- TODO: https://www.reddit.com/r/neovim/comments/nbbl5w/comment/gxz560o
+opt.spelllang = "en_gb"
+opt.spell = true
+
