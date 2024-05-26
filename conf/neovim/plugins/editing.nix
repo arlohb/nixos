@@ -40,6 +40,7 @@ with pkgs.vimPlugins; [
     '';
   }
 
+  # TODO: Remove after support was added in nvim 0.10
   # Comment and uncomment lines easily
   vim-commentary
 

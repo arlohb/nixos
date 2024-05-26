@@ -184,6 +184,7 @@ require("which-key").register({
     ["<Esc>"] = { "<cmd>ToggleTerm direction=float<cr>", "Quit Terminal", mode = "t" },
 })
 
+-- TODO: Switch to 'gcc' and 'gc' as native support was added in nvim 0.10
 vim.keymap.set("n", ";", "<cmd>Commentary<cr>", { desc = "Comment" })
 vim.keymap.set("v", ";", ":'<,'>Commentary<cr>", { desc = "Comment" })
 
