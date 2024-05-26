@@ -18,14 +18,6 @@
     nixvim.url = "github:arlohb/nvim";
     nixvim.inputs.nixpkgs.follows = "nixpkgs";
 
-    # A nvim plugin not (yet) in nixpkgs
-    drop-nvim.url = "github:folke/drop.nvim";
-    drop-nvim.flake = false;
-    vim-nand2tetris-syntax.url = "github:sevko/vim-nand2tetris-syntax";
-    vim-nand2tetris-syntax.flake = false;
-    everblush-nvim.url = "github:Everblush/nvim";
-    everblush-nvim.flake = false;
-
     # A simple timer.
     # I don't use this, and it's now in nixpkgs
     # But I'll leave it so I know how to add my own pkgs
@@ -55,16 +47,6 @@
           home-manager.useGlobalPkgs = true;
           environment.systemPackages = pkgs.lib.attrValues scripts.packages.${system};
         }
-        {
-          environment.systemPackages = [
-            # Rename nixvim's nvim to nixvim until I switch from Home Manager's nvim
-            # https://www.reddit.com/r/NixOS/comments/nur5zv/comment/h0z39ze
-            (pkgs.writeShellScriptBin
-              "nixvim"
-              "exec -a $0 ${nixvim.packages."${system}".default}/bin/nvim"
-            )
-          ];
-        }
       ] ++ (utils.loadBetterModules { inherit hostname system inputs; } (
         pkgs.lib.remove
           # A disabled module
@@ -75,7 +57,6 @@
             ++ [
               ./pkgs/pkgs.nix
               ./conf/wm/hypr/hypr.nix
-              ./conf/neovim/neovim.nix
             ]
           )
       ));

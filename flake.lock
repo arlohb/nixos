@@ -23,38 +23,6 @@
         "type": "github"
       }
     },
-    "drop-nvim": {
-      "flake": false,
-      "locked": {
-        "lastModified": 1684907256,
-        "narHash": "sha256-qDgPbv6Hn6zjUHRHrh4A8c7s2hxbEofN9McgrUGIHlU=",
-        "owner": "folke",
-        "repo": "drop.nvim",
-        "rev": "276f0a9e26c86946567cd91759ee08e0f21ec96c",
-        "type": "github"
-      },
-      "original": {
-        "owner": "folke",
-        "repo": "drop.nvim",
-        "type": "github"
-      }
-    },
-    "everblush-nvim": {
-      "flake": false,
-      "locked": {
-        "lastModified": 1683809130,
-        "narHash": "sha256-O6Erp+Tzk5TV5gpgVs73cO6v9vgeUVYpunrtf/7Ppic=",
-        "owner": "Everblush",
-        "repo": "nvim",
-        "rev": "9a0e695fdd57b340d3ba2b72406e3ca519029f25",
-        "type": "github"
-      },
-      "original": {
-        "owner": "Everblush",
-        "repo": "nvim",
-        "type": "github"
-      }
-    },
     "flake-compat": {
       "locked": {
         "lastModified": 1696426674,
@@ -314,11 +282,11 @@
         "nixvim": "nixvim_2"
       },
       "locked": {
-        "lastModified": 1716683712,
-        "narHash": "sha256-63nZX5MVvELIwA1gaRaWz4LkTZAXrOxP9TEw0zRSt2U=",
+        "lastModified": 1716686901,
+        "narHash": "sha256-tZdNtzyVclvaza7M5NCyeVMmjAFZ7qEf3MFxqsCccZI=",
         "owner": "arlohb",
         "repo": "nvim",
-        "rev": "05c49a18eb2e3fbaf6d524bced3684365ee401bc",
+        "rev": "c6fc72469fef9d95cfc4290081730c8bfd14c665",
         "type": "github"
       },
       "original": {
@@ -358,11 +326,11 @@
     },
     "nur": {
       "locked": {
-        "lastModified": 1716682147,
-        "narHash": "sha256-SuKHm4gY4fQZvCPqt6WdCHrShvUPlQrblYG6TGhKOrs=",
+        "lastModified": 1716686144,
+        "narHash": "sha256-PvRdIs1gwJxUPG7nisQ1+jTWDdUTNmTxjm+uir+HIT8=",
         "owner": "nix-community",
         "repo": "NUR",
-        "rev": "5a9cefff93fe9a7e8d864d48ea0fba144afef2a6",
+        "rev": "764add982d259830eb350386bd421963282c2ba6",
         "type": "github"
       },
       "original": {
@@ -419,16 +387,13 @@
     },
     "root": {
       "inputs": {
-        "drop-nvim": "drop-nvim",
-        "everblush-nvim": "everblush-nvim",
         "home-manager": "home-manager",
         "impermanence": "impermanence",
         "nixpkgs": "nixpkgs",
         "nixvim": "nixvim",
         "nur": "nur",
         "porsmo": "porsmo",
-        "scripts": "scripts",
-        "vim-nand2tetris-syntax": "vim-nand2tetris-syntax"
+        "scripts": "scripts"
       }
     },
     "scripts": {
@@ -501,22 +466,6 @@
       "original": {
         "owner": "numtide",
         "repo": "treefmt-nix",
-        "type": "github"
-      }
-    },
-    "vim-nand2tetris-syntax": {
-      "flake": false,
-      "locked": {
-        "lastModified": 1509026020,
-        "narHash": "sha256-lua+XdVohOG6lUSP5inHEUpUwlVTP6zsKLJagMnGZYs=",
-        "owner": "sevko",
-        "repo": "vim-nand2tetris-syntax",
-        "rev": "f5d43604fc5f36a533bbf9e0cede09701f6b6c5a",
-        "type": "github"
-      },
-      "original": {
-        "owner": "sevko",
-        "repo": "vim-nand2tetris-syntax",
         "type": "github"
       }
     }
