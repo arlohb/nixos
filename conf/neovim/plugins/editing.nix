@@ -49,7 +49,7 @@ with pkgs.vimPlugins; [
 
   # Open files as sudo
   {
-    plugin = suda-vim;
+    plugin = vim-suda;
     config = ''
       vim.g.suda_smart_edit = 1
     '';
