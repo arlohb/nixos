@@ -12,7 +12,7 @@
       # The git repo can be changed to this with these commands:
       # cd /etc/nixos
       # sudo chgrp -R nixconfig .
-      # sudo chmod  -R g+rw .
+      # sudo chmod -R g+rw .
       # sudo chmod g+s `find . -type d` # (change `` to () for fish)
       # git init --bare --shared=all .
       nixconfig = { };
