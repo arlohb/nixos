@@ -38,7 +38,7 @@ lib: rec {
         };
 
         systemPackages = pkgs;
-      };
+      } // final.environment or { };
 
       home-manager.users.arlo = hm;
     };
