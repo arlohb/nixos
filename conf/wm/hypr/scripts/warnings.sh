@@ -1,7 +1,9 @@
 #!/usr/bin/env bash
 
-normal_shown=false
-critical_shown=false
+# Look back to commit 9f57c5c to see how this worked with multiple levels of warning
+# For now I've decided I just need 1
+
+shown=false
 
 while true; do
     # free's used column doesn't account for everything
@@ -14,20 +16,13 @@ while true; do
     # For debugging
     # read -p "RAM: " used_ram
 
-    if ((used_ram >= 20)); then
-        if [ "$critical_shown" = false ]; then
-            dunstify -u critical "20G of RAM used!" "Bad things are going to happen..."
-            critical_shown=true
-        fi
-    elif ((used_ram >= 16)); then
-        critical_shown=false
-        if [ "$normal_shown" = false ]; then
-            dunstify -u normal "16G of RAM used!" "Might be fine, keep a watch out"
-            normal_shown=true
+    if ((used_ram >= 22)); then
+        if [ "$shown" = false ]; then
+            dunstify -u critical "22G of RAM used!" "Bad things are going to happen..."
+            shown=true
         fi
     else
-        normal_shown=false
-        critical_shown=false
+        shown=false
     fi
 
     sleep 1
