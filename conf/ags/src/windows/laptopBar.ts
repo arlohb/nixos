@@ -32,8 +32,8 @@ export default () => [Widget.Window({
             button("󰌢", () => Utils.execAsync(`${Utils.HOME}/.config/hypr/rotate.sh 0`)),
             button("󰑦", () => Utils.execAsync("hyprctl dispatch togglesplit")),
             // TODO: Change icon to "󰌌" based on `wl_keys auto query` or internal state
-            button("󰌐", () => Utils.execAsync(`sh -c "cd ${Utils.HOME}/code/wl_keys; ./target/debug/wl_keys auto toggle"`)),
-            button("󰧹", () => Utils.execAsync(`sh -c "cd ${Utils.HOME}/code/wl_keys; ./target/debug/wl_keys ui toggle"`)),
+            button("󰌐", () => Utils.execAsync("wl_keys auto toggle")),
+            button("󰧹", () => Utils.execAsync("wl_keys ui toggle")),
         ]),
         centerWidget: container([
             ...[1, 2, 3, 4]

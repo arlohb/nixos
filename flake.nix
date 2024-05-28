@@ -18,6 +18,10 @@
     nixvim.url = "github:arlohb/nvim";
     nixvim.inputs.nixpkgs.follows = "nixpkgs";
 
+    # An on-screen keyboard
+    wl_keys.url = "github:arlohb/wl_keys";
+    wl_keys.inputs.nixpkgs.follows = "nixpkgs";
+
     # A simple timer.
     # I don't use this, and it's now in nixpkgs
     # But I'll leave it so I know how to add my own pkgs

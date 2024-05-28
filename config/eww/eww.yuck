@@ -37,7 +37,7 @@
 (defpoll
   WL_KEYS_AUTO
   :interval "50ms"
-   "/home/arlo/code/wl_keys/target/debug/wl_keys auto query")
+   "wl_keys auto query")
 
 (defpoll
   BT_STATUS
@@ -130,8 +130,8 @@
      (button :class "cell h020" :onclick "~/.config/hypr/rotate.sh 1 &" "󰴓")
      (button :class "cell h040" :onclick "~/.config/hypr/rotate.sh 0 &" "󰌢")
      (button :class "cell h060" :onclick "hyprctl dispatch togglesplit" "󰑦")
-     (button :class "cell h080" :onclick "cd /home/arlo/code/wl_keys; ./target/debug/wl_keys auto toggle" { WL_KEYS_AUTO == "true" ? "󰌌" : "󰌐" })
-     (button :class "cell h100" :onclick "cd /home/arlo/code/wl_keys; ./target/debug/wl_keys ui toggle" "󰧹"))
+     (button :class "cell h080" :onclick "wl_keys auto toggle" { WL_KEYS_AUTO == "true" ? "󰌌" : "󰌐" })
+     (button :class "cell h100" :onclick "wl_keys ui toggle" "󰧹"))
     (box
      :halign "end"
      :orientation "h"

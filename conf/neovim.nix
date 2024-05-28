@@ -1,4 +1,4 @@
-{ inputs, pkgs, lib, ... }@moduleInputs:
+{ inputs, pkgs, lib, system, ... }:
 {
   pkgs = with pkgs; [
     inputs.nixvim.packages."${system}".default

@@ -1,4 +1,4 @@
-{ pkgs, inputs, ... }:
+{ pkgs, inputs, hostname, system, ... }:
 
 {
   fonts = {
@@ -34,5 +34,10 @@
     grim
     # Region selection
     slurp
-  ];
+  # ] ++ (if hostname == "arlo-laptop2"
+  ] ++ (if hostname == "arlo-laptop2"
+    then [
+      inputs.wl_keys.packages."${system}".default
+    ]
+    else []);
 }
