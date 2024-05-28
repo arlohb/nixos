@@ -13,8 +13,7 @@
     # Manages persistent files when / is a tmpfs
     impermanence.url = "github:nix-community/impermanence";
 
-    # The new nixvim nvim config
-    # Not yet switched to
+    # My neovim config made with nixvim
     nixvim.url = "github:arlohb/nvim";
     nixvim.inputs.nixpkgs.follows = "nixpkgs";
 
