@@ -300,11 +300,11 @@
         "nixvim": "nixvim_2"
       },
       "locked": {
-        "lastModified": 1716838815,
-        "narHash": "sha256-TeC8zYAuTk6o0uAyaWlL/vdiNS7Uy82DlLNqo04bPCo=",
+        "lastModified": 1717295349,
+        "narHash": "sha256-N3j31z1e/5hRdPNTDUhtcR/28qJDAwMF7Vjwkequ5AU=",
         "owner": "arlohb",
         "repo": "nvim",
-        "rev": "61da9094b45d86c2d74a45c9f8cca66b4bed097d",
+        "rev": "1a38002919218a4d4da9788f75efbb66fedcc053",
         "type": "github"
       },
       "original": {
