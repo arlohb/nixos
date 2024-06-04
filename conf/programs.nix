@@ -18,14 +18,11 @@
 
     gnome.gnome-calendar
     gnome.gnome-clocks
-
-    eclipses.eclipse-java
   ];
 
   userPersist.directories = [
     ".config/obsidian"
     ".mozilla"
     ".local/share/containers"
-    ".config/eclipse-workspace"
   ];
 }
