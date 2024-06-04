@@ -15,7 +15,6 @@
     firefox
     obsidian
     porsmo
-    spotify
 
     gnome.gnome-calendar
     gnome.gnome-clocks
