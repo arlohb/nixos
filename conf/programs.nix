@@ -25,7 +25,6 @@
   userPersist.directories = [
     ".config/obsidian"
     ".mozilla"
-    ".config/Insomnia"
     ".local/share/containers"
     ".config/eclipse-workspace"
   ];
