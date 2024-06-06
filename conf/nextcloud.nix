@@ -47,4 +47,12 @@ in
         ~/Nextcloud ${secrets.nextcloud.server}
     '';
   };
-}
+} // (if hostname == "arlo-nix"
+  then {
+    # Move the media folder to a bigger, slower drive
+    fileSystems."/home/arlo/Nextcloud/Media" = {
+      device = "/Steam/Media";
+      options = [ "bind" ];
+    };
+  }
+  else {})
