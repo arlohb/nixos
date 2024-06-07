@@ -13,6 +13,7 @@ in
 
   userPersist.directories = [
     ".config/qBittorrent"
+    ".ssh"
   ];
 
   persist.directories = [
