@@ -74,7 +74,6 @@
     };
 
     # Games partition
-    # TODO: Look into repartitioning somehow to extend /nix
     "/Steam" = {
       device = "/dev/disk/by-label/steam";
       fsType = "ext4";
