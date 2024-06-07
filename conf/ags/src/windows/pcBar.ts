@@ -2,7 +2,7 @@ import type { BoxProps } from "types/widgets/box";
 import music from "@widgets/music";
 import clock from "@widgets/clock";
 import nextcloud from "@widgets/nextcloud";
-import { volume } from "@widgets/slider";
+import { brightness, volume } from "@widgets/slider";
 import bluetooth from "@widgets/bluetooth";
 
 /** Contains widgets.
@@ -37,6 +37,7 @@ export default () => [Widget.Window({
         endWidget: container([
             // TODO: Add bluetooth widget
             bluetooth("V"),
+            brightness("V"),
             volume("V"),
         ], { vpack: "end" }),
     }),
