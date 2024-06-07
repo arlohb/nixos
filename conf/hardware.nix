@@ -27,15 +27,6 @@
   networking.hostName = hostname;
   networking.networkmanager.enable = true;
 
-  # Used to get battery of laptop and other devices
-  services.upower.enable = true;
-
-  pkgs =
-    if hostname == "arlo-laptop2" then with pkgs; [
-      # Screen brightness
-      brightnessctl
-    ] else [ ];
-
   # State
   persist = {
     # Don't show these mounts in file browsers
@@ -102,4 +93,18 @@
   # Kill processes if RAM is nearly full
   # See conf/notifications.nix for more
   services.earlyoom.enable = false;
+
+  # Control screen brightness over HDMI and others
+  services.ddccontrol.enable = true;
+
+  # Used to get battery of laptop and other devices
+  services.upower.enable = true;
+} else if hostname == "arlo-laptop2" then {
+  pkgs = with pkgs; [
+    # Screen brightness
+    brightnessctl
+  ];
+
+  # Used to get battery of laptop and other devices
+  services.upower.enable = true;
 } else { })
