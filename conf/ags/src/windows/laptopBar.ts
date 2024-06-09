@@ -6,6 +6,7 @@ import bluetooth from "@widgets/bluetooth";
 import battery from "@widgets/battery";
 import button from "@widgets/button";
 import type { BoxProps } from "types/widgets/box";
+import { getMainMonitor } from "@utils";
 
 /** Contains widgets.
 * Use 3 of these, in top, center, and bottom. */
@@ -55,5 +56,6 @@ export default () => [Widget.Window({
             clock("H"),
         ], { hpack: "end" }),
     }),
+    monitor: getMainMonitor(),
 })];
 

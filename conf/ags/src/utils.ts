@@ -1,4 +1,5 @@
 import Gio from "types/@girs/gio-2.0/gio-2.0";
+import Gdk from "gi://Gdk";
 
 declare global {
     interface String {
@@ -74,5 +75,26 @@ export const listDirRecRelative = (path: string): string[] => {
 /** Checks if a cmd exists using `which`. */
 export const cmdExists = (cmd: string): boolean => {
     return "" !== Utils.exec(`bash -c "which ${cmd}"`);
+};
+
+/** Get the GDK ID of the screen with the biggest width. */
+export const getMainMonitor = (): number => {
+    const display = Gdk.Display.get_default()!;
+
+    const count = display.get_n_monitors();
+    const monitors: [number, Gdk.Monitor][] = [...Array(count).keys()]
+        .map(n => [n, display.get_monitor(n)!]);
+
+    const [maxMonitorId, _] = monitors.reduce(
+        ([maxMonitorId, maxWidth], [monitorId, monitor]) => {
+            const width = monitor?.geometry.width!;
+            return width > maxWidth
+                ? [monitorId, width]
+                : [maxMonitorId, maxWidth];
+        },
+        [-1, -1],
+    );
+
+    return maxMonitorId;
 };
 

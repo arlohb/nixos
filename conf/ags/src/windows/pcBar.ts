@@ -4,6 +4,7 @@ import clock from "@widgets/clock";
 import nextcloud from "@widgets/nextcloud";
 import { brightness, volume } from "@widgets/slider";
 import bluetooth from "@widgets/bluetooth";
+import { getMainMonitor } from "@utils";
 
 /** Contains widgets.
 * Use 3 of these, in top, center, and bottom. */
@@ -41,5 +42,6 @@ export default () => [Widget.Window({
             volume("V"),
         ], { vpack: "end" }),
     }),
+    monitor: getMainMonitor(),
 })];
 
