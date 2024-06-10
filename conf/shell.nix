@@ -43,6 +43,8 @@
 
   users.defaultUserShell = pkgs.fish;
 
+  # TODO: Maybe look into lorri to speed this up
+  # https://github.com/nix-community/lorri
   hm.programs.direnv.enable = true;
 
   userPersist.directories = [
