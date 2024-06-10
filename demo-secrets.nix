@@ -17,4 +17,11 @@
     user = "username";
     password = "password";
   };
+
+  sshExtraConfig = ''
+    Host NAME
+      Hostname HOST
+      Port PORT
+      User USER
+  '';
 }
