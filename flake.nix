@@ -1,5 +1,4 @@
 {
-  # TODO: Add inputs.nixpkgs.follows = "nixpkgs" automatrically
   inputs = {
     nixpkgs.url = "nixpkgs/nixos-unstable";
 
