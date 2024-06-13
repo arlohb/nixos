@@ -27,6 +27,9 @@
   networking.hostName = hostname;
   networking.networkmanager.enable = true;
 
+  # Used to get battery of laptop and other devices
+  services.upower.enable = true;
+
   # State
   persist = {
     # Don't show these mounts in file browsers
@@ -96,15 +99,9 @@
 
   # Control screen brightness over HDMI and others
   services.ddccontrol.enable = true;
-
-  # Used to get battery of laptop and other devices
-  services.upower.enable = true;
 } else if hostname == "arlo-laptop2" then {
   pkgs = with pkgs; [
     # Screen brightness
     brightnessctl
   ];
-
-  # Used to get battery of laptop and other devices
-  services.upower.enable = true;
 } else { })
