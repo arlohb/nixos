@@ -105,6 +105,9 @@
 
   # Control screen brightness over HDMI and others
   services.ddccontrol.enable = true;
+
+  # This is set above but would be overridden by the above options
+  services.upower.enable = true;
 } else if hostname == "arlo-laptop1" || hostname == "arlo-laptop2" then {
   pkgs = with pkgs; [
     # Screen brightness
