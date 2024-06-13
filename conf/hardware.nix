@@ -14,7 +14,7 @@
     kernelPackages = pkgs.linuxPackages_zen;
     kernelModules = [ "kvm-amd" ];
     initrd.availableKernelModules =
-      [ "nvme" "xhci_pci" "ahci" "usb_storage" "sd_mod" "rtsx_pci_sdmmc" ];
+      [ "nvme" "xhci_pci" "ahci" "ehci_pci" "usb_storage" "sd_mod" "rtsx_pci_sdmmc" ];
 
     # https://github.com/NixOS/nixpkgs/issues/254807
     swraid.enable = false;
@@ -82,7 +82,13 @@
       device = "/dev/disk/by-label/steam";
       fsType = "ext4";
     };
-  } else { }) // (if hostname == "arlo-laptop2" then {
+  } else if hostname == "arlo-laptop1" then {
+    # Boot partition
+    "/boot" = {
+      device = "/dev/disk/by-uuid/69F4-24A9";
+      fsType = "vfat";
+    };
+  } else if hostname == "arlo-laptop2" then {
     # Boot partition
     "/boot" = {
       device = "/dev/disk/by-uuid/58A9-81DF";
@@ -99,7 +105,7 @@
 
   # Control screen brightness over HDMI and others
   services.ddccontrol.enable = true;
-} else if hostname == "arlo-laptop2" then {
+} else if hostname == "arlo-laptop1" || hostname == "arlo-laptop2" then {
   pkgs = with pkgs; [
     # Screen brightness
     brightnessctl

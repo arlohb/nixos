@@ -42,7 +42,7 @@
 
       utils = import ./utils.nix nixpkgs.lib;
 
-      fullModules = hostname: [
+      fullModules = hostname: modulePaths: [
         impermanence.nixosModules.impermanence
         home-manager.nixosModules.home-manager
 
@@ -50,19 +50,10 @@
           home-manager.useGlobalPkgs = true;
           environment.systemPackages = pkgs.lib.attrValues scripts.packages.${system};
         }
-      ] ++ (utils.loadBetterModules { inherit hostname system inputs; } (
-        pkgs.lib.remove
-          # A disabled module
-          ./conf/android-studio.nix
-          (
-            (utils.file_paths_in_dir ./conf)
-            ++ (utils.file_paths_in_dir ./conf/wm)
-            ++ [
-              ./pkgs/pkgs.nix
-              ./conf/wm/hypr/hypr.nix
-            ]
-          )
-      ));
+      ] ++ (utils.loadBetterModules
+        { inherit hostname system inputs; }
+        modulePaths
+      );
     in
     {
       # Build this with:
@@ -75,16 +66,105 @@
         ] ++ utils.loadBetterModules { inherit system inputs; hostname = "nix-live"; } [ ./conf/core.nix ];
       };
 
+      nixosConfigurations.arlo-laptop1 = nixpkgs.lib.nixosSystem {
+        inherit system;
+
+        modules = fullModules "arlo-laptop1" [
+          # TODO: Put these into separate device files
+          # TODO: Make these configurable NixOS modules
+          ./conf/core.nix
+          ./conf/hardware.nix
+
+          # ./conf/3d.nix
+          # ./conf/android-studio.nix
+          # ./conf/audio.nix
+          # ./conf/bluetooth.nix
+          # ./conf/gaming.nix
+          ./conf/git.nix
+          ./conf/neovim.nix
+          # ./conf/network.nix
+          # ./conf/nextcloud.nix
+          # ./conf/printing.nix
+          ./conf/programs.nix
+          ./conf/shell.nix
+          ./conf/terminal.nix
+          ./conf/user.nix
+
+          ./conf/wm/core.nix
+          ./conf/wm/cursor.nix
+          ./conf/wm/login.nix
+          ./conf/wm/notifications.nix
+          ./conf/wm/polkit.nix
+          ./conf/wm/hypr/hypr.nix
+
+          # ./pkgs/pkgs.nix
+        ];
+      };
+
       nixosConfigurations.arlo-laptop2 = nixpkgs.lib.nixosSystem {
         inherit system;
 
-        modules = fullModules "arlo-laptop2";
+        modules = fullModules "arlo-laptop2" [
+          ./conf/core.nix
+          ./conf/hardware.nix
+
+          ./conf/3d.nix
+          # ./conf/android-studio.nix
+          ./conf/audio.nix
+          ./conf/bluetooth.nix
+          ./conf/gaming.nix
+          ./conf/git.nix
+          ./conf/neovim.nix
+          ./conf/network.nix
+          ./conf/nextcloud.nix
+          ./conf/printing.nix
+          ./conf/programs.nix
+          ./conf/shell.nix
+          ./conf/terminal.nix
+          ./conf/user.nix
+
+          ./conf/wm/core.nix
+          ./conf/wm/cursor.nix
+          ./conf/wm/login.nix
+          ./conf/wm/notifications.nix
+          ./conf/wm/polkit.nix
+          ./conf/wm/hypr/hypr.nix
+
+          ./pkgs/pkgs.nix
+        ];
       };
 
       nixosConfigurations.arlo-nix = nixpkgs.lib.nixosSystem {
         inherit system;
 
-        modules = fullModules "arlo-nix";
+        modules = fullModules "arlo-nix" [
+          ./conf/core.nix
+          ./conf/hardware.nix
+
+          ./conf/3d.nix
+          # ./conf/android-studio.nix
+          ./conf/audio.nix
+          ./conf/bluetooth.nix
+          ./conf/gaming.nix
+          ./conf/git.nix
+          ./conf/neovim.nix
+          ./conf/network.nix
+          ./conf/nextcloud.nix
+          ./conf/printing.nix
+          ./conf/programs.nix
+          ./conf/shell.nix
+          ./conf/terminal.nix
+          ./conf/user.nix
+
+          ./conf/wm/core.nix
+          ./conf/wm/cursor.nix
+          ./conf/wm/login.nix
+          ./conf/wm/notifications.nix
+          ./conf/wm/polkit.nix
+          ./conf/wm/hypr/hypr.nix
+
+          ./pkgs/pkgs.nix
+        ];
       };
 
       devShells."${system}".default = pkgs.mkShell {
