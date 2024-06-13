@@ -68,6 +68,7 @@
     };
   } // (if hostname == "arlo-nix" then {
     # Boot partition
+    # TODO: Can these be done by label like /nix
     "/boot" = {
       device = "/dev/disk/by-uuid/C16B-77F7";
       fsType = "vfat";
