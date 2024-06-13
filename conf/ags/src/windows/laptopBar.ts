@@ -48,6 +48,7 @@ export default () => [Widget.Window({
             music("H"),
         ]),
         endWidget: container([
+            // TODO: Only show if required programs are present
             bluetooth("H"),
             brightness("H"),
             volume("H"),
