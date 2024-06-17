@@ -5,18 +5,13 @@ lib: rec {
   #   - environment.persistence."/nix/persistent"            -> persist
   #   - environment.persistence."/nix/persistent".users.arlo -> userPersist
   #   - home-manager.users.arlo                              -> hm
-  #
-  # The other reason for this function it to provide special inputs to the modules.
   betterModule =
-    # Inputs not part of usual nixos modules
-    # This includes the system hostname
-    specialInputs:
     # The actual module
     module:
     # The usual nixos module inputs
     moduleInputs:
     let
-      origin = module (moduleInputs // specialInputs);
+      origin = module (moduleInputs);
 
       pkgs = origin.pkgs or [ ];
       persist = origin.persist or { };
@@ -50,10 +45,10 @@ lib: rec {
   # even if I don't use them.
   # I believe this is so NixOS knows which module inputs to provide to the module,
   # as even in a completely lazy language, all the module inputs may be too much?
-  loadBetterModules = specialInputs: map (
+  loadBetterModules = map (
     path:
     { pkgs, config, lib, ... }@moduleInputs:
-    betterModule specialInputs (import path) moduleInputs
+    betterModule (import path) moduleInputs
   );
 
   # Get the folders inside a directory
