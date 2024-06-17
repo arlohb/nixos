@@ -42,8 +42,6 @@
 
       utils = import ./utils.nix nixpkgs.lib;
 
-      specialArgs = { inherit system inputs; };
-
       fullModules = modulePaths: [
         impermanence.nixosModules.impermanence
         home-manager.nixosModules.home-manager
@@ -58,36 +56,29 @@
       );
     in
     {
-      # Build this with:
-      # nix build .#nixosConfigurations.live.config.system.build.isoImage
-      nixosConfigurations.live = nixpkgs.lib.nixosSystem {
-        inherit system;
+      nixosConfigurations = let
+        buildHost = hostname:
+          nixpkgs.lib.nixosSystem {
+            inherit system;
 
-        specialArgs = specialArgs // { hostname = "nix-live"; };
-        modules = [
-          "${nixpkgs}/nixos/modules/installer/cd-dvd/installation-cd-graphical-gnome.nix"
-        ] ++ utils.loadBetterModules { inherit system inputs; hostname = "nix-live"; } [ ./conf/core.nix ];
-      };
+            specialArgs = { inherit hostname system inputs; };
+            modules = fullModules (import ./hosts/${hostname}.nix);
+          };
+      in {
+        # Build this with:
+        # nix build .#nixosConfigurations.live.config.system.build.isoImage
+        nix-live = nixpkgs.lib.nixosSystem {
+          inherit system;
 
-      nixosConfigurations.arlo-laptop1 = nixpkgs.lib.nixosSystem {
-        inherit system;
+          specialArgs = { inherit system inputs; hostname = "nix-live"; };
+          modules = [
+            "${nixpkgs}/nixos/modules/installer/cd-dvd/installation-cd-graphical-gnome.nix"
+          ] ++ utils.loadBetterModules { inherit system inputs; hostname = "nix-live"; } [ ./conf/core.nix ];
+        };
 
-        specialArgs = specialArgs // { hostname = "arlo-laptop1"; };
-        modules = fullModules (import ./hosts/arlo-laptop1.nix);
-      };
-
-      nixosConfigurations.arlo-laptop2 = nixpkgs.lib.nixosSystem {
-        inherit system;
-
-        specialArgs = specialArgs // { hostname = "arlo-laptop2"; };
-        modules = fullModules (import ./hosts/arlo-laptop2.nix);
-      };
-
-      nixosConfigurations.arlo-nix = nixpkgs.lib.nixosSystem {
-        inherit system;
-
-        specialArgs = specialArgs // { hostname = "arlo-nix"; };
-        modules = fullModules (import ./hosts/arlo-nix.nix);
+        arlo-laptop1 = buildHost "arlo-laptop1";
+        arlo-laptop2 = buildHost "arlo-laptop2";
+        arlo-nix = buildHost "arlo-nix";
       };
 
       devShells."${system}".default = pkgs.mkShell {
