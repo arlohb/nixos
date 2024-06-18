@@ -27,6 +27,10 @@
         readlink (which $argv)
       end
 
+      function cpbig
+        rsync --archive --human-readable --info=progress2 $argv
+      end
+
       if set -q KITTY_INSTALLATION_DIR
           set --global KITTY_SHELL_INTEGRATION enabled
           source "$KITTY_INSTALLATION_DIR/shell-integration/fish/vendor_conf.d/kitty-shell-integration.fish"
