@@ -6,7 +6,7 @@ import bluetooth from "@widgets/bluetooth";
 import battery from "@widgets/battery";
 import button from "@widgets/button";
 import type { BoxProps } from "types/widgets/box";
-import { getMainMonitor } from "@utils";
+import { cmdExists, getMainMonitor } from "@utils";
 
 /** Contains widgets.
 * Use 3 of these, in top, center, and bottom. */
@@ -47,15 +47,17 @@ export default () => [Widget.Window({
             // TODO: Don't show this and a couple other is portrait
             music("H"),
         ]),
-        endWidget: container([
-            // TODO: Only show if required programs are present
-            bluetooth("H"),
-            brightness("H"),
-            volume("H"),
-            nextcloud("H"),
-            battery("H"),
-            clock("H"),
-        ], { hpack: "end" }),
+        endWidget: container(
+            [
+                cmdExists("bluetoothctl") ? bluetooth("H") : null,
+                cmdExists("brightnessctl") ? brightness("H") : null,
+                cmdExists("pw-cli") ? volume("H") : null,
+                cmdExists("nextcloudcmd") ? nextcloud("H") : null,
+                cmdExists("upower") ? battery("H") : null,
+                clock("H"),
+            ].filter(widget => widget !== null) as BoxProps["children"],
+            { hpack: "end" },
+        ),
     }),
     monitor: getMainMonitor(),
 })];
