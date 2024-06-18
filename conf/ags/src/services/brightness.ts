@@ -20,7 +20,7 @@ class BrightnessDDCService extends Service {
         )
     }
 
-    #interface: string;
+    #interfaces: string[];
     #brightnessId: string;
 
     /** The brightness percent from 0 to 1 */
@@ -34,7 +34,9 @@ class BrightnessDDCService extends Service {
     set percent(percent: number) {
         this.#percent = clamp(percent, 0, 1);
 
-        Utils.execAsync(`ddccontrol dev:${this.#interface} -r ${this.#brightnessId} -w ${this.#percent * this.#max}`);
+        for (const int of this.#interfaces) {
+            Utils.execAsync(`ddccontrol dev:${int} -r ${this.#brightnessId} -w ${this.#percent * this.#max}`);
+        }
     }
 
     constructor() {
@@ -42,8 +44,9 @@ class BrightnessDDCService extends Service {
 
         const lines =  Utils.exec("ddccontrol -p").split("\n");
 
-        const deviceLine = lines.find(line => line.startsWith(" - Device: "))!;
-        this.#interface = deviceLine.split("dev:")[1];
+        this.#interfaces = lines
+            .filter(line => line.startsWith(" - Device: "))
+            .map(line => line.split("dev:")[1]);
 
         const brightnessLineIndex = lines.findIndex(line => line.startsWith("\t\t> id=brightness"));
         this.#brightnessId = lines[brightnessLineIndex].split("address=")[1].split(",")[0];
@@ -54,7 +57,7 @@ class BrightnessDDCService extends Service {
     }
 
     #onChange() {
-        const lines = Utils.exec(`ddccontrol dev:${this.#interface} -r ${this.#brightnessId}`).split("\n");
+        const lines = Utils.exec(`ddccontrol dev:${this.#interfaces[0]} -r ${this.#brightnessId}`).split("\n");
         const brightness = Number(lines[lines.length - 1].split("/")[1]);
         const percent = brightness / this.#max;
 
