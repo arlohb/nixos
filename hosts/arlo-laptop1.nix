@@ -14,7 +14,6 @@
   # ../conf/nextcloud.nix
   # ../conf/printing.nix
   ../conf/programs.nix
-  ../conf/server.nix
   ../conf/shell.nix
   ../conf/terminal.nix
   ../conf/user.nix
@@ -25,6 +24,11 @@
   ../conf/wm/notifications.nix
   ../conf/wm/polkit.nix
   ../conf/wm/hypr/hypr.nix
+
+  ../conf/server/core.nix
+  ../conf/server/docker.nix
+  ../conf/server/duckdns.nix
+  ../conf/server/firewall.nix
 
   # ../pkgs/pkgs.nix
 ]

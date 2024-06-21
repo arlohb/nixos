@@ -1,13 +1,13 @@
 { pkgs, ... }:
 
 {
-  virtualisation.docker.enable = true;
-
-  users.users.arlo.extraGroups = [ "docker" ];
-
-  persist.directories = [
-    "/var/lib/docker"
-  ];
+  # This sets up a firewall that:
+  #   - Only allows port 80 and 443
+  #   - Only allows traffic to and from the gateway (192.168.1.254),
+  #     Including internet access
+  #   - Doesn't allow any traffic to devices on the local network
+  #   - Places rules on INPUTS, OUTPUT, and DOCKER-USER chains,
+  #     To firewall both the host and docker containers
 
   networking.firewall.allowedTCPPorts = [ 80 443 ];
 
@@ -59,19 +59,4 @@
       ''}'';
     };
   };
-
-  # DuckDNS
-  services.cron = {
-    enable = true;
-
-    systemCronJobs = with (import ../secrets.nix).duckDns; [
-      "*/5 * * * * ${pkgs.writeShellScriptBin "duck" ''
-        echo url="https://www.duckdns.org/update?domains=${domain}&token=${token}&ip=" \
-          | curl -k -o /var/log/duck.log -K -
-      ''} >/dev/null 2>&1"
-    ];
-  };
-
-  # Don't sleep when lid is closed
-  services.logind.lidSwitch = "ignore";
 }
