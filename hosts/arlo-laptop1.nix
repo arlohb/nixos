@@ -10,10 +10,11 @@
   # ../conf/gaming.nix
   ../conf/git.nix
   ../conf/neovim.nix
-  # ../conf/network.nix
+  ../conf/network.nix
   # ../conf/nextcloud.nix
   # ../conf/printing.nix
   ../conf/programs.nix
+  ../conf/server.nix
   ../conf/shell.nix
   ../conf/terminal.nix
   ../conf/user.nix

@@ -13,6 +13,7 @@
   ../conf/nextcloud.nix
   ../conf/printing.nix
   ../conf/programs.nix
+  # ../conf/server.nix
   ../conf/shell.nix
   ../conf/terminal.nix
   ../conf/user.nix
