@@ -13,6 +13,10 @@
     # Manages persistent files when / is a tmpfs
     impermanence.url = "github:nix-community/impermanence";
 
+    # nix-index prebuilt database
+    nix-index-database.url = "github:nix-community/nix-index-database";
+    nix-index-database.inputs.nixpkgs.follows = "nixpkgs";
+
     # My neovim config made with nixvim
     nixvim.url = "github:arlohb/nvim";
     nixvim.inputs.nixpkgs.follows = "nixpkgs";
@@ -31,7 +35,7 @@
     scripts.inputs.nixpkgs.follows = "nixpkgs";
   };
 
-  outputs = { self, nixpkgs, home-manager, impermanence, nixvim, scripts, ... }@inputs:
+  outputs = { self, nixpkgs, home-manager, impermanence, nix-index-database, nixvim, scripts, ... }@inputs:
     let
       system = "x86_64-linux";
 

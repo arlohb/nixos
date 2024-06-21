@@ -14,6 +14,11 @@
   nixpkgs.config.allowUnfree = true;
   hardware.enableAllFirmware = true;
 
+  # Locate pkgs
+  programs.command-not-found.enable = false;
+  programs.nix-index.enable = true;
+  imports = [ inputs.nix-index-database.nixosModules.nix-index ];
+
   # Locale
   time.timeZone = "Europe/London";
   i18n.defaultLocale = "en_GB.UTF-8";
