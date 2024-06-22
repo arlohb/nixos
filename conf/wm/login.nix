@@ -31,6 +31,22 @@
         vibrancy = 0.1696;
         vibrancy_darkness = 0.0;
       };
+
+      label = {
+        monitor = "";
+        text = "$TIME";
+        font_size = 60;
+
+        position = "0, 0";
+        halign = "center";
+        valign = "center";
+        text_align = "center";
+
+        shadow_passes = 4;
+        shadow_size = 20;
+        shadow_color = "rgb(de2288)";
+        shadow_boost = 50;
+      };
     };
   };
 
