@@ -29,6 +29,7 @@
       initialHashedPassword = (import ../secrets.nix).initialHashedPassword;
     };
   };
+  programs.git.config.safe.directory = "/etc/nixos/.git";
 
   # Setup home manager
   hm.home = {
