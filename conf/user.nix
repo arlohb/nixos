@@ -29,7 +29,10 @@
       initialHashedPassword = (import ../secrets.nix).initialHashedPassword;
     };
   };
-  programs.git.config.safe.directory = "/etc/nixos/.git";
+
+  # This is needed for a normal user to control a git repo
+  # owned by root, even though it's in the owning group
+  hm.programs.git.extraConfig.safe.directory = "/etc/nixos";
 
   # Setup home manager
   hm.home = {

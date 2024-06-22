@@ -28,9 +28,6 @@ in
         # Store credentials here
         # This file is created from secrets
         credential.helper = "store --file ~/.config/git/credentials";
-        # This is needed for a normal user to control a git repo
-        # owned by root, even though it's in the owning group
-        safe.directory = "/etc/nixos";
       };
     };
   };
