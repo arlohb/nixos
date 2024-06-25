@@ -16,11 +16,13 @@
       colorscript -r
 
       function nr
-        nix run "nixpkgs#$argv"
+        # To read NIXPKGS_ALLOW_UNFREE
+        nix run --impure "nixpkgs#$argv"
       end
 
       function ns
-        nix shell "nixpkgs#$argv"
+        # To read NIXPKGS_ALLOW_UNFREE
+        nix shell --impure "nixpkgs#$argv"
       end
 
       function whichreal
