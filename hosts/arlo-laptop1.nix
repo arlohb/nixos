@@ -5,6 +5,7 @@
   ../conf/hardware.nix
   ../conf/user.nix
   ../conf/shell.nix
+  ../conf/audio.nix
 
   # Desktop
   ../conf/wm/core.nix
