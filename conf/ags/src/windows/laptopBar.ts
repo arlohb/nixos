@@ -25,6 +25,7 @@ export default () => [Widget.Window({
     name: "laptopBar",
     anchor: ["top", "left", "right"],
     exclusivity: "exclusive",
+    layer: "bottom",
     child: Widget.CenterBox({
         spacing: 8,
         startWidget: container([
