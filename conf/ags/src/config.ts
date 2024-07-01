@@ -35,9 +35,9 @@ const loadCss = (): string => {
 
 // Create app
 App.config({
-    windows: host == Host.ArloNix ? pcBar
-        : host == Host.ArloLaptop2 ? laptopBar
-        : [...pcBar(), ...laptopBar()],
+    windows: host == Host.ArloNix ? [pcBar()]
+        : host == Host.ArloLaptop2 ? [laptopBar()]
+        : [pcBar(), laptopBar()],
 });
 
 // Apply css

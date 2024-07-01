@@ -21,7 +21,7 @@ const container = (
 
 
 /** The bar window */
-export default () => [Widget.Window({
+export default () => Widget.Window({
     name: "pcBar",
     anchor: ["left", "top", "bottom"],
     exclusivity: "exclusive",
@@ -43,5 +43,5 @@ export default () => [Widget.Window({
         ], { vpack: "end" }),
     }),
     monitor: getMainMonitor(),
-})];
+});
 

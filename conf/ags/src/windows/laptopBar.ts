@@ -21,7 +21,7 @@ const container = (
 });
 
 /** The bar window */
-export default () => [Widget.Window({
+export default () => Widget.Window({
     name: "laptopBar",
     anchor: ["top", "left", "right"],
     exclusivity: "exclusive",
@@ -61,5 +61,5 @@ export default () => [Widget.Window({
         ),
     }),
     monitor: getMainMonitor(),
-})];
+});
 
