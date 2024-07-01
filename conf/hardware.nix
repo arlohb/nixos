@@ -64,35 +64,22 @@
       neededForBoot = true;
     };
 
-    # Nix store on partition labelled 'nix'
+    # Nix store on partition labelled "nix"
     "/nix" = {
       device = "/dev/disk/by-label/nix";
       fsType = "ext4";
     };
-  } // (if hostname == "arlo-nix" then {
-    # Boot partition
-    # TODO: Can these be done by label like /nix
+
+    # Boot partition on partition labelled "BOOT"
     "/boot" = {
-      device = "/dev/disk/by-uuid/C16B-77F7";
+      device = "/dev/disk/by-label/BOOT";
       fsType = "vfat";
     };
-
+  } // (if hostname == "arlo-nix" then {
     # Games partition
     "/Steam" = {
       device = "/dev/disk/by-label/steam";
       fsType = "ext4";
-    };
-  } else if hostname == "arlo-laptop1" then {
-    # Boot partition
-    "/boot" = {
-      device = "/dev/disk/by-uuid/69F4-24A9";
-      fsType = "vfat";
-    };
-  } else if hostname == "arlo-laptop2" then {
-    # Boot partition
-    "/boot" = {
-      device = "/dev/disk/by-uuid/58A9-81DF";
-      fsType = "vfat";
     };
   } else { });
 } // (if hostname == "arlo-nix" then {
