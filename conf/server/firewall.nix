@@ -9,7 +9,10 @@
   #   - Places rules on INPUTS, OUTPUT, and DOCKER-USER chains,
   #     To firewall both the host and docker containers
 
-  networking.firewall.allowedTCPPorts = [ 80 443 ];
+  networking.firewall = {
+    allowedTCPPorts = [ 6881 80 443 ];
+    allowedUDPPorts = [ 6881 ];
+  };
 
   systemd.services.firewall-rules = {
     description = "Post-docker firewall rules";
