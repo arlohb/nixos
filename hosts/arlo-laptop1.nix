@@ -24,6 +24,7 @@
 
   # Server
   ../conf/server/core.nix
+  ../conf/server/cloudflare-dns.nix
   ../conf/server/docker.nix
   ../conf/server/duckdns.nix
   ../conf/server/firewall.nix
