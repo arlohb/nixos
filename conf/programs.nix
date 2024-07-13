@@ -20,7 +20,7 @@
     obsidian
     porsmo
 
-    gnome.gnome-calendar
+    gnome-calendar
     gnome.gnome-clocks
   ];
 
