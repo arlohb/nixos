@@ -32,7 +32,10 @@
 
   # This is needed for a normal user to control a git repo
   # owned by root, even though it's in the owning group
-  hm.programs.git.extraConfig.safe.directory = "/etc/nixos";
+  hm.programs.git.extraConfig.safe.directory = [
+    "/etc/nixos"
+    "/etc/nixos/.git"
+  ];
 
   # Setup home manager
   hm.home = {
