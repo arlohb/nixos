@@ -50,19 +50,8 @@
     };
   };
 
-  services.acpid = if hostname == "arlo-laptop2" then {
+  services.acpid = (if hostname == "arlo-laptop1" || hostname == "arlo-laptop2" then {
     enable = true;
-
-    # https://wiki.hyprland.org/Nix/Hyprland-on-Home-Manager/#programs-dont-work-in-systemd-services-but-do-on-the-terminal
-    acEventCommands = ''
-      ${pkgs.su}/bin/su arlo -c ' \
-        bash -c " \
-          XDG_RUNTIME_DIR=/run/user/1000; \
-          WAYLAND_DISPLAY=wayland-1; \
-          ${pkgs.fish}/bin/fish ~/.config/hypr/performance.fish \
-        " \
-      '
-    '';
 
     handlers.lock = {
       # use acpi_listen to find event
@@ -73,5 +62,17 @@
         WAYLAND_DISPLAY=wayland-1 \
         ${pkgs.hyprlock}/bin/hyprlock ' '';
     };
-  } else { };
+  } else { }) // (if hostname == "arlo-laptop2" then {
+    # TODO: Clean up this code and more like it
+    # https://wiki.hyprland.org/Nix/Hyprland-on-Home-Manager/#programs-dont-work-in-systemd-services-but-do-on-the-terminal
+    acEventCommands = ''
+      ${pkgs.su}/bin/su arlo -c ' \
+        bash -c " \
+          XDG_RUNTIME_DIR=/run/user/1000; \
+          WAYLAND_DISPLAY=wayland-1; \
+          ${pkgs.fish}/bin/fish ~/.config/hypr/performance.fish \
+        " \
+      '
+    '';
+  } else { });
 }
