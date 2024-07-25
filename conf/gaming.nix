@@ -28,6 +28,11 @@
   # Steam
   programs.steam.enable = true;
 
+  # Minecraft bedrock
+  services.flatpak.packages = [
+    "io.mrarm.mcpelauncher"
+  ];
+
   # Other programs
   pkgs = with pkgs; [
     # micro-compositor to speed up game rendering under wayland

@@ -21,6 +21,8 @@
     nixvim.url = "github:arlohb/nvim";
     nixvim.inputs.nixpkgs.follows = "nixpkgs";
 
+    nix-flatpak.url = "github:gmodena/nix-flatpak/?ref=v0.4.1";
+
     # An on-screen keyboard
     wl_keys.url = "github:arlohb/wl_keys";
     wl_keys.inputs.nixpkgs.follows = "nixpkgs";
@@ -35,7 +37,7 @@
     scripts.inputs.nixpkgs.follows = "nixpkgs";
   };
 
-  outputs = { self, nixpkgs, home-manager, impermanence, nix-index-database, nixvim, scripts, ... }@inputs:
+  outputs = { self, nixpkgs, home-manager, impermanence, nix-index-database, nixvim, nix-flatpak, scripts, ... }@inputs:
     let
       system = "x86_64-linux";
 
@@ -48,6 +50,7 @@
 
       fullModules = modulePaths: [
         impermanence.nixosModules.impermanence
+        nix-flatpak.nixosModules.nix-flatpak
         home-manager.nixosModules.home-manager
 
         {

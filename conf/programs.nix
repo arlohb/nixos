@@ -6,9 +6,14 @@
   # that podman doesn't require a daemon but docker does.
   virtualisation.podman.enable = true;
 
-  # TODO: Look at nix-flatpak
-  # https://github.com/gmodena/nix-flatpak
-  services.flatpak.enable = true;
+  # Uses nix-flatpak
+  services.flatpak = {
+    enable = true;
+    packages = [
+      # Just an example
+      # "com.ultimaker.cura"
+    ];
+  };
 
   # TODO add some synergy like software
 
@@ -33,5 +38,7 @@
     ".mozilla"
     ".local/share/containers"
     ".local/share/flatpak"
+    # Flatpak app data
+    ".var"
   ];
 }

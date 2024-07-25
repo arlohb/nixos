@@ -3,11 +3,11 @@
 {
   pkgs = with pkgs; [
     blender
-    # TODO: Add cura to nix-flatpak and remove note here
-    # https://github.com/NixOS/nixpkgs/issues/186570
-    # Best to use flatpak until this is fixed
-    # cura
     openscad
+  ];
+
+  services.flatpak.packages = [
+    "com.ultimaker.cura"
   ];
 
   userPersist.directories = [

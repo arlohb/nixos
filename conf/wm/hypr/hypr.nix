@@ -28,6 +28,15 @@
       ]);
   };
 
+  # Enable XDG portals
+  # TODO: mcpelauncher still can't open a file browser
+  xdg.portal = {
+    enable = true;
+    extraPortals = with pkgs; [
+      xdg-desktop-portal-hyprland
+    ];
+  };
+
   # Link over all the config files
   hm.home.file."/home/arlo/.config/hypr" = {
     source = ./scripts;
