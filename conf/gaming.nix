@@ -25,6 +25,15 @@
     };
   };
 
+  # Gamescope for better gaming on wayland
+  programs.gamescope = {
+    enable = true;
+    args = [
+      # Linked Hyprland issue: https://github.com/hyprwm/Hyprland/issues/6376
+      "--backend sdl"
+    ];
+  };
+
   # Steam
   programs.steam.enable = true;
 
@@ -35,11 +44,6 @@
 
   # Other programs
   pkgs = with pkgs; [
-    # micro-compositor to speed up game rendering under wayland
-    # Installed here instead of in scripts where its used,
-    # As other programs like lutris and retroarch can use this
-    gamescope
-
     # Minecraft launcher for various modpack sources
     prismlauncher
 
