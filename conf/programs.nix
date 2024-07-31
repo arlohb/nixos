@@ -24,6 +24,7 @@
     firefox
     obsidian
     porsmo
+    vlc
 
     gnome-calendar
     gnome.gnome-clocks
