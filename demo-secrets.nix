@@ -24,4 +24,9 @@
       Port PORT
       User USER
   '';
+
+  duckDns = {
+    domain = "domain";
+    token = "token";
+  };
 }
