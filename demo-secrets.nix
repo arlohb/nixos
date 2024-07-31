@@ -18,12 +18,20 @@
     password = "password";
   };
 
-  sshExtraConfig = ''
-    Host NAME
-      Hostname HOST
-      Port PORT
-      User USER
-  '';
+  ssh = {
+    extraConfig = ''
+      Host NAME
+        Hostname HOST
+        Port PORT
+        User USER
+    '';
+
+    # This is for ssh servers,
+    # and allows the owner of the associated private key owner to login
+    authorizedKeys = [
+      "publickey"
+    ];
+  };
 
   duckDns = {
     domain = "domain";

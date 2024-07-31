@@ -21,6 +21,6 @@ in
   ];
 
   # SSH aliases from secrets.nix
-  programs.ssh.extraConfig = secrets.sshExtraConfig;
+  programs.ssh.extraConfig = secrets.ssh.extraConfig;
 }
 
