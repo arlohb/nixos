@@ -19,7 +19,6 @@
 
     # My neovim config made with nixvim
     nixvim.url = "github:arlohb/nvim";
-    nixvim.inputs.nixpkgs.follows = "nixpkgs";
 
     nix-flatpak.url = "github:gmodena/nix-flatpak/?ref=v0.4.1";
 
