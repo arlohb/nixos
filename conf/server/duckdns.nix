@@ -1,17 +1,23 @@
 { pkgs, ... }:
 
 {
-  # Creates a Cron Job to update duckdns with my current IP
+  # Creates a Systemd timer to update duckdns with my current IP
 
-  services.cron = {
-    enable = true;
+  systemd.timers."duckdns" = {
+    wantedBy = [ "timers.target" ];
+    timerConfig = {
+      OnBootSec = "10m";
+      OnUnitActiveSec = "10m";
+      Unit = "duckdns.service";
+    };
+  };
 
-    systemCronJobs = with (import ../../secrets.nix).duckDns; [
-      # This runs every 5 minutes
-      "*/5 * * * * ${pkgs.writeShellScriptBin "duck" ''
-        echo url="https://www.duckdns.org/update?domains=${domain}&token=${token}&ip=" \
-          | curl -k -o /var/log/duck.log -K -
-      ''} >/dev/null 2>&1"
-    ];
+  systemd.services."duckdns" = {
+    script = (with (import ../../secrets.nix).duckDns; ''
+      echo url="https://www.duckdns.org/update?domains=${domain}&token=${token}&ip=" \
+      | ${pkgs.curl}/bin/curl -k -o /var/log/duck.log -K -
+    '');
+
+    serviceConfig.Type = "oneshot";
   };
 }
