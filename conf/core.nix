@@ -13,6 +13,8 @@
   # Full package and hardware support
   nixpkgs.config.allowUnfree = true;
   environment.variables.NIXPKGS_ALLOW_UNFREE = "1";
+  programs.nix-ld.enable = true;
+  # Allows you to run unpatched binaries
   hardware.enableAllFirmware = true;
 
   # Locate pkgs
