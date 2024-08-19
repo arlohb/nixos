@@ -1,5 +1,7 @@
 { pkgs, hostname, lib, ... }:
 
+# TODO: hyprgrass plugin for touch gestures
+# https://github.com/horriblename/hyprgrass
 {
   pkgs = with pkgs; [
     # Used to disable xorg / xwayland access control
