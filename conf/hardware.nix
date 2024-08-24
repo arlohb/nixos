@@ -95,6 +95,11 @@
 
   # This is set above but would be overridden by the above options
   services.upower.enable = true;
+
+  # I think this thread says my TPM firmware isn't working?
+  # This just works around it
+  # https://github.com/systemd/systemd/issues/33412#issuecomment-2286210112
+  systemd.units."dev-tpmrm0.device".enable = false;
 } else if hostname == "arlo-laptop1" || hostname == "arlo-laptop2" then {
   pkgs = with pkgs; [
     # Screen brightness
