@@ -31,10 +31,10 @@
   };
 
   # Enable XDG portals
-  # TODO: mcpelauncher still can't open a file browser
   xdg.portal = {
     enable = true;
     extraPortals = with pkgs; [
+      xdg-desktop-portal-gtk
       xdg-desktop-portal-hyprland
     ];
   };
