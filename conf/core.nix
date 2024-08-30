@@ -28,6 +28,8 @@
 
   # Core packages
   pkgs = with pkgs; [
+    busybox
+    usbutils
     git
     wget
     curl
