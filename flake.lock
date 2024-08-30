@@ -246,11 +246,11 @@
     "lecture-notes-nvim": {
       "flake": false,
       "locked": {
-        "lastModified": 1723476450,
-        "narHash": "sha256-r3u8VfD6sklMVwoD2lL0t5/ijWStT34DGRUEww0Nufg=",
+        "lastModified": 1725042713,
+        "narHash": "sha256-v82kxelsJUQTUqFHjJRPpm+tI5VNNxgSX7+KyzhSp/s=",
         "owner": "arlohb",
         "repo": "lecture-notes.nvim",
-        "rev": "7de7389a224c77d79b84c53d35101c956115db90",
+        "rev": "dba43ad9bd9ee4d0567473af30765d83526b5b52",
         "type": "github"
       },
       "original": {
@@ -368,11 +368,11 @@
         "nixvim": "nixvim_2"
       },
       "locked": {
-        "lastModified": 1723478126,
-        "narHash": "sha256-wehdEDZOeHIrNLWvsBghbIBMteKbETbn+qKyOyiTwfc=",
+        "lastModified": 1725043064,
+        "narHash": "sha256-WXM4KkBWuW7j74RHG8Xh9eXjVvWTEa5BfqUm8/AAF8I=",
         "owner": "arlohb",
         "repo": "nvim",
-        "rev": "b00f56832f52be9b33cd563c103bc0f4106f0aa4",
+        "rev": "9a9bc4d5ce367b1ff4279431d62bbb7a3b520ff3",
         "type": "github"
       },
       "original": {
