@@ -27,7 +27,7 @@
     vlc
 
     gnome-calendar
-    gnome.gnome-clocks
+    gnome-clocks
   ];
 
   persist.directories = [
