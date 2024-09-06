@@ -20,8 +20,8 @@
       gpu.amd_performance_level = "high";
 
       # This could do more complicated things in the future
-      custom.start = "notify-send 'GameMode started!'";
-      custom.end = "notify-send 'GameMode ended!'";
+      custom.start = "${pkgs.libnotify}/bin/notify-send 'GameMode started!'";
+      custom.end = "${pkgs.libnotify}/bin/notify-send 'GameMode ended!'";
     };
   };
 
