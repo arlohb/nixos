@@ -26,4 +26,8 @@
   ../conf/programs.nix
   ../conf/terminal.nix
   ../conf/android-studio.nix
+
+  # Services
+  ../conf/server/docker.nix
+  ../conf/ollama.nix
 ]
