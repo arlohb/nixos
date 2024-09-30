@@ -1,0 +1,7 @@
+{
+  "name": "lean-project",
+  "version": "1.0.0",
+  "dependencies": {
+    "lean-language-server": "3"
+  }
+}
