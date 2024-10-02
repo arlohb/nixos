@@ -1,6 +1,7 @@
 { system, pkgs, inputs, ... }:
-
-{
+let
+  secrets = import ../secrets.nix;
+in {
   # Core nix settings
   system.stateVersion = "23.05";
   nixpkgs.hostPlatform = system;
@@ -9,6 +10,10 @@
   # Checks for duplicate files in the store
   nix.optimise.automatic = true;
   nix.settings.auto-optimise-store = true;
+  nix.extraOptions = ''
+    # Get round the api rate limit
+    access-tokens = github.com=${secrets.githubToken}
+  '';
 
   # Full package and hardware support
   nixpkgs.config.allowUnfree = true;
