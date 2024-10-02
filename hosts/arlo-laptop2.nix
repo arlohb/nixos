@@ -25,4 +25,5 @@
   ../conf/printing.nix
   ../conf/programs.nix
   ../conf/terminal.nix
+  ../conf/idea.nix
 ]
