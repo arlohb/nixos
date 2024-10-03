@@ -403,11 +403,11 @@
         "nixvim": "nixvim_2"
       },
       "locked": {
-        "lastModified": 1727721846,
-        "narHash": "sha256-IgGqReUICaTMpXuo4O9/B/JmgC39xGfYhuxaMZiIpb8=",
+        "lastModified": 1727974930,
+        "narHash": "sha256-P12Erd78EtMq3G8K38RSZMmumKjPGdhQMWTGpaZU4QE=",
         "owner": "arlohb",
         "repo": "nvim",
-        "rev": "95107ecf132d0aec5ea64f9695304ae0a07ac6a8",
+        "rev": "7dc6cb1a2fdf7d4ffc6b829f974f7dc5f8e5c68f",
         "type": "github"
       },
       "original": {
