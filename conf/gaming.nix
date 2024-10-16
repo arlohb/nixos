@@ -59,11 +59,12 @@
     # Free Magic The Gathering
     cockatrice
 
-    (retroarch.override {
-      cores = with libretro; [
-        citra
-      ];
-    })
+    # Temporarily disabled as it failed to build
+    # (retroarch.override {
+    #   cores = with libretro; [
+    #     citra
+    #   ];
+    # })
   ];
 
   # https://nixos.wiki/wiki/Lutris
