@@ -83,7 +83,7 @@
     };
   } else if hostname == "arlo-laptop1" then {
     "/mnt" = {
-      device = "/dev/sdb1";
+      device = "/dev/disk/by-label/backup";
       fsType = "ext4";
     };
 
