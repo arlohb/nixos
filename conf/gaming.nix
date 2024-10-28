@@ -54,6 +54,7 @@
     # Proton-GE installer
     # This installs it to ~/.local/share/Steam/compatibilitytools.d,
     # So is already persisted with the steam installation
+    # TODO: Look at programs.steam.extraCompatPackages and proton-ge-bin
     protonup-ng
 
     # Free Magic The Gathering
