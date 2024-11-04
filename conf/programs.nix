@@ -28,6 +28,8 @@
 
     gnome-calendar
     gnome-clocks
+
+    aseprite
   ];
 
   persist.directories = [
@@ -36,6 +38,7 @@
 
   userPersist.directories = [
     ".config/obsidian"
+    ".config/aseprite"
     ".mozilla"
     ".local/share/containers"
     ".local/share/flatpak"
