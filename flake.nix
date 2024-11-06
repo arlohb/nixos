@@ -2,6 +2,10 @@
   inputs = {
     nixpkgs.url = "nixpkgs/nixos-unstable";
 
+    # Blender temporarily broken
+    # https://github.com/NixOS/nixpkgs/pull/351902
+    nixpkgs-blender.url = "github:NixOS/nixpkgs?rev=05bbf675397d5366259409139039af8077d695ce";
+
     # Nix User Repository
     nur.url = "github:nix-community/NUR";
 
@@ -45,12 +49,31 @@
         config.allowUnfree = true;
       };
 
+      pkgs-blender = import inputs.nixpkgs-blender {
+        inherit system;
+        config.allowUnfree = true;
+      };
+      blender-fix = {
+        nixpkgs.config.packageOverrides = pkgs: {
+          blender = pkgs-blender.blender;
+        };
+      };
+
       utils = import ./utils.nix nixpkgs.lib;
 
       fullModules = modulePaths: [
         impermanence.nixosModules.impermanence
+        {
+          # Impermanence has a temporary issue
+          # https://github.com/nix-community/impermanence/issues/229
+          boot.initrd.systemd.suppressedUnits = [ "systemd-machine-id-commit.service" ];
+          systemd.suppressedSystemUnits = [ "systemd-machine-id-commit.service" ];
+        }
+
         nix-flatpak.nixosModules.nix-flatpak
         home-manager.nixosModules.home-manager
+
+        blender-fix
 
         {
           home-manager.useGlobalPkgs = true;
