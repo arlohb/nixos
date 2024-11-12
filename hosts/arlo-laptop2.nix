@@ -26,4 +26,5 @@
   ../conf/programs.nix
   ../conf/terminal.nix
   ../conf/idea.nix
+  ../conf/server/docker.nix
 ]
