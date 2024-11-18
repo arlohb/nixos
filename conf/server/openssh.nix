@@ -6,7 +6,7 @@ in
   services.openssh = {
     enable = true;
 
-    ports = [ 4825 ];
+    ports = [ 81 ];
 
     settings = {
       PermitRootLogin = "no";
