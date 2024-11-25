@@ -4,7 +4,7 @@
 
     # Blender temporarily broken
     # https://github.com/NixOS/nixpkgs/pull/351902
-    nixpkgs-blender.url = "github:NixOS/nixpkgs?rev=05bbf675397d5366259409139039af8077d695ce";
+    nixpkgs-blender.url = "nixpkgs/nixos-unstable";
 
     # Nix User Repository
     nur.url = "github:nix-community/NUR";
