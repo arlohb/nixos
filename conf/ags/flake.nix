@@ -11,6 +11,8 @@
 
         buildInputs = with pkgs; [
           bun
+          # TODO: Switch to AGS v2 / Astal
+          # Will be a very big change
           ags
           inotify-tools
           nodePackages.typescript-language-server
