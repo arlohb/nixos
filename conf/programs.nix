@@ -22,13 +22,16 @@
 
     gparted
     firefox
-    obsidian
     porsmo
     vlc
 
     gnome-calendar
     gnome-clocks
 
+    # TODO: Move these to another module
+    # As these are being installed on arlo-laptop1
+    # Might want to have a general look at what's installed on arlo-laptop1
+    obsidian
     aseprite
   ];
 
