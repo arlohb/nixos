@@ -38,10 +38,8 @@
 
   # The best font ever!
   fonts.packages = with pkgs; [
-    (nerdfonts.override { fonts = [
-      "FiraCode"
-      "VictorMono"
-    ]; })
+    nerd-fonts.fira-code
+    nerd-fonts.victor-mono
   ];
 
   userPersist.directories = [

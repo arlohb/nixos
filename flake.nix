@@ -2,10 +2,6 @@
   inputs = {
     nixpkgs.url = "nixpkgs/nixos-unstable";
 
-    # Blender temporarily broken
-    # https://github.com/NixOS/nixpkgs/pull/351902
-    nixpkgs-blender.url = "nixpkgs/nixos-unstable";
-
     # Nix User Repository
     nur.url = "github:nix-community/NUR";
 
@@ -49,16 +45,6 @@
         config.allowUnfree = true;
       };
 
-      pkgs-blender = import inputs.nixpkgs-blender {
-        inherit system;
-        config.allowUnfree = true;
-      };
-      blender-fix = {
-        nixpkgs.config.packageOverrides = pkgs: {
-          blender = pkgs-blender.blender;
-        };
-      };
-
       utils = import ./utils.nix nixpkgs.lib;
 
       fullModules = modulePaths: [
@@ -72,8 +58,6 @@
 
         nix-flatpak.nixosModules.nix-flatpak
         home-manager.nixosModules.home-manager
-
-        blender-fix
 
         {
           home-manager.useGlobalPkgs = true;
