@@ -7,13 +7,7 @@ in
   # Enable mullvad vpn daemon
   services.mullvad-vpn.enable = true;
 
-  pkgs = with pkgs; [
-    # TODO: This can be removed
-    qbittorrent
-  ];
-
   userPersist.directories = [
-    ".config/qBittorrent"
     ".ssh"
   ];
 
