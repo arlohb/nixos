@@ -8,6 +8,7 @@ in
   services.mullvad-vpn.enable = true;
 
   pkgs = with pkgs; [
+    # TODO: This can be removed
     qbittorrent
   ];
 
