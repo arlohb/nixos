@@ -1,5 +1,7 @@
 #!/usr/bin/env bash
 
+# TODO: Look into hyprshot
+
 geom=$(slurp)
 
 # Save to home
