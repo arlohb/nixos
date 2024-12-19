@@ -1,0 +1,10 @@
+port = 4242
+
+# optional frontend -> defaults to gtk if available - "cli" or "gtk"
+# frontend = "gtk"
+
+[right]
+hostname = "arlo-nix"
+port = 4242
+activate_on_startup = true
+
