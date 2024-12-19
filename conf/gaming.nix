@@ -47,10 +47,6 @@
     # Minecraft launcher for various modpack sources
     prismlauncher
 
-    # Game launcher for non-linux games
-    lutris
-    wineWowPackages.waylandFull
-
     # Proton-GE installer
     # This installs it to ~/.local/share/Steam/compatibilitytools.d,
     # So is already persisted with the steam installation
@@ -79,8 +75,6 @@
     directories = [
       ".local/share/Steam"
       ".local/share/PrismLauncher"
-      ".local/share/lutris"
-      ".config/lutris"
       ".local/share/Cockatrice"
       ".config/retroarch"
 
