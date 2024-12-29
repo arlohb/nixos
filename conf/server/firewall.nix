@@ -1,6 +1,8 @@
 { pkgs, ... }:
 
 {
+  # This is no longer used, but I'll keep it to show how this can be done.
+
   # This sets up a firewall that:
   #   - Only allows port 80 and 443
   #   - Only allows traffic to and from the gateway (192.168.1.254),

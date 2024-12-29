@@ -15,6 +15,5 @@
   ../conf/server/core.nix
   ../conf/server/docker.nix
   ../conf/server/duckdns.nix
-  ../conf/server/firewall.nix
   ../conf/server/openssh.nix
 ]

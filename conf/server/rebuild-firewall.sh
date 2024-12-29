@@ -1,5 +1,7 @@
 #!/bin/sh
 
+# This is no longer used, but I'll keep it to show how this can be done.
+
 # Flush the rules
 iptables -F
 
