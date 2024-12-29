@@ -84,6 +84,8 @@
       ".local/share/mcpelauncher"
       ".local/share/mcpelauncher-webview"
       ".local/share/Minecraft Linux Launcher"
+
+      ".config/hackmud"
     ];
   };
 }
