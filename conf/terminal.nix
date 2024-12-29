@@ -41,8 +41,4 @@
     nerd-fonts.fira-code
     nerd-fonts.victor-mono
   ];
-
-  userPersist.directories = [
-    ".local/share/fish"
-  ];
 }
