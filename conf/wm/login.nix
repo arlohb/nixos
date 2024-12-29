@@ -50,7 +50,7 @@
     };
   };
 
-  services.acpid = (if hostname == "arlo-laptop1" || hostname == "arlo-laptop2" then {
+  services.acpid = (if hostname == "arlo-laptop2" then {
     enable = true;
 
     handlers.lock = {

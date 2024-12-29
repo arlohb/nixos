@@ -28,13 +28,9 @@
     gnome-calendar
     gnome-clocks
 
-  ] ++ (if (hostname != "arlo-laptop1") then with pkgs; [
-    # TODO: Move these and maybe more to another module
-    # Might want to have a general look at what's installed on arlo-laptop1
-    # (Go totally headless?)
     obsidian
     aseprite
-  ] else []);
+  ];
 
   persist.directories = [
     "/var/lib/flatpak"
