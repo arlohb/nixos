@@ -27,6 +27,8 @@
     feh
     # App launcher
     rofi
+    # GTK icons
+    adwaita-icon-theme
 
     ### Screenshots
 
