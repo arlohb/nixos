@@ -45,6 +45,8 @@ in
         --unsyncedfolders ${pkgs.writeText "NextCloudNoSync.txt" ''
           Media
           Photos
+          Volumes
+          Backups
         ''} \
         ~/Nextcloud ${secrets.nextcloud.server}
     '';
