@@ -32,6 +32,10 @@
     porsmo.url = "github:ColorCookie-dev/porsmo?rev=37528c9c4421c5be853a0509812c23ec60c3eca1";
     porsmo.flake = false;
 
+    # A PR that fixes scrolling
+    lan-mouse.url = "github:feschber/lan-mouse/pull/240/head";
+    lan-mouse.inputs.nixpkgs.follows = "nixpkgs";
+
     scripts.url = "github:arlohb/scripts";
     scripts.inputs.nixpkgs.follows = "nixpkgs";
   };
@@ -47,6 +51,12 @@
 
       utils = import ./utils.nix nixpkgs.lib;
 
+      lan-mouse-fix = {
+        nixpkgs.config.packageOverrides = pkgs: {
+          lan-mouse = inputs.lan-mouse.packages."${system}".default;
+        };
+      };
+
       fullModules = modulePaths: [
         impermanence.nixosModules.impermanence
         {
@@ -58,6 +68,8 @@
 
         nix-flatpak.nixosModules.nix-flatpak
         home-manager.nixosModules.home-manager
+
+        lan-mouse-fix
 
         {
           home-manager.useGlobalPkgs = true;
