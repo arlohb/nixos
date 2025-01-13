@@ -11,4 +11,7 @@
       else
         ./arlo-laptop2.toml;
   };
+
+  networking.firewall.allowedTCPPorts = [ 4242 ];
+  networking.firewall.allowedUDPPorts = [ 4242 ];
 }
