@@ -12,4 +12,11 @@ in
 
   # Set gtk cursor
   hm.gtk.cursorTheme = cursor;
+
+  environment.variables = {
+    HYPRCURSOR_THEME = cursor.name;
+    HYPRCURSOR_SIZE = 24;
+    XCURSOR_THEME = cursor.name;
+    XCURSOR_SIZE = 24;
+  };
 }
