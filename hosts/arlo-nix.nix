@@ -14,7 +14,7 @@
   ../conf/wm/notifications.nix
   ../conf/wm/polkit.nix
   ../conf/wm/hypr/hypr.nix
-  ../conf/wm/lan-mouse/lan-mouse.nix
+  ../conf/wm/lan-mouse.nix
 
   # Programs
   ../conf/3d.nix
