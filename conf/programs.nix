@@ -30,6 +30,7 @@
 
     obsidian
     aseprite
+    teams-for-linux
   ];
 
   persist.directories = [
@@ -39,6 +40,7 @@
   userPersist.directories = [
     ".config/aseprite"
     ".mozilla"
+    ".config/teams-for-linux"
     ".local/share/containers"
     ".local/share/flatpak"
     # Flatpak app data
