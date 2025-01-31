@@ -21,6 +21,7 @@
     keybindings = {
       # Disable quit hotkey
       "ctrl+shift+w" = "";
+      "ctrl+backspace" = "send_text all \\x17";
     };
 
     shellIntegration.mode = "enabled";
