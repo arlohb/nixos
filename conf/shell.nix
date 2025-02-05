@@ -1,4 +1,4 @@
-{ pkgs, ...}:
+{ pkgs, hostname, ...}:
 
 {
   pkgs = with pkgs; [
@@ -45,6 +45,10 @@
 
       lsl = "eza --all --long --icons --binary --git --group";
     };
+
+    shellInit = if (hostname == "arlo-laptop1") then ''
+      complete --command k --wraps kubectl
+    '' else "";
   };
 
   users.defaultUserShell = pkgs.fish;
