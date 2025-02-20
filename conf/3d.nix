@@ -4,6 +4,7 @@
   pkgs = with pkgs; [
     blender
     openscad
+    freecad-wayland
   ];
 
   services.flatpak.packages = [
@@ -14,5 +15,7 @@
     ".local/share/cura"
     ".config/blender"
     ".config/cura"
+    ".config/FreeCAD"
+    ".local/share/FreeCAD"
   ];
 }
