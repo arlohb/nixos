@@ -41,6 +41,10 @@ let
         srcPath = "/var/lib/docker/volumes/nextcloud_aio_nextcloud_data/_data/admin/files/Volumes/readarr";
       }
       {
+        exportPath = "/export/volumes/lidarr";
+        srcPath = "/var/lib/docker/volumes/nextcloud_aio_nextcloud_data/_data/admin/files/Volumes/lidarr";
+      }
+      {
         exportPath = "/export/volumes/jellyseerr";
         srcPath = "/var/lib/docker/volumes/nextcloud_aio_nextcloud_data/_data/admin/files/Volumes/jellyseerr";
         allowRoot = true;
@@ -48,6 +52,15 @@ let
       {
         exportPath = "/export/volumes/kiwix";
         srcPath = "/var/lib/docker/volumes/nextcloud_aio_nextcloud_data/_data/admin/files/Volumes/kiwix";
+      }
+      {
+        exportPath = "/export/volumes/uptime-kuma";
+        srcPath = "/var/lib/docker/volumes/nextcloud_aio_nextcloud_data/_data/admin/files/Volumes/uptime-kuma";
+        allowRoot = true;
+      }
+      {
+        exportPath = "/export/volumes/vaultwarden";
+        srcPath = "/var/lib/docker/volumes/nextcloud_aio_nextcloud_data/_data/admin/files/Volumes/vaultwarden";
       }
 
       # Media
@@ -59,6 +72,10 @@ let
       {
         exportPath = "/export/media/shows";
         srcPath = "/var/lib/docker/volumes/nextcloud_aio_nextcloud_data/_data/admin/files/Media/Shows";
+      }
+      {
+        exportPath = "/export/media/music";
+        srcPath = "/var/lib/docker/volumes/nextcloud_aio_nextcloud_data/_data/admin/files/Media/Music";
       }
       {
         exportPath = "/export/media/books/audiobooks";
