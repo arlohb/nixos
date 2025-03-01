@@ -42,6 +42,7 @@ in {
     unzip
     neofetch
     btop
+    nmap
   ];
 
   # NUR
