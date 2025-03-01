@@ -6,62 +6,11 @@ let
       allowRoot = false;
     } // share)
     [
-      # Docker Volumes
-
-      {
-        exportPath = "/export/volumes/nodered";
-        srcPath = "/var/lib/docker/volumes/nextcloud_aio_nextcloud_data/_data/admin/files/Volumes/nodered";
-      }
-      {
-        exportPath = "/export/volumes/wireguard";
-        srcPath = "/var/lib/docker/volumes/nextcloud_aio_nextcloud_data/_data/admin/files/Volumes/wireguard";
-      }
-      {
-        exportPath = "/export/volumes/qbt/config";
-        srcPath = "/var/lib/docker/volumes/nextcloud_aio_nextcloud_data/_data/admin/files/Volumes/qbt/config";
-      }
-      {
-        exportPath = "/export/volumes/qbt/downloads";
-        srcPath = "/var/lib/docker/volumes/nextcloud_aio_nextcloud_data/_data/admin/files/Volumes/qbt/downloads";
-      }
-      {
-        exportPath = "/export/volumes/prowlarr";
-        srcPath = "/var/lib/docker/volumes/nextcloud_aio_nextcloud_data/_data/admin/files/Volumes/prowlarr";
-      }
-      {
-        exportPath = "/export/volumes/radarr";
-        srcPath = "/var/lib/docker/volumes/nextcloud_aio_nextcloud_data/_data/admin/files/Volumes/radarr";
-      }
-      {
-        exportPath = "/export/volumes/sonarr";
-        srcPath = "/var/lib/docker/volumes/nextcloud_aio_nextcloud_data/_data/admin/files/Volumes/sonarr";
-      }
-      {
-        exportPath = "/export/volumes/readarr";
-        srcPath = "/var/lib/docker/volumes/nextcloud_aio_nextcloud_data/_data/admin/files/Volumes/readarr";
-      }
-      {
-        exportPath = "/export/volumes/lidarr";
-        srcPath = "/var/lib/docker/volumes/nextcloud_aio_nextcloud_data/_data/admin/files/Volumes/lidarr";
-      }
-      {
-        exportPath = "/export/volumes/jellyseerr";
-        srcPath = "/var/lib/docker/volumes/nextcloud_aio_nextcloud_data/_data/admin/files/Volumes/jellyseerr";
-        allowRoot = true;
-      }
-      {
-        exportPath = "/export/volumes/kiwix";
-        srcPath = "/var/lib/docker/volumes/nextcloud_aio_nextcloud_data/_data/admin/files/Volumes/kiwix";
-      }
-      {
-        exportPath = "/export/volumes/uptime-kuma";
-        srcPath = "/var/lib/docker/volumes/nextcloud_aio_nextcloud_data/_data/admin/files/Volumes/uptime-kuma";
-        allowRoot = true;
-      }
-      {
-        exportPath = "/export/volumes/vaultwarden";
-        srcPath = "/var/lib/docker/volumes/nextcloud_aio_nextcloud_data/_data/admin/files/Volumes/vaultwarden";
-      }
+      # e.g.
+      # {
+      #   exportPath = "/export/volumes/nodered";
+      #   srcPath = "/var/lib/docker/volumes/nextcloud_aio_nextcloud_data/_data/admin/files/Volumes/nodered";
+      # }
     ];
 in {
   fileSystems = builtins.listToAttrs (
