@@ -30,7 +30,13 @@
       end
 
       function cpbig
+        # --archive means -rlptgoD
         rsync --archive --human-readable --info=progress2 $argv
+      end
+
+      function cpbignet
+        # --archive without conserving owner and group
+        rsync --archive --no-o --no-g --human-readable --info=progress2 $argv
       end
 
       if set -q KITTY_INSTALLATION_DIR
