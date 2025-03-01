@@ -62,29 +62,6 @@ let
         exportPath = "/export/volumes/vaultwarden";
         srcPath = "/var/lib/docker/volumes/nextcloud_aio_nextcloud_data/_data/admin/files/Volumes/vaultwarden";
       }
-
-      # Media
-
-      {
-        exportPath = "/export/media/movies";
-        srcPath = "/var/lib/docker/volumes/nextcloud_aio_nextcloud_data/_data/admin/files/Media/Movies";
-      }
-      {
-        exportPath = "/export/media/shows";
-        srcPath = "/var/lib/docker/volumes/nextcloud_aio_nextcloud_data/_data/admin/files/Media/Shows";
-      }
-      {
-        exportPath = "/export/media/music";
-        srcPath = "/var/lib/docker/volumes/nextcloud_aio_nextcloud_data/_data/admin/files/Media/Music";
-      }
-      {
-        exportPath = "/export/media/books/audiobooks";
-        srcPath = "/var/lib/docker/volumes/nextcloud_aio_nextcloud_data/_data/admin/files/Media/Books/Audiobooks";
-      }
-      {
-        exportPath = "/export/media/books/books";
-        srcPath = "/var/lib/docker/volumes/nextcloud_aio_nextcloud_data/_data/admin/files/Media/Books/Books";
-      }
     ];
 in {
   fileSystems = builtins.listToAttrs (
