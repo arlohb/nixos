@@ -15,6 +15,7 @@
   ../conf/wm/polkit.nix
   ../conf/wm/hypr/hypr.nix
   ../conf/wm/lan-mouse.nix
+  ../conf/wm/kbd/kmonad.nix
 
   # Programs
   ../conf/3d.nix

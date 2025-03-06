@@ -36,6 +36,9 @@
     lan-mouse.url = "github:feschber/lan-mouse/pull/240/head";
     lan-mouse.inputs.nixpkgs.follows = "nixpkgs";
 
+    kmonad.url = "github:kmonad/kmonad?dir=nix";
+    kmonad.inputs.nixpkgs.follows = "nixpkgs";
+
     scripts.url = "github:arlohb/scripts";
     scripts.inputs.nixpkgs.follows = "nixpkgs";
   };
