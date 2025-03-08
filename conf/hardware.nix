@@ -81,16 +81,6 @@
       device = "/dev/disk/by-label/steam";
       fsType = "ext4";
     };
-  } else if hostname == "arlo-laptop1" then {
-    "/mnt" = {
-      device = "/dev/disk/by-label/backup";
-      fsType = "ext4";
-    };
-
-    "/home/arlo/code/vps/nextcloud_backups" = {
-      device = "/mnt/nextcloud_backups";
-      options = [ "bind" ];
-    };
   } else { });
 } // (if hostname == "arlo-nix" then {
   # Only useful on pc, because RAM there only fills up,
