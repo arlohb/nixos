@@ -36,6 +36,9 @@
     grim
     # Region selection
     slurp
+
+    # Colour picker
+    hyprpicker
   ] ++ (if hostname == "arlo-laptop2"
     then [
       inputs.wl_keys.packages."${system}".default
