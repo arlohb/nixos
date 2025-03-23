@@ -59,6 +59,15 @@
 
   users.defaultUserShell = pkgs.fish;
 
+  programs.tmux = {
+    enable = true;
+    extraConfig = ''
+      # For image.nvim
+      set -gq allow-passthrough on
+      set -g visual-activity off
+    '';
+  };
+
   # TODO: Maybe look into lorri to speed this up
   # https://github.com/nix-community/lorri
   hm.programs.direnv.enable = true;
