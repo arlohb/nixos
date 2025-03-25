@@ -17,4 +17,5 @@
   ../conf/server/duckdns.nix
   ../conf/server/openssh.nix
   ../conf/server/backup.nix
+  ../conf/server/k3s-agent.nix
 ]
