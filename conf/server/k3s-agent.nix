@@ -9,4 +9,8 @@ in
     serverAddr = "https://datasphere.lan:6443";
     token = secrets.k3s.token;
   };
+
+  persist.files = [
+    "/etc/rancher/node/password"
+  ];
 }
