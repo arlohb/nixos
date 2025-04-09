@@ -30,5 +30,5 @@
 
   # Services
   ../conf/server/docker.nix
-  ../conf/ollama.nix
+  # ../conf/ollama.nix
 ]
