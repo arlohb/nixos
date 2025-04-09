@@ -62,6 +62,8 @@
     #     citra
     #   ];
     # })
+
+    heroic
   ];
 
   # https://nixos.wiki/wiki/Lutris
@@ -77,6 +79,7 @@
       ".local/share/PrismLauncher"
       ".local/share/Cockatrice"
       ".config/retroarch"
+      ".config/heroic"
 
       # Minecraft Bedrock Launcher
       # https://mcpelauncher.readthedocs.io/en/latest/index.html
