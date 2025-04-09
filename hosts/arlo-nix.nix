@@ -27,6 +27,7 @@
   ../conf/programs.nix
   ../conf/terminal.nix
   ../conf/android-studio.nix
+  ../conf/vbox.nix
 
   # Services
   ../conf/server/docker.nix
