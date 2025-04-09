@@ -37,6 +37,8 @@
     };
   };
 
+  programs.fish.shellAliases.s = "kitten ssh";
+
   # The best font ever!
   fonts.packages = with pkgs; [
     nerd-fonts.fira-code
