@@ -10,7 +10,8 @@ in
     token = secrets.k3s.token;
   };
 
-  persist.files = [
-    "/etc/rancher/node/password"
+  persist.directories = [
+    "/etc/rancher"
+    "/var/lib/rancher/k3s"
   ];
 }
