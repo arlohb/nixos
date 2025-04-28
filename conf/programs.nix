@@ -15,6 +15,13 @@
     ];
   };
 
+  programs.obs-studio = {
+    enable = true;
+    plugins = with pkgs.obs-studio-plugins; [
+      wlrobs
+    ];
+  };
+
   # TODO add some synergy like software
 
   pkgs = with pkgs; [
