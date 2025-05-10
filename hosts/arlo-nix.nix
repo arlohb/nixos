@@ -1,6 +1,7 @@
 [
   # Core
   ../conf/core.nix
+  ../conf/swap.nix
   ../conf/hardware.nix
   ../conf/user.nix
   ../conf/shell.nix
