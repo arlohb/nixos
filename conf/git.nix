@@ -11,12 +11,26 @@ in
     scrypt # Encrypts files with passwords
     #         I use this so I can store the git-crypt key file
     #         in a secure-ish place, that's not acc. that secure
+
+    jujutsu
   ];
 
   # Create a git credential file from secrets
   hm.home.file."/home/arlo/.config/git/credentials" = {
     text = secrets.git-credentials;
   };
+
+  hm.home.file."/home/arlo/.config/jj/config.toml".text = ''
+    "$schema" = "https://jj-vcs.github.io/jj/latest/config-schema.json"
+
+    [ui]
+    paginate = "auto"
+    pager = [ "less", "-RFX" ]
+
+    [user]
+    name = "${secrets.git.userName}"
+    email = "${secrets.git.userEmail}"
+  '';
 
   # Setup git
   hm.programs = {
