@@ -71,6 +71,7 @@
 
         nix-flatpak.nixosModules.nix-flatpak
         home-manager.nixosModules.home-manager
+        inputs.kmonad.nixosModules.default
 
         lan-mouse-fix
 
