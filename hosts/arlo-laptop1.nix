@@ -2,6 +2,7 @@
 {
   imports = [
     # Core
+    ../conf/sops.nix
     ../conf/core.nix
     ../conf/hardware.nix
     ../conf/user.nix

@@ -1,4 +1,4 @@
-{ pkgs, ... }:
+{ pkgs, config, ... }:
 
 let
   secrets = import ../secrets.nix;
@@ -14,11 +14,6 @@ in
 
     jujutsu
   ];
-
-  # Create a git credential file from secrets
-  hm.home.file."/home/arlo/.config/git/credentials" = {
-    text = secrets.git-credentials;
-  };
 
   hm.home.file."/home/arlo/.config/jj/config.toml".text = ''
     "$schema" = "https://jj-vcs.github.io/jj/latest/config-schema.json"
@@ -41,7 +36,7 @@ in
         init.defaultBranch = "main";
         # Store credentials here
         # This file is created from secrets
-        credential.helper = "store --file ~/.config/git/credentials";
+        credential.helper = "store --file ${config.sops.secrets.git-credentials.path}";
       };
     };
   };

@@ -1,4 +1,4 @@
-{ system, pkgs, inputs, ... }:
+{ system, pkgs, config, inputs, ... }:
 let
   secrets = import ../secrets.nix;
 in {
@@ -12,7 +12,7 @@ in {
   nix.settings.auto-optimise-store = true;
   nix.extraOptions = ''
     # Get round the api rate limit
-    access-tokens = github.com=${secrets.githubToken}
+    !include ${config.sops.secrets.nix-access-tokens.path}
   '';
 
   # Full package and hardware support

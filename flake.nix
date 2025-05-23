@@ -22,6 +22,9 @@
 
     nix-flatpak.url = "github:gmodena/nix-flatpak/?ref=v0.4.1";
 
+    sops-nix.url = "github:Mic92/sops-nix";
+    sops-nix.inputs.nixpkgs.follows = "nixpkgs";
+
     # An on-screen keyboard
     wl_keys.url = "github:arlohb/wl_keys";
     wl_keys.inputs.nixpkgs.follows = "nixpkgs";
@@ -47,7 +50,18 @@
     bar.url = "github:arlohb/bar";
   };
 
-  outputs = { self, nixpkgs, home-manager, impermanence, nix-index-database, nixvim, nix-flatpak, scripts, ... }@inputs:
+  outputs = {
+    self,
+    nixpkgs,
+    home-manager,
+    impermanence,
+    nix-index-database,
+    nixvim,
+    nix-flatpak,
+    sops-nix,
+    scripts,
+    ...
+  }@inputs:
     let
       system = "x86_64-linux";
 
@@ -69,6 +83,7 @@
         impermanence.nixosModules.impermanence
 
         nix-flatpak.nixosModules.nix-flatpak
+        sops-nix.nixosModules.sops
         home-manager.nixosModules.home-manager
         inputs.kmonad.nixosModules.default
 

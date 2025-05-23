@@ -1,7 +1,7 @@
-{ pkgs, hostname, ... }:
+{ pkgs, hostname, config, ... }:
 
 let
-  secrets = import ../secrets.nix;
+  secrets = config.sops.secrets;
 in
 {
   pkgs = with pkgs; [
@@ -35,13 +35,15 @@ in
     # For now this 'fix' works
     # https://github.com/nextcloud/desktop/issues/3840#issuecomment-1356843834
     Service.ExecStart = pkgs.writeShellScript "nextcloud-sync" ''
-      #!/usr/bin/env bash
-
       ${pkgs.sqlite}/bin/sqlite3 ~/Nextcloud/.*.db "PRAGMA journal_mode = delete;"
 
+      user=$(cat ${secrets."nextcloud/user".path})
+      password=$(cat ${secrets."nextcloud/password".path})
+      server=$(cat ${secrets."nextcloud/server".path})
+
       ${pkgs.nextcloud-client}/bin/nextcloudcmd \
-        --user ${secrets.nextcloud.user} \
-        --password ${secrets.nextcloud.password} \
+        --user $user \
+        --password $password \
         --unsyncedfolders ${pkgs.writeText "NextCloudNoSync.txt" ''
           Media/Audiobooks
           Media/Books
@@ -50,7 +52,7 @@ in
           Photos
           Backups
         ''} \
-        ~/Nextcloud ${secrets.nextcloud.server}
+        ~/Nextcloud $server
     '';
   };
 }
