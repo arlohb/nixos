@@ -5,6 +5,7 @@ let
     package = pkgs.nordzy-cursor-theme;
     name = "Nordzy-cursors";
   };
+  size = 24;
 in
 {
   # Set x11 cursor
@@ -15,8 +16,8 @@ in
 
   environment.variables = {
     HYPRCURSOR_THEME = cursor.name;
-    HYPRCURSOR_SIZE = 24;
+    HYPRCURSOR_SIZE = size;
     XCURSOR_THEME = cursor.name;
-    XCURSOR_SIZE = 24;
+    XCURSOR_SIZE = size;
   };
 }
