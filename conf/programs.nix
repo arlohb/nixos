@@ -36,6 +36,7 @@
     gnome-clocks
 
     obsidian
+    presenterm
     aseprite
     teams-for-linux
   ];

@@ -39,6 +39,8 @@
     kmonad.url = "github:kmonad/kmonad?dir=nix";
     kmonad.inputs.nixpkgs.follows = "nixpkgs";
 
+    presenterm.url = "github:mfontanini/presenterm";
+
     scripts.url = "github:arlohb/scripts";
     scripts.inputs.nixpkgs.follows = "nixpkgs";
   };
@@ -57,6 +59,7 @@
       lan-mouse-fix = {
         nixpkgs.config.packageOverrides = pkgs: {
           lan-mouse = inputs.lan-mouse.packages."${system}".default;
+          presenterm = inputs.presenterm.packages."${system}".default;
         };
       };
 
