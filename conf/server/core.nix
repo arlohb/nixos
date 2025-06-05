@@ -6,4 +6,6 @@
 
   # All my server stuff relies on nfs
   boot.supportedFilesystems = [ "nfs" ];
+
+  networking.firewall.enable = false;
 }
