@@ -39,6 +39,9 @@
 
     # Colour picker
     hyprpicker
+
+    # My AGS bar
+    inputs.bar.packages."${system}".default
   ] ++ (if hostname == "arlo-laptop2"
     then [
       inputs.wl_keys.packages."${system}".default

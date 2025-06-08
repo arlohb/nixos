@@ -8,6 +8,9 @@ sh -c " \
     nix run . & \
 " &
 
+pkill bar
+bar &
+
 swww init
 sleep 0.1
 

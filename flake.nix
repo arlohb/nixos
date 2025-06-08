@@ -43,6 +43,8 @@
 
     scripts.url = "github:arlohb/scripts";
     scripts.inputs.nixpkgs.follows = "nixpkgs";
+
+    bar.url = "github:arlohb/bar";
   };
 
   outputs = { self, nixpkgs, home-manager, impermanence, nix-index-database, nixvim, nix-flatpak, scripts, ... }@inputs:
