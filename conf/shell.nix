@@ -16,8 +16,11 @@
       colorscript -r
 
       function nr
-        # To read NIXPKGS_ALLOW_UNFREE
-        nix run --impure "nixpkgs#$argv"
+        set package $argv[1]
+        set args $argv[2..-1]
+
+        # impure to read NIXPKGS_ALLOW_UNFREE
+        nix run --impure "nixpkgs#$package" -- $args
       end
 
       function ns
