@@ -31,6 +31,7 @@
     firefox
     porsmo
     vlc
+    gapless
 
     gnome-calendar
     gnome-clocks
@@ -53,5 +54,7 @@
     ".local/share/flatpak"
     # Flatpak app data
     ".var"
+    # Used by a few things, namely gapless
+    ".config/dconf"
   ];
 }
