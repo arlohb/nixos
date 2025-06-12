@@ -18,7 +18,7 @@ sleep 1
 
 set_background
 
-socat - UNIX-CONNECT:/tmp/hypr/$(echo $HYPRLAND_INSTANCE_SIGNATURE)/.socket2.sock \
+socat - UNIX-CONNECT:$XDG_RUNTIME_DIR/hypr/$HYPRLAND_INSTANCE_SIGNATURE/.socket2.sock \
     | while read line; do
         handle $line;
     done
