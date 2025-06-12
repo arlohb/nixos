@@ -22,6 +22,8 @@
       # Disable quit hotkey
       "ctrl+shift+w" = "";
       "ctrl+backspace" = "send_text all \\x17";
+      "ctrl+t" = "set_background_opacity 1";
+      "ctrl+shift+t" = "set_background_opacity default";
     };
 
     shellIntegration.mode = "enabled";
@@ -32,6 +34,7 @@
         "FiraCodeNerdFontComplete-Regular +cv01 +ss03 +ss04 +ss08 +cv02";
       disable_ligatures = "never";
       enable_audio_bell = false;
+      dynamic_background_opacity = true;
       background_opacity = "0.5";
       confirm_os_window_close = 0;
     };
