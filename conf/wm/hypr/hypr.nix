@@ -6,8 +6,6 @@
   pkgs = with pkgs; [
     # Used to disable xorg / xwayland access control
     xorg.xhost
-    # Used in watch_monitors.sh
-    socat
   ];
 
   # This value is 'compile-time' checked somehow
