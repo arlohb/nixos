@@ -76,11 +76,11 @@
         "nixpkgs-typescript": "nixpkgs-typescript"
       },
       "locked": {
-        "lastModified": 1749291504,
-        "narHash": "sha256-x/k53y+HGDIqGA46l1sjhI7lxhRGdmQIlM7QEvhwI7Q=",
+        "lastModified": 1749770235,
+        "narHash": "sha256-yaChhYDbniAIt/fmlAAo6yGooJKa5TuxALTOCC7axUU=",
         "owner": "arlohb",
         "repo": "bar",
-        "rev": "552458bae7d5535a06cccd7797ed3a0c5a3f224a",
+        "rev": "2f1fe8582f54bb21bf5c20b78251e6416efa78f5",
         "type": "github"
       },
       "original": {
