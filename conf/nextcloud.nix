@@ -43,9 +43,11 @@ in
         --user ${secrets.nextcloud.user} \
         --password ${secrets.nextcloud.password} \
         --unsyncedfolders ${pkgs.writeText "NextCloudNoSync.txt" ''
-          Media
+          Media/Audiobooks
+          Media/Books
+          Media/Movies
+          Media/Shows
           Photos
-          Volumes
           Backups
         ''} \
         ~/Nextcloud ${secrets.nextcloud.server}
