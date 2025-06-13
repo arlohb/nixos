@@ -65,7 +65,7 @@
         };
       };
 
-      fullModules = modulePaths: [
+      fullModules = [
         impermanence.nixosModules.impermanence
         {
           # Impermanence has a temporary issue
@@ -92,10 +92,6 @@
 
           aliases.enable = true;
         }
-
-        {
-          imports = modulePaths;
-        }
       ];
     in
     {
@@ -105,7 +101,11 @@
             inherit system;
 
             specialArgs = { inherit hostname system inputs; };
-            modules = fullModules (import ./hosts/${hostname}.nix);
+            modules = fullModules ++ [{
+              imports = [
+                ./hosts/${hostname}.nix
+              ];
+            }];
           };
       in {
         # Build this with:
