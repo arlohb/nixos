@@ -85,9 +85,18 @@
           environment.systemPackages = pkgs.lib.attrValues scripts.packages.${system};
         }
 
-      ] ++ (utils.loadBetterModules
-        modulePaths
-      );
+        {
+          imports = [
+            ./conf/aliases.nix
+          ];
+
+          aliases.enable = true;
+        }
+
+        {
+          imports = modulePaths;
+        }
+      ];
     in
     {
       nixosConfigurations = let
@@ -107,7 +116,8 @@
           specialArgs = { inherit system inputs; hostname = "nix-live"; };
           modules = [
             "${nixpkgs}/nixos/modules/installer/cd-dvd/installation-cd-graphical-gnome.nix"
-          ] ++ utils.loadBetterModules { inherit system inputs; hostname = "nix-live"; } [ ./conf/core.nix ];
+            ./conf/core.nix
+          ];
         };
 
         arlo-laptop1 = buildHost "arlo-laptop1";
