@@ -24,8 +24,13 @@
       end
 
       function ns
-        # To read NIXPKGS_ALLOW_UNFREE
-        nix shell --impure "nixpkgs#$argv"
+        set pkg_args
+        for pkg in $argv
+          set pkg_args $pkg_args "nixpkgs#$pkg"
+        end
+
+        # impure to read NIXPKGS_ALLOW_UNFREE
+        nix shell --impure $pkg_args
       end
 
       function whichreal
