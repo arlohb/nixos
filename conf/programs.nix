@@ -40,6 +40,8 @@
     presenterm
     aseprite
     teams-for-linux
+
+    vscode
   ];
 
   persist.directories = [
@@ -56,5 +58,6 @@
     ".var"
     # Used by a few things, namely gapless
     ".config/dconf"
+    ".config/Code"
   ];
 }
