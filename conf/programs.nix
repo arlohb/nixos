@@ -59,5 +59,6 @@
     # Used by a few things, namely gapless
     ".config/dconf"
     ".config/Code"
+    ".vscode"
   ];
 }
