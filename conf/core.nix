@@ -45,6 +45,9 @@ in {
     nmap
   ];
 
+  # I use nfs everywhere
+  boot.supportedFilesystems = [ "nfs" ];
+
   # NUR
   nixpkgs.config.packageOverrides = pkgs: {
     nur = import inputs.nur {
