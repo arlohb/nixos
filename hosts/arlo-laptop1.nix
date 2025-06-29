@@ -20,5 +20,6 @@
     ../conf/server/backup.nix
     ../conf/server/k3s-agent.nix
     ../conf/server/transcode.nix
+    ../conf/server/nas-mount.nix
   ];
 }
