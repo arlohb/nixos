@@ -67,12 +67,6 @@
 
       fullModules = [
         impermanence.nixosModules.impermanence
-        {
-          # Impermanence has a temporary issue
-          # https://github.com/nix-community/impermanence/issues/229
-          boot.initrd.systemd.suppressedUnits = [ "systemd-machine-id-commit.service" ];
-          systemd.suppressedSystemUnits = [ "systemd-machine-id-commit.service" ];
-        }
 
         nix-flatpak.nixosModules.nix-flatpak
         home-manager.nixosModules.home-manager
