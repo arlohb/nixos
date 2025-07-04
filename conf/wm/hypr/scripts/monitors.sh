@@ -11,7 +11,7 @@ sh -c " \
 pkill bar
 bar &
 
-swww init
+swww-daemon &
 sleep 0.1
 
 if [ $(hostname) == "arlo-nix" ]; then
