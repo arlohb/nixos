@@ -42,6 +42,8 @@
     teams-for-linux
 
     vscode
+    unityhub
+    dotnet-sdk_9
   ];
 
   persist.directories = [
@@ -60,5 +62,8 @@
     ".config/dconf"
     ".config/Code"
     ".vscode"
+    ".config/unity3d"
+    ".config/unityhub"
+    ".local/share/Unity"
   ];
 }

@@ -1,6 +1,7 @@
 {
   inputs = {
     nixpkgs.url = "nixpkgs/nixos-unstable";
+    nixpkgs-stable.url = "github:NixOS/nixpkgs/nixos-25.05";
 
     # Nix User Repository
     nur.url = "github:nix-community/NUR";
@@ -70,6 +71,17 @@
         config.allowUnfree = true;
       };
 
+      pkgs-stable = import inputs.nixpkgs-stable {
+        inherit system;
+        config.allowUnfree = true;
+      };
+
+      unityhub-fix = {
+        nixpkgs.config.packageOverrides = pkgs: {
+          unityhub = pkgs-stable.unityhub;
+        };
+      };
+
       utils = import ./utils.nix nixpkgs.lib;
 
       lan-mouse-fix = {
@@ -87,6 +99,7 @@
         home-manager.nixosModules.home-manager
         inputs.kmonad.nixosModules.default
 
+        unityhub-fix
         lan-mouse-fix
 
         {
