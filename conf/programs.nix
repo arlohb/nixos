@@ -44,6 +44,10 @@
     vscode
     unityhub
     dotnet-sdk_9
+    # Required for unity web build
+    python3
+    # Required for unity audio import (sometimes, maybe only for web)
+    ffmpeg
   ];
 
   persist.directories = [
