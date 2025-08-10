@@ -16,7 +16,7 @@
     '';
 
     # Inbuilt to kitty
-    theme = "Dracula";
+    themeFile = "Dracula";
 
     keybindings = {
       # Disable quit hotkey
