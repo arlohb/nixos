@@ -6,6 +6,9 @@
   pkgs = with pkgs; [
     # Used to disable xorg / xwayland access control
     xorg.xhost
+
+    # Used for grayscale shader
+    hyprshade
   ];
 
   # This value is 'compile-time' checked somehow
