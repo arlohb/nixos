@@ -42,6 +42,8 @@
     teams-for-linux
 
     vscode
+
+    libreoffice
   ];
 
   persist.directories = [
@@ -60,5 +62,6 @@
     ".config/dconf"
     ".config/Code"
     ".vscode"
+    ".config/libreoffice"
   ];
 }
