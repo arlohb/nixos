@@ -48,6 +48,9 @@
     zotero
   ];
 
+  programs.fish.shellAliases.to-pdf =
+    "libreoffice --headless --invisible --convert-to pdf";
+
   persist.directories = [
     "/var/lib/flatpak"
   ];
