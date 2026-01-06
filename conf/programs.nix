@@ -44,6 +44,8 @@
     vscode
 
     libreoffice
+
+    zotero
   ];
 
   persist.directories = [
@@ -63,5 +65,6 @@
     ".config/Code"
     ".vscode"
     ".config/libreoffice"
+    ".zotero"
   ];
 }
