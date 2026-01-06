@@ -67,4 +67,9 @@
     ".config/libreoffice"
     ".zotero"
   ];
+
+  environment.variables = {
+    # Affects kicad and some other GTK programs
+    GTK_THEME = "Adwaita:dark";
+  };
 }
