@@ -51,6 +51,16 @@
   programs.fish.shellAliases.to-pdf =
     "libreoffice --headless --invisible --convert-to pdf";
 
+  hm.xdg.mimeApps = {
+    enable = true;
+    # Desktop files are:
+    # Here /run/current-system/sw/share/applications for global packages
+    # Here ~/.nix-profile/share/applications for home-manager packages
+    # Mime types can be found with:
+    # file --mime-type -b $file_name
+    defaultApplications."application/pdf" = "firefox.desktop";
+  };
+
   persist.directories = [
     "/var/lib/flatpak"
   ];
