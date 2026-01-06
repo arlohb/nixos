@@ -5,6 +5,7 @@
     blender
     openscad
     freecad-wayland
+    kicad
   ];
 
   services.flatpak.packages = [
@@ -17,5 +18,7 @@
     ".config/cura"
     ".config/FreeCAD"
     ".local/share/FreeCAD"
+    ".config/kicad"
+    ".local/share/kicad"
   ];
 }
