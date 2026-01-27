@@ -34,5 +34,6 @@
     ../conf/idea.nix
     ../conf/unity.nix
     ../conf/server/docker.nix
+    ../conf/vbox.nix
   ];
 }
