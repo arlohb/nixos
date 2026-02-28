@@ -3,27 +3,87 @@
   grv  1    2    3    4    5    6    7    8    9    0    -    =    bspc home
   tab  q    w    e    r    t    y    u    i    o    p    [    ]    \    pgup
   caps a    s    d    f    g    h    j    k    l    ;    '    ret       pgdn
-  lsft      z    x    c    v    b    n    m    ,    .    /    rsft      end
-  lctl lmet lalt           spc                      ralt nubs left up   right
-                                                                   down
+  lsft      z    x    c    v    b    n    m    ,    .    /    rsft up   end
+  lctl      lmet lalt      spc                      ralt nubs left down right
 )
+
+;; tap-hold-next-press does the mod when rolling
+;; tap-hold-next-release doesn't
+;; I'd think release is better, but on testing I'm doing press in QMT
+;; For now I'll use release on here, and see how natural it feels
 
 (defalias
-    hma (tap-hold-next-release 200 a lsft)
-    hmd (tap-hold-next-release 300 d lmet)
-    hmf (tap-hold-next-release 300 f lctl)
+    hma (tap-hold-next-release 250 a lsft)
+    hmd (tap-hold-next-release 250 d lmet)
+    hmf (tap-hold-next-release 250 f lctl)
 
-    hmj (tap-hold-next-release 300 j rctl)
-    hmk (tap-hold-next-release 300 k rmet)
-    hm; (tap-hold-next-release 200 ; rsft)
+    hmj (tap-hold-next-release 250 j lctl)
+    hmk (tap-hold-next-release 250 k lmet)
+    hm; (tap-hold-next-release 250 ; lsft)
+
+    lwr (layer-toggle lower)
+    gm1 (layer-add gaming)
+    gm0 (layer-rem gaming)
+    arr (layer-toggle arrows)
+    dis (layer-switch disable)
+    rot (layer-switch root)
+
+    esc (tap-hold-next-release 250 esc @arr)
 )
+
+#|
+(deflayer template
+  _    _    _    _    _    _    _    _    _    _    _    _    _    _
+  _    _    _    _    _    _    _    _    _    _    _    _    _    _    _
+  _    _    _    _    _    _    _    _    _    _    _    _    _    _    _
+  _    _    _    _    _    _    _    _    _    _    _    _    _         _
+  _         _    _    _    _    _    _    _    _    _    _    _    _    _
+  _         _    _         _                        _    _    _    _    _
+)
+|#
 
 (deflayer root
-  esc  f1   f2   f3   f4   f5   f6   f7   f8   f9   f10  f11  f12  del
+  @dis f1   f2   f3   f4   f5   f6   f7   f8   f9   f10  f11  f12  del
   grv  1    2    3    4    5    6    7    8    9    0    -    =    bspc home
   tab  q    w    e    r    t    y    u    i    o    p    [    ]    \    pgup
-  caps @hma s    @hmd @hmf g    h    @hmj @hmk l    @hm; '    ret       pgdn
-  tab       z    x    c    v    b    n    m    ,    .    /    rsft      end
-  lctl lmet lalt           spc                      ralt nubs left up   right
-                                                                   down
+  @esc @hma s    @hmd @hmf g    h    @hmj @hmk l    @hm; '    ret       pgdn
+  tab       z    x    c    v    b    n    m    ,    .    /    rsft up   end
+  lctl      lmet @lwr      spc                      ralt nubs left down right
 )
+
+(deflayer disable
+  @rot XX   XX   XX   XX   XX   XX   XX   XX   XX   XX   XX   XX   XX
+  XX   XX   XX   XX   XX   XX   XX   XX   XX   XX   XX   XX   XX   XX   XX
+  XX   XX   XX   XX   XX   XX   XX   XX   XX   XX   XX   XX   XX   XX   XX
+  XX   XX   XX   XX   XX   XX   XX   XX   XX   XX   XX   XX   XX        XX
+  XX        XX   XX   XX   XX   XX   XX   XX   XX   XX   XX   XX   XX   XX
+  XX        XX   XX        XX                       XX   XX   XX   XX   XX
+)
+
+(deflayer lower
+  @gm1 _    _    _    _    _    _    _    _    _    _    _    _    _
+  _    f1   f2   f3   f4   f5   f6   f7   f8   f9   f10  f11  f12  _    _
+  _    1    2    3    4    5    6    7    8    9    0    -    =    _    _
+  _    S-1  S-2  S-3  S-4  S-5  S-6  S-7  S-8  S-9  S-0  _    _         _
+  _         _    _    _    _    _    _    _    _    _    _    _    _    _
+  _         _    _         _                        _    _    _    _    _
+)
+
+(deflayer arrows
+  _    _    _    _    _    _    _    _    _    _     _    _    _    _
+  _    _    _    _    _    _    _    _    _    _     _    _    _    _    _
+  _    _    _    _    _    _    _    _    _    _     _    _    _    _    _
+  _    _    _    _    _    _    left down up   right _    _    _         _
+  _         _    _    _    _    _    _    _    _     _    _    _    _    _
+  _         _    _         _                         _    _    _    _    _
+)
+
+(deflayer gaming
+  @gm0 _    _    _    _    _    _    _    _    _    _    _    _    _
+  _    _    _    _    _    _    _    _    _    _    _    _    _    _    _
+  _    _    _    _    _    _    _    _    _    _    _    _    _    _    _
+  _    a    _    d    f    _    _    j    k    _    ;    _    _         _
+  lsft      _    _    _    _    _    _    _    _    _    _    _    _    _
+  _         _    lctl      _                        _    _    _    _    _
+)
+
