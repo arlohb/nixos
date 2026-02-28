@@ -49,6 +49,7 @@ in
           Media/Books
           Media/Movies
           Media/Shows
+          Media/YT
           Photos
           Backups
         ''} \
