@@ -1,14 +1,6 @@
 #!/usr/bin/env bash
 
-# Start ags in background
-# So it doesn't delay startup
-sh -c " \
-    cd /etc/nixos/conf/ags; \
-    nix run .#gen-types; \
-    nix run . & \
-" &
-
-pkill bar
+pkill gjs
 bar &
 
 swww-daemon &

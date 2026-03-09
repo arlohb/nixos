@@ -48,7 +48,7 @@
     scripts.url = "github:arlohb/scripts";
     scripts.inputs.nixpkgs.follows = "nixpkgs";
 
-    bar.url = "github:arlohb/bar";
+    bar.url = "github:arlohb/bar3";
   };
 
   outputs = {

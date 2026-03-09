@@ -82,6 +82,9 @@
       fsType = "ext4";
     };
   } else { });
+
+  # Control screen brightness over HDMI and others
+  services.ddccontrol.enable = true;
 } // (if hostname == "arlo-nix" then {
   # Only useful on pc, because RAM there only fills up,
   # If something has gone horrifically wrong
@@ -89,9 +92,6 @@
   # Kill processes if RAM is nearly full
   # See conf/notifications.nix for more
   services.earlyoom.enable = false;
-
-  # Control screen brightness over HDMI and others
-  services.ddccontrol.enable = true;
 
   # This is set above but would be overridden by the above options
   services.upower.enable = true;
