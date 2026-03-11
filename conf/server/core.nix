@@ -2,7 +2,7 @@
 
 {
   # Don't sleep when lid is closed
-  services.logind.lidSwitch = "ignore";
+  services.logind.settings.Login.HandleLidSwitch = "ignore";
 
   networking.firewall.enable = false;
 }
