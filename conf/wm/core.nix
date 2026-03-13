@@ -18,7 +18,7 @@
   # This is all the stuff I wouldn't need if I used a desktop environment
   pkgs = with pkgs; [
     # For setting backgrounds
-    swww
+    inputs.awww.packages."${system}".default
     # The top bar and more
     eww
     # Control media with media keys

@@ -8,8 +8,8 @@ hyprctl --batch "\
 sleep 0.1
 
 if [[ $1 == 0 ]] then
-    swww img -o eDP-1 /etc/nixos/backgrounds/rainbow-l.jpg
+    awww img -o eDP-1 /etc/nixos/backgrounds/rainbow-l.jpg
 else
-    swww img -o eDP-1 /etc/nixos/backgrounds/rainbow-p.jpg
+    awww img -o eDP-1 /etc/nixos/backgrounds/rainbow-p.jpg
 fi
 

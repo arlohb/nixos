@@ -49,6 +49,8 @@
     scripts.inputs.nixpkgs.follows = "nixpkgs";
 
     bar.url = "github:arlohb/bar3";
+
+    awww.url = "git+https://codeberg.org/LGFae/awww";
   };
 
   outputs = {
