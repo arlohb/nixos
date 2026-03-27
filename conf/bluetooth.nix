@@ -9,9 +9,7 @@
     };
   };
 
-  pkgs = with pkgs; [
-    blueberry
-  ];
+  services.blueman.enable = true;
 
   persist.directories = [
     "/var/lib/bluetooth"

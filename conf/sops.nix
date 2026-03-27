@@ -9,7 +9,10 @@
     defaultSopsFile = ../secrets/secrets.yaml;
     defaultSopsFormat = "yaml";
 
-    age.keyFile = "/home/arlo/.config/sops/age/keys.txt";
+    # Required until this PR is merged
+    # https://github.com/Mic92/sops-nix/pull/928
+    # That should fix it
+    age.keyFile = "/nix/persistent/home/arlo/.config/sops/age/keys.txt";
 
     secrets = {
       nix-access-tokens.owner = "arlo";
@@ -30,5 +33,5 @@
     ".config/sops"
   ];
 
-  fileSystems."/home/arlo/.config/sops".neededForBoot = true;
+  # fileSystems."/home/arlo/.config/sops".neededForBoot = true;
 }

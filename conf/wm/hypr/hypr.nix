@@ -5,7 +5,7 @@
 {
   pkgs = with pkgs; [
     # Used to disable xorg / xwayland access control
-    xorg.xhost
+    xhost
 
     # Used for grayscale shader
     hyprshade

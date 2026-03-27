@@ -40,7 +40,7 @@ in {
     curl
     zip
     unzip
-    neofetch
+    fastfetch
     btop
     nmap
   ];

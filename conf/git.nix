@@ -38,6 +38,9 @@ in
         # This file is created from secrets
         credential.helper = "store --file ${config.sops.secrets.git-credentials.path}";
       };
+
+      # Switch to new default
+      signing.format = null;
     };
   };
 }
