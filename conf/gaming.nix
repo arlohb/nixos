@@ -35,7 +35,10 @@
   };
 
   # Steam
-  programs.steam.enable = true;
+  programs.steam = {
+    enable = true;
+    remotePlay.openFirewall = true;
+  };
 
   # Minecraft bedrock
   services.flatpak.packages = [
