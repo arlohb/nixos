@@ -32,6 +32,7 @@
     porsmo
     vlc
     gapless
+    thunderbird
 
     gnome-calendar
     gnome-clocks
@@ -67,7 +68,9 @@
 
   userPersist.directories = [
     ".config/aseprite"
-    ".mozilla"
+    ".mozilla" # Firefox
+    ".config/mozilla" # Thunderbird
+    ".thunderbird"
     ".config/teams-for-linux"
     ".local/share/containers"
     ".local/share/flatpak"
