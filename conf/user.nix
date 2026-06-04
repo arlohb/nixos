@@ -37,6 +37,20 @@
     "/etc/nixos/.git"
   ];
 
+  # Allow user to restart NetworkManager without password
+  security.sudo.extraRules = [
+    {
+      users = [ "arlo" ];
+      runAs = "root";
+      commands = [
+        {
+          command = "/run/current-system/sw/bin/systemctl restart NetworkManager";
+          options = [ "NOPASSWD" ];
+        }
+      ];
+    }
+  ];
+
   # Setup home manager
   hm.home = {
     stateVersion = "23.05";
