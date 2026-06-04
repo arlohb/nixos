@@ -25,8 +25,6 @@
     playerctl
     # Image viewer
     feh
-    # App launcher
-    rofi
     # GTK icons
     adwaita-icon-theme
 
@@ -47,4 +45,22 @@
       inputs.wl_keys.packages."${system}".default
     ]
     else []);
+
+  hm.programs.rofi = {
+    enable = true;
+    extraConfig = {
+      # https://www.reddit.com/r/i3wm/comments/ebf9t8/rofi_single_click_accept/
+      # 
+
+      # Highlight an entry under the mouse pointer
+      hover-select = true;
+
+      # Disable MousePrimary as an entry selector
+      # Without this setting you won't be able to set MousePrimary as an entry acceptor
+      me-select-entry = "";
+
+      # Use either LMB single click or RMB single click or LMB double click to accept an entry
+      me-accept-entry = [ "MousePrimary" "MouseSecondary" "MouseDPrimary" ];
+    };
+  };
 }
