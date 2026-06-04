@@ -2,6 +2,8 @@
   inputs = {
     nixpkgs.url = "nixpkgs/nixos-unstable";
     nixpkgs-stable.url = "github:NixOS/nixpkgs/nixos-25.05";
+    # TODO https://github.com/NixOS/nixpkgs/issues/491434
+    nixpkgs-linux-zen-6-18.url = "github:NixOS/nixpkgs?rev=09061f748ee21f68a089cd5d91ec1859cd93d0be";
 
     # Nix User Repository
     nur.url = "github:nix-community/NUR";
@@ -84,6 +86,17 @@
         };
       };
 
+      pkgs-linux-zen = import inputs.nixpkgs-linux-zen-6-18 {
+        inherit system;
+        config.allowUnfree = true;
+      };
+
+      linux-zen-fix = {
+        nixpkgs.config.packageOverrides = pkgs: {
+            linuxPackages_zen = pkgs-linux-zen.linuxPackages_zen;
+        };
+      };
+
       utils = import ./utils.nix nixpkgs.lib;
 
       lan-mouse-fix = {
@@ -103,6 +116,7 @@
 
         unityhub-fix
         lan-mouse-fix
+        linux-zen-fix
 
         {
           home-manager.useGlobalPkgs = true;
