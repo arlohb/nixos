@@ -47,6 +47,8 @@
     libreoffice
 
     zotero
+
+    krita
   ];
 
   programs.fish.shellAliases.to-pdf =
@@ -74,6 +76,7 @@
     ".config/teams-for-linux"
     ".local/share/containers"
     ".local/share/flatpak"
+    ".local/share/krita"
     # Flatpak app data
     ".var"
     # Used by a few things, namely gapless
@@ -82,6 +85,11 @@
     ".vscode"
     ".config/libreoffice"
     ".zotero"
+  ];
+
+  userPersist.files = [
+    ".config/kritarc"
+    ".config/kritadisplayrc"
   ];
 
   environment.variables = {
